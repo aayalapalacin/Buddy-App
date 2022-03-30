@@ -1,35 +1,110 @@
 /* 
     General Styles used on every website (Don't Repeat Yourself)
 */
-.login-page{
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
 }
-.login-container{
-    height: 400px;
-    width: 500px;
-    border-radius: 50px;
-    background-color: rgba(255, 253, 253, 0.952);
-    margin: auto;
-    margin-top: 100px;
+.login-container {
+  height: 450px;
+  width: 500px;
+  border-radius: 50px;
+  background-color: rgba(255, 253, 253, 0.952);
+  margin: auto;
+  position: absolute; /* or absolute */
+  top: 15%;
+  left: 32%;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
 }
 
-.login-card{
-    text-align: center;
+.login-card {
+  text-align: center;
+  padding-top: 20px;
 }
 
-.login-button{
-    position: relative;
-    left: 80px;
-    top: 180px;
-    background-color: rgb(194, 224, 194, 0.8);  
-    border-radius: 10px;    
+.login-title {
+  margin-top: 10px;
+  text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #ee7752 0%,
+    #e73c7e 29%,
+    #23a6d5 67%,
+    #23d5ab 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 5s linear infinite;
+  display: inline-block;
+  font-size: 70px;
 }
-.account-button{
-    position: relative;
-    left: -30px;
-    top: 230px;
-    background-color: rgb(194, 224, 194, 0.8);   
-    border-radius: 10px;    
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.inputs {
+  margin-top: 30px;
+}
+.username {
+  margin-bottom: 20px;
+  width: 380px;
+  height: 45px;
+  border-radius: 10px;
+  font-weight: 600;
+  border: none;
+}
+
+.password {
+  width: 380px;
+  height: 45px;
+  border-radius: 10px;
+  font-weight: 600;
+  border: none;
+}
+
+.login-button {
+  font-size: 20px;
+  word-spacing: 0.5em;
+  width: 380px;
+  height: 45px;
+  position: relative;
+  left: 0px;
+  top: 30px;
+  background-color: rgba(182, 201, 212, 0.877);
+  border-radius: 10px;
+}
+
+.login-button:hover {
+  transform: scale(1.04);
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.account-button {
+  font-size: 20px;
+  width: 380px;
+  height: 45px;
+  position: relative;
+  left: 0px;
+  top: 50px;
+  background-color: rgba(182, 201, 212, 0.877);
+  border-radius: 10px;
+}
+
+.account-button:hover {
+  transform: scale(1.04);
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
 }
