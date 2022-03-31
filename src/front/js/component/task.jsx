@@ -29,7 +29,7 @@ const Task = ({ id, name }) => {
   return (
     <div>
       <button type="button" class="btn btn-outline-info" ref={dragRef}>
-        School Work
+        {name}
         {isDragging && "😱"}
       </button>
     </div>
