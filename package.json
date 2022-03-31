@@ -76,6 +76,8 @@
 		"pretty-print-json": "^1.2.3",
 		"prop-types": "^15.6.1",
 		"react": "^16.8.4",
+		"react-dnd": "^15.1.1",
+		"react-dnd-html5-backend": "^15.1.2",
 		"react-dom": "^16.8.4",
 		"react-polyfills": "0.0.1",
 		"react-router-dom": "^5.2.0",
