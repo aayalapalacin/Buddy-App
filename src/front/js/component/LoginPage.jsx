@@ -9,7 +9,6 @@ const LoginPage = () => {
           <div className="inputs">
             <form>
               <label>
-                
                 <input
                   className="username"
                   type="text"
@@ -19,7 +18,6 @@ const LoginPage = () => {
               </label>
               <br></br>
               <label>
-                
                 <input
                   className="password"
                   type="text"
