@@ -4,6 +4,7 @@ import "./login.css";
 
 
 const LoginApp = () => {
+  const noBitches = "https://humornama.com/wp-content/uploads/2022/03/No-Bitches-Meme-Template-on-Megamind-1-768x1024.jpg";
   const adminUser = {
     username: "David Dodson",
     password: "admin",
@@ -33,7 +34,7 @@ const LoginApp = () => {
     <div className="login-app">
         {(user.username != "") ? (
             <div className="welcome">
-                <h2>Welcome,<span>{user.username}</span><img src="https://humornama.com/wp-content/uploads/2022/03/No-Bitches-Meme-Template-on-Megamind-1-768x1024.jpg" height={300}/></h2>
+                <h2>Welcome, <span>{user.username}! Aw man, you really brought</span><img src={noBitches} height={300}/></h2>
                 <button onClick={Logout}>Logout</button>
             </div>
         ) : (
