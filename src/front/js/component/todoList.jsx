@@ -14,7 +14,14 @@ function TodoList() {
         </div>
       </div>
       <div className="row">
-        <div className="readyButton"></div>
+        <div className="col-6"></div>
+        <div className="col-6 readyBtnCol">
+          <div className="readyButton">
+            <button type="button" class="btn btn-warning">
+              Ready!
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

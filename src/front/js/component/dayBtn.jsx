@@ -27,7 +27,6 @@ const DayBtn = () => {
         setDayButton(list);
       }
     },
-    // !dayButton.includes(item) ? [...dayButton, item] : dayButton
 
     collect: (monitor) => ({
       isOver: monitor.isOver(),
@@ -35,26 +34,24 @@ const DayBtn = () => {
   });
   return (
     <React.Fragment>
-      <div>
-        {TASKS.map((task) => (
-          <Task draggable id={task.id} name={task.name} />
-        ))}
-      </div>
-      <div className="dayButton" ref={dropRef}>
-        {dayButton.map((task) => (
-          <Task id={task.id} name={task.name} />
-        ))}
-        {isOver && <div> Drop Here!</div>}
+      <div className="row">
+        <div className="col-6">
+          <div className="dayBtnDiv">
+            {TASKS.map((task) => (
+              <Task draggable key={task.id} name={task.name} />
+            ))}
+          </div>
+        </div>
+        <div className="col-6 dayBtnCol">
+          <div className="dayButton" ref={dropRef}>
+            {dayButton.map((task) => (
+              <Task key={task.id} name={task.name} />
+            ))}
+            {isOver && <div> Drop Here!</div>}
+          </div>
+        </div>
       </div>
     </React.Fragment>
-
-    // // {/* <div className='pets'>
-    // {PETS.map(pet => <PetCard draggable id={pet.id} name={pet.name} />)}
-    // </div>
-    // <div className='basket' ref={dropRef}>
-    // {basket.map(pet => <PetCard id={pet.id} name={pet.name} />)}
-    // {isOver && <div>Drop Here!</div>}
-    // </div> */}
   );
 };
 

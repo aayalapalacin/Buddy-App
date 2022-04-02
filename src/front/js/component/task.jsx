@@ -12,9 +12,13 @@ const Task = ({ id, name }) => {
   });
   return (
     <div>
-      <button type="button" class="btn btn-outline-info" ref={dragRef}>
+      <button
+        type="button"
+        className="btn btn-outline-info taskBtn"
+        ref={dragRef}
+      >
         {name}
-        {isDragging && "😱"}
+        {isDragging && ""}
       </button>
     </div>
   );
