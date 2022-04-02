@@ -110,19 +110,18 @@
 
 /* logo stuff */
 
-.logo-title{
-    font-size: 30px;
-    letter-spacing: 0.1em;
-    padding: 10px;
-    color: rgba(255, 255, 255, 0.5);
-    opacity: 0.5;
+.logo-title {
+  font-size: 60px;
+  letter-spacing: 0.1em;
+  padding: 10px;
+  color: rgba(255, 255, 255, 0.5);
+  opacity: 0.5;
 }
 
-
-.welcome{
+.welcome {
   margin-left: 10px;
 }
 
-.welcome img{
+.welcome img {
   padding: 20px;
 }
