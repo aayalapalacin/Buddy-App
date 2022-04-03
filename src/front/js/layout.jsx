@@ -6,9 +6,11 @@ import injectContext from "./store/appContext";
 
 import { Home } from "./views/home.jsx";
 import { Demo } from "./views/demo.jsx";
+import LoginPage from "./component/LoginPage/LoginPage.jsx";
 
 import { Navbar } from "./component/navbar.jsx";
 import { Footer } from "./component/footer.jsx";
+import TodoList from "./component/todoList.jsx";
 
 //create your first component
 const Layout = () => {
@@ -20,19 +22,19 @@ const Layout = () => {
     <div>
       <BrowserRouter basename={basename}>
         <ScrollToTop>
-          <Navbar />
           <Switch>
             <Route exact path="/">
-              <Home />
+              <LoginPage /> 
+              {/* Made login page the starting page */}
             </Route>
-            <Route exact path="/demo">
-              <Demo />
+            <Route exact path="/todoList">
+              <TodoList />
             </Route>
             <Route>
               <h1>Not found!</h1>
             </Route>
           </Switch>
-          <Footer />
+         
         </ScrollToTop>
       </BrowserRouter>
     </div>

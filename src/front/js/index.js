@@ -9,4 +9,4 @@ import "../styles/index.css";
 import Layout from "./layout.jsx";
 import LoginPage from "./component/LoginPage/LoginPage.jsx"  //remove login page and replace with layout to see page.
 //render your react application
-ReactDOM.render(<LoginPage />, document.querySelector("#app"));
+ReactDOM.render(<Layout />, document.querySelector("#app"));

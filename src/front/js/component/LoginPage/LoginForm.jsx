@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./login.css";
 const LoginForm = ({ Login, error }) => {
   const [details, setDetails] = useState({ username: "", password: "" });
@@ -39,7 +40,9 @@ const LoginForm = ({ Login, error }) => {
           <br></br>
               
           <a href="/">Forgot Password?</a>
+          
           <button type="submit" value="Login" className="login-button">Login</button>
+         
           <button className="account-button">Create a new account</button>
         </form>
       </div>
