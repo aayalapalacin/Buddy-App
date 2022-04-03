@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import LoginForm from "./LoginForm.jsx";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 import "./login.css";
 
 const LoginApp = () => {
@@ -27,7 +27,7 @@ const LoginApp = () => {
       });
     } else {
       console.log("Doesn't match");
-      setError("Doesn't match");
+      setError("Details don't match!");
     }
   };
   const Logout = () => {
@@ -37,15 +37,23 @@ const LoginApp = () => {
   return (
     <div className="login-app">
       {user.username != "" ? (
-        <div className="welcome">
-          <h2>
-            Welcome, <span>{user.username}! Aw man, you really brought</span>
-            <img src={noBitches} height={300} />
-          </h2>
-          <Link to ='/todoList'>
-          <button type="submit" className="started-page">Ready to get started?</button>
-          </Link>
-          <button onClick={Logout} className="logout-button">Logout</button>
+        <div>
+          <div className="welcome">
+            <h2>
+              Welcome, <span>{user.username}!</span>
+            </h2>
+            <p>Ready to accomplish the day?</p>
+            <br></br>
+            <Link to="/todoList">
+              <button type="submit" className="started-page">
+                Let's get started
+              </button>
+            </Link>
+            <br></br>
+            <button onClick={Logout} className="logout-button">
+              Logout
+            </button>
+          </div>
         </div>
       ) : (
         <div className="login-container">

@@ -4,7 +4,7 @@ function TodoList() {
   return (
     <div>
       <h1>This is the todoList</h1>
-      <Link to="LoginPage">
+      <Link to="/">
         <button type="submit" value="Go Back"></button>
       </Link>
     </div>
