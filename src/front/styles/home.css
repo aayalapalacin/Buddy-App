@@ -39,3 +39,8 @@
   justify-content: center;
   display: flex;
 }
+
+.taskItemColor {
+  background-color: red;
+  color: white;
+}

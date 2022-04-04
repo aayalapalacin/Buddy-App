@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../../styles/home.css";
 import { useDrop } from "react-dnd";
 import Task from "./task.jsx";
+import SelectedTask from "./selectedTask.jsx";
 
 const TASKS = [
   { id: 1, name: "school work" },
@@ -44,9 +45,11 @@ const DayBtn = () => {
         </div>
         <div className="col-6 dayBtnCol">
           <div className="dayButton" ref={dropRef}>
-            {dayButton.map((task) => (
-              <Task key={task.id} name={task.name} />
-            ))}
+            <ul className="list-group list-group-flush">
+              {dayButton.map((task) => (
+                <SelectedTask key={task.id} name={task.name} />
+              ))}
+            </ul>
             {isOver && <div> Drop Here!</div>}
           </div>
         </div>
