@@ -4,7 +4,7 @@ import { useDrag } from "react-dnd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 
-const Task = ({ id, name }) => {
+const Task = ({ id, name, category1, category2 }) => {
   const [taskItem, setTaskItem] = useState("");
   const [newTaskItem, setNewTaskItem] = useState([]);
 
@@ -16,7 +16,7 @@ const Task = ({ id, name }) => {
   };
   const [{ isDragging }, dragRef] = useDrag({
     type: "task",
-    item: { id, name },
+    item: { id, name, category1, category2 },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
@@ -33,15 +33,15 @@ const Task = ({ id, name }) => {
         {name}
         {isDragging && ""}
       </button>
-      <ul class="dropdown-menu">
+      <ul className="dropdown-menu">
         <li>
-          <a class="dropdown-item" href="#">
-            Action
+          <a className="dropdown-item" href="#">
+            {category1}
           </a>
         </li>
         <li>
-          <a class="dropdown-item" href="#">
-            Separated link
+          <a className="dropdown-item" href="#">
+            {category2}
           </a>
         </li>
       </ul>

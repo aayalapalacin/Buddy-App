@@ -5,10 +5,7 @@ import Task from "./task.jsx";
 import SelectedTask from "./selectedTask.jsx";
 
 const TASKS = [
-  { id: 1, name: "school work" },
-  { id: 2, name: "Gym" },
-  { id: 3, name: "Cleaning" },
-  { id: 4, name: "Yoga" },
+  { id: 1, name: "school work", category1: "study", category2: "take notes" },
 ];
 
 const DayBtn = () => {
@@ -39,7 +36,13 @@ const DayBtn = () => {
         <div className="col-6">
           <div className="dayBtnDiv">
             {TASKS.map((task) => (
-              <Task draggable key={task.id} name={task.name} />
+              <Task
+                draggable
+                key={task.id}
+                name={task.name}
+                category1={task.category1}
+                category2={task.category2}
+              />
             ))}
           </div>
         </div>
