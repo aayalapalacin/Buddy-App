@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../styles/home.css";
 import { useDrag } from "react-dnd";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 
 const Task = ({ id, name }) => {
+  const 
   const [{ isDragging }, dragRef] = useDrag({
     type: "task",
     item: { id, name },
@@ -20,6 +23,7 @@ const Task = ({ id, name }) => {
         {name}
         {isDragging && ""}
       </button>
+      <FontAwesomeIcon icon={faCirclePlus}></FontAwesomeIcon>
     </div>
   );
 };
