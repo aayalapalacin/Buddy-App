@@ -11,7 +11,7 @@ import LoginPage from "./component/LoginPage/LoginPage.jsx";
 import { Navbar } from "./component/navbar.jsx";
 import { Footer } from "./component/footer.jsx";
 import TodoList from "./component/todoList.jsx";
-
+import Register from "./component/LoginPage/AccountApp.jsx";
 //create your first component
 const Layout = () => {
   //the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -27,11 +27,14 @@ const Layout = () => {
               <LoginPage /> 
               {/* Made login page the starting page */}
             </Route>
+            <Route exact path="/AccountApp">
+              <Register />
+            </Route>
             <Route exact path="/todoList">
               <TodoList />
             </Route>
-            <Route>
-              <h1>Not found!</h1>
+            <Route exact path="/" >
+              <LoginPage />
             </Route>
           </Switch>
          

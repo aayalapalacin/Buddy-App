@@ -23,8 +23,7 @@
 .login-title {
   margin-top: 10px;
   text-transform: uppercase;
-
-  color: #6CA68D;
+  color: #672494;
   display: inline-block;
   font-size: 70px;
 }
@@ -109,10 +108,10 @@
 /* welcome stuff*/
 
 .welcome {
-  /* text-align: center; */
+  text-align: center;
   margin: auto;
-  position: absolute;
-  top: 50;
+  position: relative;
+  top: 0;
   bottom: 0;
   left: 0;
   right: 0;
@@ -140,6 +139,7 @@
   background-color: rgb(255, 247, 247);
   cursor: pointer;
   position: relative;
+
   z-index: 0;
   border-radius: 10px;
 }
@@ -183,11 +183,50 @@
 
 .logout-button {
   font-size: 20px;
-  letter-spacing: 0.1em;
-  width: 380px;
-  height: 45px;
-  color: #000000;
-  background-color: #ffffff;
+  margin-bottom: 60px;
+  width: 220px;
+  height: 60px;
+  border: none;
+  outline: none;
+  color: rgb(0, 0, 0);
+  background: rgb(255, 255, 255);
+  background-color: rgb(255, 247, 247);
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
   border-radius: 10px;
-  /* border-color: #ebbdd8; */
+}
+
+.logout-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: rgba(255,255,255,0.1);
+  transition: all 0.4s;
+}
+.logout-button:hover::before {
+  opacity: 0 ;
+  transform: scale(0.5,0.5);
+}
+.logout-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.4s;
+  border: 1px solid rgba(255,255,255,0.5);
+  border-radius: 10px;
+  transform: scale(1.2,1.2);
+}
+.logout-button:hover::after {
+  opacity: 1;
+  transform: scale(1,1);
 }

@@ -13,7 +13,7 @@ const LoginForm = ({ Login, error }) => {
     <>
       <div className="inputs">
         <form onSubmit={submitHandler}>
-          {(error != "") ? (<div className="error">{error}</div>) : ""}
+          {error != "" ? <div className="error">{error}</div> : ""}
           <label>
             <input
               type="text"
@@ -21,9 +21,11 @@ const LoginForm = ({ Login, error }) => {
               name="name"
               placeholder="Username"
               id="username"
-              onChange={e => setDetails({...details, username: e.target.value})} 
+              onChange={(e) =>
+                setDetails({ ...details, username: e.target.value })
+              }
               value={details.username}
-              />
+            />
           </label>
           <br></br>
           <label>
@@ -33,17 +35,22 @@ const LoginForm = ({ Login, error }) => {
               name="name"
               placeholder="Password"
               id="password"
-              onChange={e => setDetails({...details, password: e.target.value})} 
+              onChange={(e) =>
+                setDetails({ ...details, password: e.target.value })
+              }
               value={details.password}
-              />
+            />
           </label>
           <br></br>
-              
+
           <a href="/">Forgot Password?</a>
-          
-          <button type="submit" value="Login" className="login-button">Login</button>
-         
-          <button className="account-button">Create a new account</button>
+
+          <button type="submit" value="Login" className="login-button">
+            Login
+          </button>
+          <Link to="/AccountApp">
+            <button className="account-button">Create a new account</button>
+          </Link>
         </form>
       </div>
     </>
