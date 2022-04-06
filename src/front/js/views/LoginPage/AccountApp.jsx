@@ -8,7 +8,9 @@ const Register = () => {
       <div className="register-container">
         <div className="header">First time? Let's get you ready for your future</div>
         <div className="content">
-          <div className="image"></div>
+          <div className="image">
+            
+          </div>
           <div className="form">
             <div className="form-group">
               <label htmlFor="username">Username</label>

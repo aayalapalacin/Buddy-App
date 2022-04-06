@@ -6,12 +6,12 @@ import injectContext from "./store/appContext";
 
 import { Home } from "./views/home.jsx";
 import { Demo } from "./views/demo.jsx";
-import LoginPage from "./component/LoginPage/LoginPage.jsx";
+import LoginPage from "./views/LoginPage/LoginPage.jsx";
 
 import { Navbar } from "./component/navbar.jsx";
 import { Footer } from "./component/footer.jsx";
 import TodoList from "./component/todoList.jsx";
-import Register from "./component/LoginPage/AccountApp.jsx";
+import Register from "./views/LoginPage/AccountApp.jsx";
 //create your first component
 const Layout = () => {
   //the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -36,6 +36,9 @@ const Layout = () => {
             <Route exact path="/" >
               <LoginPage />
             </Route>
+
+{/* add more routes when files merge */}
+
           </Switch>
          
         </ScrollToTop>
