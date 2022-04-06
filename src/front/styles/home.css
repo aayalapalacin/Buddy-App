@@ -9,6 +9,7 @@
   margin-top: 6%;
 }
 
+
 .dayBtnDiv {
   display: inline;
 }
@@ -44,3 +45,10 @@
   background-color: red;
   color: white;
 }
+
+    All pages share the styles on index.css but you should create 
+    one more css for each page that will contain the selected used 
+    on that page only (the ones not reused in other pages).
+*/
+
+
