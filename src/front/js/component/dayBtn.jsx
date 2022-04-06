@@ -5,7 +5,38 @@ import Task from "./task.jsx";
 import SelectedTask from "./selectedTask.jsx";
 
 const TASKS = [
-  { id: 1, name: "school work", category1: "study", category2: "take notes" },
+  {
+    id: 1,
+    task: "My Goal",
+    task1: "School",
+    task2: "Health",
+    task3: "Creative",
+    task4: "Professional",
+  },
+  // {
+  //   id: 2,
+  //   task: "",
+  //   task1: "School",
+  //   task2: "Health",
+  //   task3: "Creative",
+  //   task4: "Professional",
+  // },
+  // {
+  //   id: 3,
+  //   task: "",
+  //   task1: "School",
+  //   task2: "Health",
+  //   task3: "Creative",
+  //   task4: "Professional",
+  // },
+  // {
+  //   id: 4,
+  //   task: "",
+  //   task1: "School",
+  //   task2: "Health",
+  //   task3: "Creative",
+  //   task4: "Professional",
+  // },
 ];
 
 const DayBtn = () => {
@@ -17,7 +48,7 @@ const DayBtn = () => {
         setDayButton([item]);
       } else if (dayButton.length > 0) {
         let list = dayButton.filter((taskItem) => {
-          if (taskItem.name != item.name) {
+          if (taskItem.task != item.task) {
             return taskItem;
           }
         });
@@ -39,9 +70,11 @@ const DayBtn = () => {
               <Task
                 draggable
                 key={task.id}
-                name={task.name}
-                category1={task.category1}
-                category2={task.category2}
+                task={task.task}
+                task1={task.task1}
+                task2={task.task2}
+                task3={task.task3}
+                task4={task.task4}
               />
             ))}
           </div>
@@ -50,7 +83,7 @@ const DayBtn = () => {
           <div className="dayButton" ref={dropRef}>
             <ul className="list-group list-group-flush">
               {dayButton.map((task) => (
-                <SelectedTask key={task.id} name={task.name} />
+                <SelectedTask key={task.id} task={task.task} />
               ))}
             </ul>
             {isOver && <div> Drop Here!</div>}
