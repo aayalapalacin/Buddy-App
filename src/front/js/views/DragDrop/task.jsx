@@ -60,5 +60,4 @@ const Task = ({ id, task, task1, task2, task3, task4 }) => {
     </div>
   );
 };
-
 export default Task;
