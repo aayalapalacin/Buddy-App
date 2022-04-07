@@ -1,9 +1,7 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
-import "../../styles/home.css";
-import TodoList from "../component/todoList.jsx";
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
+import "./DragDrop/dragDrop.css";
+import TodoList from "./DragDrop/todoList.jsx";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);

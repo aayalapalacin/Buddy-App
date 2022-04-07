@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styles/home.css";
+import "./dragDrop.css";
 import { useDrag } from "react-dnd";
 
 const SelectedTask = ({ id, name }) => {

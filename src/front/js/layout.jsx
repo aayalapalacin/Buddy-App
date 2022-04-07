@@ -10,7 +10,7 @@ import LoginPage from "./views/LoginPage/LoginPage.jsx";
 
 import { Navbar } from "./component/navbar.jsx";
 import { Footer } from "./component/footer.jsx";
-import TodoList from "./component/todoList.jsx";
+import TodoList from "./views/DragDrop/todoList.jsx";
 import Register from "./views/LoginPage/AccountApp.jsx";
 //create your first component
 const Layout = () => {
@@ -24,7 +24,7 @@ const Layout = () => {
         <ScrollToTop>
           <Switch>
             <Route exact path="/">
-              <LoginPage /> 
+              <LoginPage />
               {/* Made login page the starting page */}
             </Route>
             <Route exact path="/AccountApp">
@@ -33,14 +33,12 @@ const Layout = () => {
             <Route exact path="/todoList">
               <TodoList />
             </Route>
-            <Route exact path="/" >
+            <Route exact path="/">
               <LoginPage />
             </Route>
 
-{/* add more routes when files merge */}
-
+            {/* add more routes when files merge */}
           </Switch>
-         
         </ScrollToTop>
       </BrowserRouter>
     </div>

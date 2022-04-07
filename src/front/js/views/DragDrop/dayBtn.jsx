@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../styles/home.css";
+import "./dragDrop.css";
 import { useDrop } from "react-dnd";
 import Task from "./task.jsx";
 import SelectedTask from "./selectedTask.jsx";
