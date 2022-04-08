@@ -2,7 +2,7 @@ import React from "react";
 import "./dragDrop.css";
 import { useDrag } from "react-dnd";
 
-const SelectedTask = ({ id, task, task1, task2, task3, task4 }) => {
+const SelectedTask = ({ id, task }) => {
   const [{ isDragging }, dragRef] = useDrag({
     type: "task",
     item: { id, task },
