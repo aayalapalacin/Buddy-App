@@ -2,7 +2,7 @@ import React from "react";
 import LoginApp from "./LoginApp.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSmile } from "@fortawesome/free-solid-svg-icons";
-import "../login.css";
+import "../css/login.css";
 
 const LoginPage = () => {
 

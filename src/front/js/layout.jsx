@@ -5,11 +5,11 @@ import ScrollToTop from "./component/scrollToTop.jsx";
 import injectContext from "./store/appContext";
 
 
-import LoginPage from "./views/Login/LoginComponents/LoginPage.jsx";
-
+import LoginPage from "./views/LoginCode/LoginComponents/LoginPage.jsx";
+import RegisterApp from "./views/LoginCode/RegisterComponents/RegisterApp.jsx"
 
 import TodoList from "./views/DragDrop/todoList.jsx";
-import Register from "./views/Login/RegisterComponents/AccountApp.jsx";
+import Register from "./views/LoginCode/RegisterComponents/AccountApp.jsx";
 //create your first component
 const Layout = () => {
   //the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -28,6 +28,9 @@ const Layout = () => {
             <Route exact path="/AccountApp">
               <Register />
             </Route>
+            <Route exact path="/RegisterApp">
+              <RegisterApp />
+            </Route>
             <Route exact path="/LoginApp">
               <LoginPage />
               </Route>
@@ -38,6 +41,12 @@ const Layout = () => {
               <LoginPage />
             </Route>
             {/* add more routes when files merge */}
+            {/* <Route exact path="/RegisterApp">
+              <RegisterApp />
+            </Route> */}
+            {/* <Route exact path="/RegisterApp">
+              <RegisterApp />
+            </Route> */}
           </Switch>
         </ScrollToTop>
       </BrowserRouter>

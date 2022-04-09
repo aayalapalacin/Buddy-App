@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import LoginForm from "./LoginForm.jsx";
 import { Link } from "react-router-dom";
-import "./Login/css/login.css";
+import "../css/login.css";
 
 const LoginApp = () => {
   const noBitches =

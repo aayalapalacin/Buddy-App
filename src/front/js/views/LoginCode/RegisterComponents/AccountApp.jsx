@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "/workspace/Buddy-App/src/front/js/views/Login/css/register.css"
+import "../css/register.css"
 import BuddyLogo from "/workspace/Buddy-App/src/front/img/buddyapp2.png"
 const Register = () => {
   return (
@@ -33,8 +33,8 @@ const Register = () => {
             </div>
           </div>
           <div className="footer">
-            <Link to="/LoginApp">
-            <button type="button" className="btn">
+            <Link to="/RegisterApp">
+            <button type="button" className="reg-btn">
               Register
             </button>
               </Link>

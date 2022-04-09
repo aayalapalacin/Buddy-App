@@ -1,0 +1,121 @@
+.register-container {
+  height: 100%;
+  width: 50%;
+  border-radius: 30px;
+  background-color: rgba(255, 253, 253, 0.952);
+  margin: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 600;
+  text-align: center;
+}
+.buddy-logo{
+  color: rgba(255, 255, 255, 0.5);
+  width: 200px;
+  border-radius: 5px;
+}
+.content {
+  text-align: center;
+  padding-top: 20px;
+}
+h2 {
+  margin-top: 40px;
+}
+.form-group {
+  margin-top: 15px;
+}
+.reg-user {
+  margin-bottom: 20px;
+  width: 380px;
+  height: 45px;
+  border-radius: 10px;
+  font-weight: 600;
+  border: none;
+}
+
+
+.reg-btn {
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  width: 380px;
+  height: 45px;
+  position: relative;
+  left: 0px;
+  top: 30px;
+  color: #3d3a3a;
+  background-color: #dbdbdb;
+  border-radius: 10px;
+  border: none;
+  /* border-color: #ebbdd8; */
+}
+
+.footer:hover {
+  transform: scale(1.04);
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+/*register page*/
+
+.reg-intro{
+  padding: 50px;
+
+}
+
+/*get started button*/
+
+.register-button {
+  font-size: 20px;
+  margin-bottom: 60px;
+  width: 220px;
+  height: 60px;
+  border: none;
+  outline: none;
+  color: rgb(0, 0, 0);
+  background: rgb(255, 255, 255);
+  background-color: rgb(255, 247, 247);
+  cursor: pointer;
+  position: relative;
+
+  z-index: 0;
+  border-radius: 10px;
+}
+
+
+.register-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: rgba(255,255,255,0.1);
+  transition: all 0.4s;
+}
+.register-button:hover::before {
+  opacity: 0 ;
+  transform: scale(0.5,0.5);
+}
+.register-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.4s;
+  border: 1px solid rgba(155, 154, 154, 0.5);
+  border-radius: 10px;
+  transform: scale(1.2,1.2);
+}
+.register-button:hover::after {
+  opacity: 1;
+  transform: scale(1,1);
+}
