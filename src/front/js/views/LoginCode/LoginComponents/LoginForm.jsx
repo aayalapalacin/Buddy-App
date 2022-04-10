@@ -42,8 +42,8 @@ const LoginForm = ({ Login, error }) => {
             />
           </label>
           <br></br>
-
-          <a href="/">Forgot Password?</a>
+          <br></br>    
+          <a href="/" className="iforgor">Forgot Password?</a>
 
           <button type="submit" value="Login" className="login-button">
             Login

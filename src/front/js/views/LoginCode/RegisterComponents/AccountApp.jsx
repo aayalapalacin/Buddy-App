@@ -5,12 +5,12 @@ import BuddyLogo from "/workspace/Buddy-App/src/front/img/buddyapp2.png"
 const Register = () => {
   return (
     <>
-          <div className="image">
+          {/* <div className="image">
             <img src={BuddyLogo} className="buddy-logo"/>
-          </div>
+          </div> */}
       <div className="register-container">
         <div className="header">
-          <h2>First time?</h2> 
+          <h1>First time?</h1> 
             <br></br>
             <h3>Let's get you ready for your future</h3>
             </div>

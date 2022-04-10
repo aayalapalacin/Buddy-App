@@ -1,8 +1,9 @@
 .register-container {
-  height: 100%;
-  width: 50%;
+  height: 650px;
+  width: 500px;
   border-radius: 30px;
-  background-color: rgba(255, 253, 253, 0.952);
+  background-color: #2f848b;
+  color: #fff;
   margin: auto;
   position: absolute;
   top: 0;
@@ -15,21 +16,22 @@
 }
 .buddy-logo{
   color: rgba(255, 255, 255, 0.5);
-  width: 200px;
+  width: 190px;
   border-radius: 5px;
+ 
 }
 .content {
   text-align: center;
   padding-top: 20px;
 }
-h2 {
-  margin-top: 40px;
+h1 {
+  margin-top: 25px;
 }
 .form-group {
   margin-top: 15px;
 }
 .reg-user {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   width: 380px;
   height: 45px;
   border-radius: 10px;
@@ -45,7 +47,7 @@ h2 {
   height: 45px;
   position: relative;
   left: 0px;
-  top: 30px;
+  top: 40px;
   color: #3d3a3a;
   background-color: #dbdbdb;
   border-radius: 10px;
@@ -61,61 +63,3 @@ h2 {
 
 /*register page*/
 
-.reg-intro{
-  padding: 50px;
-
-}
-
-/*get started button*/
-
-.register-button {
-  font-size: 20px;
-  margin-bottom: 60px;
-  width: 220px;
-  height: 60px;
-  border: none;
-  outline: none;
-  color: rgb(0, 0, 0);
-  background: rgb(255, 255, 255);
-  background-color: rgb(255, 247, 247);
-  cursor: pointer;
-  position: relative;
-
-  z-index: 0;
-  border-radius: 10px;
-}
-
-
-.register-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  background-color: rgba(255,255,255,0.1);
-  transition: all 0.4s;
-}
-.register-button:hover::before {
-  opacity: 0 ;
-  transform: scale(0.5,0.5);
-}
-.register-button::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  opacity: 0;
-  transition: all 0.4s;
-  border: 1px solid rgba(155, 154, 154, 0.5);
-  border-radius: 10px;
-  transform: scale(1.2,1.2);
-}
-.register-button:hover::after {
-  opacity: 1;
-  transform: scale(1,1);
-}
