@@ -12,7 +12,7 @@ const SelectedTask = ({ id, task }) => {
   });
   return (
     <li className="list-group-item taskItemColor" ref={dragRef}>
-      {task}
+      {task.task}
       {isDragging && ""}
     </li>
   );

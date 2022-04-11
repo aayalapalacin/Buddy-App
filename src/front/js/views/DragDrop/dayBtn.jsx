@@ -3,41 +3,18 @@ import "./dragDrop.css";
 import { useDrop } from "react-dnd";
 import Task from "./task.jsx";
 import SelectedTask from "./selectedTask.jsx";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 
 const TASKS = [
   {
     id: 1,
     task: "My Goal",
-    // task1: "School",
-    // task2: "Health",
-    // task3: "Creative",
-    // task4: "Professional",
   },
   { id: 2, task: "School" },
-  // {
-  //   id: 2,
-  //   task: "",
-  //   task1: "School",
-  //   task2: "Health",
-  //   task3: "Creative",
-  //   task4: "Professional",
-  // },
-  // {
-  //   id: 3,
-  //   task: "",
-  //   task1: "School",
-  //   task2: "Health",
-  //   task3: "Creative",
-  //   task4: "Professional",
-  // },
-  // {
-  //   id: 4,
-  //   task: "",
-  //   task1: "School",
-  //   task2: "Health",
-  //   task3: "Creative",
-  //   task4: "Professional",
-  // },
+  { id: 3, task: "Creative" },
+  { id: 4, task: "Professional" },
+  { id: 5, task: "Health" },
 ];
 
 const DayBtn = () => {
@@ -85,19 +62,31 @@ const DayBtn = () => {
               return <option value={item.task}> {item.task}</option>;
             })}
           </select>
-          <div className="dayBtnDiv">
-            {taskArray.map((task) => (
-              <Task
-                draggable
-                key={task.id}
-                task={task.task}
-                // task1={task.task1}
-                // task2={task.task2}
-                // task3={task.task3}
-                // task4={task.task4}
-              />
-            ))}
+          <div className="dayBtnDiv dropdown">
+            <Task
+              className="btn btn-secondary dropdown-toggle"
+              element="button"
+              id="dropdownMenuButton1"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              task={item}
+              defaultLabel="select"
+            />
+
+            <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              {TASKS.map((task) => (
+                <Task
+                  element="li"
+                  className="dropdown-item taskBtn"
+                  draggable
+                  key={task.id}
+                  task={task}
+                  func={() => setItem(task)}
+                />
+              ))}
+            </ul>
           </div>
+          <FontAwesomeIcon icon={faCirclePlus}></FontAwesomeIcon>
         </div>
         <div className="col-6 dayBtnCol">
           <div className="dayButton" ref={dropRef}>
