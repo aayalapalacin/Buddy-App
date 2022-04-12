@@ -42,9 +42,11 @@ const LoginForm = ({ Login, error }) => {
             />
           </label>
           <br></br>
-          <br></br>    
-          <a href="/" className="iforgor">Forgot Password?</a>
+          <br></br>   
 
+          <Link to="/ForgotPassword"> 
+          <a href="/" className="iforgor">Forgot Password?</a>
+          </Link>
           <button type="submit" value="Login" className="login-button">
             Login
           </button>

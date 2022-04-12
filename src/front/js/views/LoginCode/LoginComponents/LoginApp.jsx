@@ -42,17 +42,19 @@ const LoginApp = () => {
             <h2 className="welcome-title">
               Welcome, <span>{user.username}!</span>
             </h2>
-            <h4 className="welcome-message">Ready to accomplish the day?</h4>
-            <br></br>
-            <Link to="/todoList">
-              <button type="submit" className="started-page">
-                Let's get started
+              <h4 className="welcome-message">Ready to accomplish the day?</h4>
+              <br></br>
+            <div className="buttonsnshit">
+              <Link to="/todoList">
+                <button type="submit" className="started-page">
+                  Let's get started
+                </button>
+              </Link>
+             <br></br>
+              <button onClick={Logout} className="logout-button">
+                Logout
               </button>
-            </Link>
-            <br></br>
-            <button onClick={Logout} className="logout-button">
-              Logout
-            </button>
+            </div>
           </div>
         </div>
       ) : (

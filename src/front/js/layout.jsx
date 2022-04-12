@@ -10,6 +10,7 @@ import RegisterApp from "./views/LoginCode/RegisterComponents/RegisterApp.jsx"
 
 import TodoList from "./views/DragDrop/todoList.jsx";
 import Register from "./views/LoginCode/RegisterComponents/AccountApp.jsx";
+import ForgotPassword from "./views/LoginCode/LoginComponents/ForgotPassword/ForgotPassword.jsx";
 //create your first component
 const Layout = () => {
   //the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -24,6 +25,9 @@ const Layout = () => {
             <Route exact path="/">
               <LoginPage />
               {/* Made login page the starting page */}
+            </Route>
+            <Route exact path="/ForgotPassword">
+              <ForgotPassword />
             </Route>
             <Route exact path="/AccountApp">
               <Register />
@@ -41,12 +45,7 @@ const Layout = () => {
               <LoginPage />
             </Route>
             {/* add more routes when files merge */}
-            {/* <Route exact path="/RegisterApp">
-              <RegisterApp />
-            </Route> */}
-            {/* <Route exact path="/RegisterApp">
-              <RegisterApp />
-            </Route> */}
+           
           </Switch>
         </ScrollToTop>
       </BrowserRouter>
