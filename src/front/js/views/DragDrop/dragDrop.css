@@ -2,20 +2,36 @@
   background-color: red;
   width: 18vw;
   height: 18vw;
-  border-radius: 50%;
+  border-radius: 19%;
   align-items: center;
   display: flex;
   justify-content: center;
   margin-top: 6%;
 }
 
+#photoSampleDiv {
+  width: 18rem;
+  height: 14rem;
+}
+
+.dropdownDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.arrowDownLeft {
+  transform: rotate(45deg);
+}
+
+#pieChart {
+  width: 100%;
+  height: auto;
+}
 .dayBtnDiv {
   display: inline;
 }
 
 .taskBtn {
-  font-size: 2.3rem;
-  margin: 1rem;
 }
 
 .readyButton {
