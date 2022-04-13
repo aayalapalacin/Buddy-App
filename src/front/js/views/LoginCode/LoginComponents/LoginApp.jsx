@@ -39,9 +39,9 @@ const LoginApp = () => {
       {user.username != "" ? (
         <div>
           <div className="welcome">
-            <h2 className="welcome-title">
+            <h3 className="welcome-title">
               Welcome, <span>{user.username}!</span>
-            </h2>
+            </h3>
               <h4 className="welcome-message">Ready to accomplish the day?</h4>
               <br></br>
             <div className="buttonsnshit">

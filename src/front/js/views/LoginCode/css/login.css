@@ -121,15 +121,16 @@
   text-align: center;
   margin: auto;
   /* margin-top: 100px; */
-  background: linear-gradient(-45deg, #35577D, #2f848b);
-  height: 520px;
-  width: 850px;
+  background: linear-gradient(-45deg, #bdbebe, gray) ;
+  height: 600px;
+  width: 800px;
   border-radius: 15px;
 }
 
 .welcome-title {
-  font-size: 70px;
-  margin-left: 5px;
+  font-size: 60px;
+  font-stretch: 20px;
+  /* margin-left: 5px; */
   margin-top: 30px;
   color: rgb(0, 210, 218);
   /* color: linear-gradient(-45deg, #35577D, #2f848b) */
