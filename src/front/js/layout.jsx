@@ -4,14 +4,13 @@ import ScrollToTop from "./component/scrollToTop.jsx";
 
 import injectContext from "./store/appContext";
 
-import { Home } from "./views/home.jsx";
-import { Demo } from "./views/demo.jsx";
-import LoginPage from "./views/LoginPage/LoginPage.jsx";
 
-import { Navbar } from "./component/navbar.jsx";
-import { Footer } from "./component/footer.jsx";
+import LoginPage from "./views/LoginCode/LoginComponents/LoginPage.jsx";
+import RegisterApp from "./views/LoginCode/RegisterComponents/RegisterApp.jsx"
+
 import TodoList from "./views/DragDrop/todoList.jsx";
-import Register from "./views/LoginPage/AccountApp.jsx";
+import Register from "./views/LoginCode/RegisterComponents/AccountApp.jsx";
+import ForgotPassword from "./views/LoginCode/LoginComponents/ForgotPassword/ForgotPassword.jsx";
 //create your first component
 const Layout = () => {
   //the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -27,17 +26,26 @@ const Layout = () => {
               <LoginPage />
               {/* Made login page the starting page */}
             </Route>
+            <Route exact path="/ForgotPassword">
+              <ForgotPassword />
+            </Route>
             <Route exact path="/AccountApp">
               <Register />
             </Route>
+            <Route exact path="/RegisterApp">
+              <RegisterApp />
+            </Route>
+            <Route exact path="/LoginApp">
+              <LoginPage />
+              </Route>
             <Route exact path="/todoList">
               <TodoList />
             </Route>
             <Route exact path="/">
               <LoginPage />
             </Route>
-
             {/* add more routes when files merge */}
+           
           </Switch>
         </ScrollToTop>
       </BrowserRouter>

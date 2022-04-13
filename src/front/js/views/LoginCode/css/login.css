@@ -1,11 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&display=swap");
 
+
+
 .login-container {
-  height: 480px;
+  height: 550px;
   width: 500px;
-  border-radius: 50px;
-  background-color: rgba(255, 253, 253, 0.952);
+  border-radius: 30px;
+  /* background-color: #2f848b; */
+  background: linear-gradient(-45deg, #35577D, #2f848b);
   margin: auto;
+
   position: absolute;
   top: 0;
   bottom: 0;
@@ -16,6 +20,7 @@
 }
 
 .login-card {
+  margin-top: 35px;
   text-align: center;
   padding-top: 20px;
 }
@@ -23,7 +28,7 @@
 .login-title {
   margin-top: 10px;
   text-transform: uppercase;
-  color: #672494;
+  color: rgba(255, 253, 253, 0.952);
   display: inline-block;
   font-size: 70px;
 }
@@ -61,7 +66,7 @@
   height: 45px;
   position: relative;
   left: 0px;
-  top: 30px;
+  top: 20px;
   color: #3f3f3f;
   background-color: #dbdbdb;
   border-radius: 10px;
@@ -82,7 +87,7 @@
   height: 45px;
   position: relative;
   left: 0px;
-  top: 50px;
+  top: 40px;
   color: #3f3f3f;
   background-color: #dbdbdb;
   border-radius: 10px;
@@ -102,34 +107,50 @@
   font-size: 60px;
   letter-spacing: 0.1em;
   padding: 10px;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(145, 144, 144, 0.5);
   opacity: 0.5;
 }
 /* welcome stuff*/
 
 .welcome {
-  text-align: center;
-  margin: auto;
-  position: relative;
+  position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
+  text-align: center;
+  margin: auto;
+  /* margin-top: 100px; */
+  background: linear-gradient(-45deg, #bdbebe, gray) ;
+  height: 600px;
+  width: 800px;
+  border-radius: 15px;
 }
 
 .welcome-title {
-  font-size: 70px;
-  color: #fff;
+  font-size: 60px;
+  font-stretch: 20px;
+  /* margin-left: 5px; */
+  margin-top: 30px;
+  color: rgb(0, 210, 218);
+  /* color: linear-gradient(-45deg, #35577D, #2f848b) */
 }
-
+.welcome-message {
+  margin-top: 30px;
+}
 .welcome img {
   padding: 20px;
 }
 
 /* logged in page css */
+
+.buttonsnshit{
+  margin-top: 100px;
+}
+
 .started-page {
   font-size: 20px;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
   width: 220px;
   height: 60px;
   border: none;
@@ -144,24 +165,23 @@
   border-radius: 10px;
 }
 
-
 .started-page::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 1;
-  background-color: rgba(255,255,255,0.1);
+  background-color: rgba(255, 255, 255, 0.1);
   transition: all 0.4s;
 }
 .started-page:hover::before {
-  opacity: 0 ;
-  transform: scale(0.5,0.5);
+  opacity: 0;
+  transform: scale(0.5, 0.5);
 }
 .started-page::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -170,16 +190,14 @@
   z-index: 1;
   opacity: 0;
   transition: all 0.4s;
-  border: 1px solid rgba(255,255,255,0.5);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 10px;
-  transform: scale(1.2,1.2);
+  transform: scale(1.2, 1.2);
 }
 .started-page:hover::after {
   opacity: 1;
-  transform: scale(1,1);
+  transform: scale(1, 1);
 }
-
-
 
 .logout-button {
   font-size: 20px;
@@ -198,22 +216,22 @@
 }
 
 .logout-button::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 1;
-  background-color: rgba(255,255,255,0.1);
+  background-color: rgba(255, 255, 255, 0.1);
   transition: all 0.4s;
 }
 .logout-button:hover::before {
-  opacity: 0 ;
-  transform: scale(0.5,0.5);
+  opacity: 0;
+  transform: scale(0.5, 0.5);
 }
 .logout-button::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -222,11 +240,11 @@
   z-index: 1;
   opacity: 0;
   transition: all 0.4s;
-  border: 1px solid rgba(255,255,255,0.5);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 10px;
-  transform: scale(1.2,1.2);
+  transform: scale(1.2, 1.2);
 }
 .logout-button:hover::after {
   opacity: 1;
-  transform: scale(1,1);
+  transform: scale(1, 1);
 }

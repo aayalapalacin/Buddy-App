@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./login.css";
+import "../css/login.css";
 const LoginForm = ({ Login, error }) => {
   const [details, setDetails] = useState({ username: "", password: "" });
 
@@ -42,9 +42,11 @@ const LoginForm = ({ Login, error }) => {
             />
           </label>
           <br></br>
+          <br></br>   
 
-          <a href="/">Forgot Password?</a>
-
+          <Link to="/ForgotPassword"> 
+          <a href="/" className="iforgor">Forgot Password?</a>
+          </Link>
           <button type="submit" value="Login" className="login-button">
             Login
           </button>
