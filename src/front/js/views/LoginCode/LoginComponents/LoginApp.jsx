@@ -39,6 +39,7 @@ const LoginApp = () => {
       {user.username != "" ? (
         <div>
           <div className="welcome">
+            <div className="welcome-card">
             <h3 className="welcome-title">
               Welcome, <span>{user.username}!</span>
             </h3>
@@ -54,6 +55,7 @@ const LoginApp = () => {
               <button onClick={Logout} className="logout-button">
                 Logout
               </button>
+              </div>
             </div>
           </div>
         </div>
