@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./dragDrop.css";
 import { useDrop } from "react-dnd";
 import Task from "./task.jsx";
@@ -6,6 +6,7 @@ import SelectedTask from "./selectedTask.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
+import Context from "../../store/appContext.js";
 
 import dragAndDropIcon from "../../../img/icons8-drag-and-drop-50.png";
 
@@ -21,6 +22,7 @@ const TASKS = [
 ];
 
 const DayBtn = () => {
+  // const { state } = useContext(Context);
   const [dayButton, setDayButton] = useState([]);
   const [item, setItem] = useState("");
   const [taskArray, setTaskArray] = useState(TASKS);
@@ -52,6 +54,8 @@ const DayBtn = () => {
       isOver: monitor.isOver(),
     }),
   });
+
+  // console.log(state.categories);
 
   return (
     <React.Fragment>

@@ -4,6 +4,13 @@ const useStore = create((set, get) => ({
   people: [],
   vehicles: [],
   planets: [],
+  categories: [],
+
+  setCategories: (categories) => {
+    set({
+      categories: categories,
+    });
+  },
   addPeople: (person) => {
     set({
       people: get().people.concat(person),
