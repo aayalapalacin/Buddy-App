@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./dragDrop.css";
 import { useDrag } from "react-dnd";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGripVertical } from "@fortawesome/free-solid-svg-icons";
 
 const Task = ({ id, task, func, element, defaultLabel, ...rest }) => {
   const [newTaskItem, setNewTaskItem] = useState([]);
@@ -30,7 +32,9 @@ const Task = ({ id, task, func, element, defaultLabel, ...rest }) => {
       // aria-expanded="false"
     >
       {task.task || defaultLabel}
-      {/* {isDragging && ""} */}
+      {!!task.img ? <img id="gripIcon" src={task.img} /> : null}
+
+      {isDragging && "Drag"}
     </Elm>
   );
 };

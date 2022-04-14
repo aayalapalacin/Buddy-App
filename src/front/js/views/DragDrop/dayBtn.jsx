@@ -7,14 +7,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
 
+import dragAndDropIcon from "../../../img/icons8-drag-and-drop-50.png";
+
 const TASKS = [
   {
     id: 1,
     task: "Health",
+    img: dragAndDropIcon,
   },
-  { id: 2, task: "School" },
-  { id: 3, task: "Creative" },
-  { id: 4, task: "Professional" },
+  { id: 2, task: "School", img: dragAndDropIcon },
+  { id: 3, task: "Creative", img: dragAndDropIcon },
+  { id: 4, task: "Professional", img: dragAndDropIcon },
 ];
 
 const DayBtn = () => {
@@ -54,9 +57,9 @@ const DayBtn = () => {
     <React.Fragment>
       <div className="row">
         <div className="col-4 dropdownDiv">
-          <div className="dayBtnDiv dropdown">
+          <div className="dayBtnDiv dropdown font">
             <Task
-              className="btn btn-secondary dropdown-toggle"
+              className="btn btn-secondary dropdown-toggle font"
               element="button"
               id="dropdownMenuButton1"
               data-bs-toggle="dropdown"
@@ -69,7 +72,7 @@ const DayBtn = () => {
               {TASKS.map((task) => (
                 <Task
                   element="li"
-                  className="dropdown-item taskBtn"
+                  className="dropdown-item font"
                   draggable
                   key={task.id}
                   task={task}
@@ -83,12 +86,15 @@ const DayBtn = () => {
             onClick={addedBtn}
           ></FontAwesomeIcon> */}
         </div>
-        <div className="col-4">
-          <FontAwesomeIcon icon={faArrowRightLong}></FontAwesomeIcon>
+        <div className="col-4 arrowRight">
+          <FontAwesomeIcon
+            className="arrowSize arrowRight"
+            icon={faArrowRightLong}
+          ></FontAwesomeIcon>
         </div>
         <div className="col-4 dayBtnCol">
           <div className="dayButton" ref={dropRef}>
-            <ul className="list-group list-group-flush">
+            <ul className="list-group list-group-flush font">
               {dayButton.map((task) => (
                 <SelectedTask key={task.id} task={task.task} />
               ))}

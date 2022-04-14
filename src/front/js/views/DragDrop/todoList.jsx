@@ -17,7 +17,21 @@ const TodoList = () => {
         </div>
       </div>
       <div className="row">
+        <div className="col-4"></div>
         <div className="col-4">
+          <h5>1. Choose Your Goals</h5>
+          <h5>2. Drag to Commit</h5>
+          <h5>3. Click Ready to Start Your Journey!</h5>
+        </div>
+        <div className="col-4 arrowDownCol">
+          <FontAwesomeIcon
+            className="arrowDownLeft arrowSize"
+            icon={faArrowDownLong}
+          ></FontAwesomeIcon>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-6">
           <div id="photoSampleDiv">
             <img
               id="pieChart"
@@ -26,22 +40,8 @@ const TodoList = () => {
             />
           </div>
         </div>
-        <div className="col-4">
-          <h5>1. Choose Your Goals</h5>
-          <h5>2. Drag to Commit</h5>
-          <h5>3. Click Ready to Start Your Journey!</h5>
-        </div>
-        <div className="col-4">
-          <FontAwesomeIcon
-            className="arrowDownLeft"
-            icon={faArrowDownLong}
-          ></FontAwesomeIcon>
-        </div>
-      </div>
-      <div className="row">
-        <div className="col-6"></div>
-        <div className="col-6 readyBtnCol">
-          <div className="readyButton">
+        <div className="col-6 readyBtnCol font">
+          <div className="readyButton font">
             <button type="button" class="btn btn-warning">
               Ready!
             </button>
