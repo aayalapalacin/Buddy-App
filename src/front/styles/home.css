@@ -1,0 +1,46 @@
+.dayButton {
+  background-color: red;
+  width: 18vw;
+  height: 18vw;
+  border-radius: 50%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 6%;
+}
+
+.dayBtnDiv {
+  display: inline;
+}
+
+.taskBtn {
+  font-size: 2.3rem;
+  margin: 1rem;
+}
+
+.readyButton {
+  justify-content: right;
+  display: flex;
+}
+
+.readyButton button {
+  width: 12rem;
+  height: 5rem;
+  border-radius: 3rem;
+  font-size: 2rem;
+}
+
+.readyBtnCol {
+  display: flex;
+  justify-content: center;
+}
+
+.dayBtnCol {
+  justify-content: center;
+  display: flex;
+}
+
+.taskItemColor {
+  background-color: red;
+  color: white;
+}

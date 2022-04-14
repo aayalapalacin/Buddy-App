@@ -1,7 +1,9 @@
 /* 
     General Styles used on every website (Don't Repeat Yourself)
+      All pages share the styles on index.css but you should create 
+   one more css for each page that will contain the selected used 
+  on that page only (the ones not reused in other pages)
 */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap");
 
 body {
   margin: 0;

@@ -4,9 +4,13 @@ import ScrollToTop from "./component/scrollToTop.jsx";
 
 import injectContext from "./store/appContext";
 
+import { Home } from "./views/home.jsx";
+import { Demo } from "./views/demo.jsx";
+import LoginPage from "./views/LoginPage/LoginPage.jsx";
+import HomeApp from "./views/HomePage/HomeApp.jsx";
 
 import LoginPage from "./views/LoginCode/LoginComponents/LoginPage.jsx";
-import RegisterApp from "./views/LoginCode/RegisterComponents/RegisterApp.jsx"
+import RegisterApp from "./views/LoginCode/RegisterComponents/RegisterApp.jsx";
 
 import TodoList from "./views/DragDrop/todoList.jsx";
 import Register from "./views/LoginCode/RegisterComponents/AccountApp.jsx";
@@ -23,7 +27,7 @@ const Layout = () => {
         <ScrollToTop>
           <Switch>
             <Route exact path="/">
-              <LoginPage />
+              <HomeApp />
               {/* Made login page the starting page */}
             </Route>
             <Route exact path="/ForgotPassword">
@@ -37,15 +41,15 @@ const Layout = () => {
             </Route>
             <Route exact path="/LoginApp">
               <LoginPage />
-              </Route>
+            </Route>
             <Route exact path="/todoList">
               <TodoList />
             </Route>
-            <Route exact path="/">
+            <Route exact path="/login">
               <LoginPage />
             </Route>
+
             {/* add more routes when files merge */}
-           
           </Switch>
         </ScrollToTop>
       </BrowserRouter>
