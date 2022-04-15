@@ -1,11 +1,11 @@
 import React, { useState } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 import LoginForm from "./LoginForm.jsx";
 import { Link } from "react-router-dom";
 import "../css/login.css";
 
 const LoginApp = () => {
-  const noBitches =
-    "https://humornama.com/wp-content/uploads/2022/03/No-Bitches-Meme-Template-on-Megamind-1-768x1024.jpg";
+  
   const adminUser = {
     username: "David Dodson",
     password: "a",
