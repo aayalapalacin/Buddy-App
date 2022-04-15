@@ -6,28 +6,43 @@ const useStore = create((set, get) => ({
   planets: [],
   categories: [],
 
-  setCategories: (categories) => {
-    set({
-      categories: categories,
-    });
-  },
-  addPeople: (person) => {
-    set({
-      people: get().people.concat(person),
-    });
-  },
-  convertURL: (url) => {
-    return url.replace(/https:\/\/swapi\.(dev|tech)\/api/i, "");
-  },
-  addVehicles: (vehicle) => {
-    set({
-      vehicles: get().vehicles.concat(vehicle),
-    });
-  },
-  addPlanets: (planets) => {
-    set({
-      planets: get().planets.concat(planets),
-    });
+  actions: {
+    getCategories: () => {
+      var requestOptions = {
+        method: "GET",
+        redirect: "follow",
+      };
+
+      fetch(
+        "https://3001-avokeys-buddyapp-axi41zj2uzu.ws-us40.gitpod.io/api/categories",
+        requestOptions
+      )
+        .then((response) => response.json())
+        .then((result) => {
+          set({
+            categories: result,
+          });
+        });
+    },
+
+    addPeople: (person) => {
+      set({
+        people: get().people.concat(person),
+      });
+    },
+    convertURL: (url) => {
+      return url.replace(/https:\/\/swapi\.(dev|tech)\/api/i, "");
+    },
+    addVehicles: (vehicle) => {
+      set({
+        vehicles: get().vehicles.concat(vehicle),
+      });
+    },
+    addPlanets: (planets) => {
+      set({
+        planets: get().planets.concat(planets),
+      });
+    },
   },
 }));
 

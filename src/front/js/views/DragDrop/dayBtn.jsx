@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
 import Context from "../../store/appContext.js";
+import useStore from "../../store/zustand.js";
 
 import dragAndDropIcon from "../../../img/icons8-drag-and-drop-50.png";
 
@@ -22,10 +23,19 @@ const TASKS = [
 ];
 
 const DayBtn = () => {
-  // const { state } = useContext(Context);
+  // const { store, actions } = useContext(Context);
+  const actions = useStore((state) => state.actions);
+  const categoriesInfo = useStore((state) => state.categories);
+  const [categories, setCategories] = useState([]);
   const [dayButton, setDayButton] = useState([]);
   const [item, setItem] = useState("");
   const [taskArray, setTaskArray] = useState(TASKS);
+  useEffect(() => {
+    actions.getCategories();
+  }, []);
+  useEffect(() => {
+    setCategories(categoriesInfo);
+  }, [categoriesInfo]);
   useEffect(() => {
     let filteredArray = TASKS.filter((task) => {
       if (task.task == item) {
@@ -55,7 +65,7 @@ const DayBtn = () => {
     }),
   });
 
-  // console.log(state.categories);
+  console.log("categories", categories);
 
   return (
     <React.Fragment>
@@ -73,7 +83,7 @@ const DayBtn = () => {
             />
 
             <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              {TASKS.map((task) => (
+              {categories.map((task) => (
                 <Task
                   element="li"
                   className="dropdown-item font"
