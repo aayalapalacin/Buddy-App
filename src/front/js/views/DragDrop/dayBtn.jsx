@@ -21,7 +21,6 @@ const TASKS = [
   { id: 3, task: "Creative", img: dragAndDropIcon },
   { id: 4, task: "Professional", img: dragAndDropIcon },
 ];
-
 const DayBtn = () => {
   // const { store, actions } = useContext(Context);
   const actions = useStore((state) => state.actions);
@@ -73,7 +72,7 @@ const DayBtn = () => {
         <div className="col-4 dropdownDiv">
           <div className="dayBtnDiv dropdown font">
             <Task
-              className="btn btn-secondary dropdown-toggle font"
+              className="btn btn-secondary dropdown-toggle font categoryBtn"
               element="button"
               id="dropdownMenuButton1"
               data-bs-toggle="dropdown"
@@ -83,7 +82,7 @@ const DayBtn = () => {
             />
 
             <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              {categories.map((task) => (
+              {TASKS.map((task) => (
                 <Task
                   element="li"
                   className="dropdown-item font"

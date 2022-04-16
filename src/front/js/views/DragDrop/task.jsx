@@ -34,7 +34,7 @@ const Task = ({ id, task, func, element, defaultLabel, ...rest }) => {
       {task.task || defaultLabel}
       {!!task.img ? <img id="gripIcon" src={task.img} /> : null}
 
-      {isDragging && "Drag"}
+      {/* {isDragging && "Drag"} */}
     </Elm>
   );
 };

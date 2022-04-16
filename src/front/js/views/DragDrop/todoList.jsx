@@ -5,6 +5,7 @@ import DayBtn from "./dayBtn.jsx";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import "./dragDrop.css";
+import buddyImg from "../../../img/buddyapp2.png";
 
 const TodoList = () => {
   return (
@@ -33,11 +34,7 @@ const TodoList = () => {
       <div className="row">
         <div className="col-6">
           <div id="photoSampleDiv">
-            <img
-              id="pieChart"
-              src="https://thumbs.dreamstime.com/z/business-goals-concept-pie-chart-d-rendering-white-background-78510989.jpg"
-              alt="pie chart"
-            />
+            <img id="pieChart" src={buddyImg} alt="pie chart" />
           </div>
         </div>
         <div className="col-6 readyBtnCol font">
