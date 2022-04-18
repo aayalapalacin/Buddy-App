@@ -82,7 +82,7 @@ const DayBtn = () => {
             />
 
             <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              {TASKS.map((task) => (
+              {categories.map((task) => (
                 <Task
                   element="li"
                   className="dropdown-item font"

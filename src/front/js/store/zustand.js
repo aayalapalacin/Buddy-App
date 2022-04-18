@@ -14,7 +14,7 @@ const useStore = create((set, get) => ({
       };
 
       fetch(
-        "https://3001-avokeys-buddyapp-axi41zj2uzu.ws-us40.gitpod.io/api/categories",
+        "https://3001-avokeys-buddyapp-vqo06blsc72.ws-us40.gitpod.io/api/categories",
         requestOptions
       )
         .then((response) => response.json())

@@ -111,6 +111,10 @@ h5 {
   color: black;
 }
 
+.btn-warning{
+  background-color: rgb(252, 252, 21);
+  border-color: rgb(252, 252, 21);
+}
 .dropdown-menu {
   position: absolute;
   z-index: 1000;
