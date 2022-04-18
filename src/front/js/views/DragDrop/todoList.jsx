@@ -20,9 +20,13 @@ const TodoList = () => {
       <div className="row">
         <div className="col-4"></div>
         <div className="col-4">
-          <h5>1. Choose Your Goals</h5>
-          <h5>2. Drag to Commit</h5>
-          <h5>3. Click Ready to Start Your Journey!</h5>
+          <div class="box box2">
+            <div class="evenboxinner">
+              <h5>1. Choose Your Goals</h5>
+              <h5>2. Drag to Commit</h5>
+              <h5>3. Click Ready to Start Your Journey!</h5>
+            </div>
+          </div>
         </div>
         <div className="col-4 arrowDownCol">
           <FontAwesomeIcon

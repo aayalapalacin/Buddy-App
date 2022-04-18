@@ -11,12 +11,11 @@ const useStore = create((set, get) => ({
       var requestOptions = {
         method: "GET",
         redirect: "follow",
+        mode: "cors",
       };
+      console.log("process env", process.env.BACKEND_URL);
 
-      fetch(
-        "https://3001-avokeys-buddyapp-vqo06blsc72.ws-us40.gitpod.io/api/categories",
-        requestOptions
-      )
+      fetch(process.env.BACKEND_URL + "/api/categories", requestOptions)
         .then((response) => response.json())
         .then((result) => {
           set({
