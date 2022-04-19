@@ -1,13 +1,14 @@
 .dayButton {
   background-color: #ffefd5;
-  width: 18vw;
-  height: 18vw;
+  width: 17vw;
+  height: 15vw;
   border-radius: 19%;
   align-items: center;
   display: flex;
   justify-content: center;
   margin-top: 6%;
   filter: drop-shadow(black 0px 2px 1px);
+  margin-bottom: 1rem;
 }
 
 .box {
@@ -63,7 +64,7 @@ h5 {
 }
 
 #photoSampleDiv {
-  width: 14rem;
+  width: 21rem;
   height: 14rem;
 }
 
@@ -71,6 +72,7 @@ h5 {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-left: 6rem;
 }
 .arrowDownLeft {
   transform: rotate(24deg);
@@ -88,6 +90,7 @@ h5 {
   position: relative;
   top: 3.5rem;
   left: 2rem;
+  margin-bottom: 3rem;
 }
 .dayBtnDiv {
   display: inline;
@@ -99,6 +102,7 @@ h5 {
 .readyButton {
   justify-content: right;
   display: flex;
+  margin-bottom: 2rem;
 }
 
 .readyButton button {
