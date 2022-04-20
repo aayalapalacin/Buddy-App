@@ -1,6 +1,7 @@
-.left-side{
-    float: left;
-}
-.right-side{
-    float: right;
+.main-content {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
 }

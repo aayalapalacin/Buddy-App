@@ -1,0 +1,15 @@
+.contact-container{
+    background: linear-gradient(-45deg, #4977ac, #41bdc9);
+    /* background: #FFF; */
+    width: 500px;
+    height: 200px;
+    text-align: center;
+    /* position: absolute;
+    top: 10;
+    right: 0;
+    bottom: 0;
+    left: 50;
+    margin: 0px 60px 90px 0px; */
+    grid-area: 4 / 4 / 6 / 6; 
+    border-radius: 10px;
+}

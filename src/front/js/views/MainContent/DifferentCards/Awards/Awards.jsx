@@ -1,5 +1,5 @@
 import React from "react";
-import "/workspace/Buddy-App/src/front/js/views/MainContent/DifferentCards/awards.css";
+import "./awards.css";                   
 const Awards = () => {
   return (
     <div>

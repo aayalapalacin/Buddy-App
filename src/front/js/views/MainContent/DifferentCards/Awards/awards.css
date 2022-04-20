@@ -1,0 +1,11 @@
+.award-container{
+    /* background: #FFF; */
+    background: linear-gradient(-45deg, #4977ac, #41bdc9);
+    width: 700px;
+    height: 300px;
+    text-align: center;
+    grid-area: 4 / 1 / 6 / 3;
+    /* margin-left: 60px;
+    margin-top: 60px; */
+    border-radius: 10px;
+}
