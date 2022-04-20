@@ -30,7 +30,8 @@ const injectContext = (PassedComponent) => {
 
     const loadCategories = (
       store,
-      url = process.env.BACKEND_URL + "/api/categories"
+      url = "https://3001-avokeys-buddyapp-jgj8u140k2t.ws-us34.gitpod.io/api/categories"
+      // url = process.env.BACKEND_URL + "/api/categories"
     ) => {
       var requestOptions = {
         method: "GET",

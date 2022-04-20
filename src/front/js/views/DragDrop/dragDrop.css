@@ -11,6 +11,17 @@
   margin-bottom: 1rem;
 }
 
+.btn-dark-moon {
+  background: linear-gradient(to right, #187dee, #141e30);
+  color: #fff;
+  border: 3px solid #eee;
+}
+
+.btn:hover {
+  border: 3px solid #00fff6;
+  color: white;
+}
+
 .box {
   /* width: 250px;
   height: 250px; */

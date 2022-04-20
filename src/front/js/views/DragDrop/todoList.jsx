@@ -43,9 +43,7 @@ const TodoList = () => {
         </div>
         <div className="col-6 readyBtnCol font">
           <div className="readyButton font">
-            <button type="button" class="btn btn-warning">
-              Ready!
-            </button>
+            <button class="col btn btn-dark-moon">Ready!</button>
           </div>
         </div>
       </div>
