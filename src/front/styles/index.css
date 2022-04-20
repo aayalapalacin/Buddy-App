@@ -6,9 +6,7 @@
 body {
   margin: 0;
   padding: 0;
-  background: linear-gradient(0deg, #D9AFD9,  #fff);
+  background: linear-gradient(0deg, #D9AFD9,  #f8f9fa);
   /* background-color: #f0f1f3;; */
 }
-* {
-  box-sizing: border-box;
-}
+/*  */

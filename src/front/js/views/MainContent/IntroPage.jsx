@@ -4,6 +4,7 @@ import Topbar from "./navbar.jsx";
 import Heading from "./DifferentCards/Heading/Heading.jsx";
 import ContactUs from "./DifferentCards/Contact/ContactUs.jsx";
 import Awards from "./DifferentCards/Awards/Awards.jsx";
+import IntroImg from "./DifferentCards/Heading/IntroImg.jsx"; 
 import "./main-content.css";
 const IntroPage = () => {
   return (
@@ -15,6 +16,7 @@ const IntroPage = () => {
           <Awards />
         </div>
         <div className="right-side">
+          <IntroImg />
           <ContactUs />
         </div>
       </div>
