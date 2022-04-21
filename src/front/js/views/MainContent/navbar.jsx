@@ -3,9 +3,10 @@ import "./navbar.css"
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSmile } from "@fortawesome/free-solid-svg-icons";
+// import Logo from "src/front/img/buddyapp2.png"
 const Topbar = () => {
   return (
-    <nav className="navbar navbar-light bg-light">
+    <nav className="navbar">
       <div className="container">
         <div className="logo-title">
           <h2>

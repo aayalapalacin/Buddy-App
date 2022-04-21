@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
+
 import "../css/login.css";
 const LoginForm = ({ Login, error }) => {
   const [details, setDetails] = useState({ username: "", password: "" });
@@ -11,7 +11,20 @@ const LoginForm = ({ Login, error }) => {
     Login(details);
   };
 
-  const { loginWithRedirect } = useAuth0();
+  const userRef = useRef();
+
+
+  const [user, setUser] = useState('');
+  const [pwd, setPwd] = useState('');
+  
+  
+
+  // useEffect(() =>{
+  //   userRef.current.focus();
+  // }, [])
+  
+  
+
   return (
     <>
       <div className="inputs">
@@ -48,7 +61,7 @@ const LoginForm = ({ Login, error }) => {
           <br></br>    
 
            <Link to="/ForgotPassword"> 
-          <a href="/" className="iforgor">Forgot Password?</a>
+          <label href="/" className="iforgor">Forgot Password?</label>
           </Link>
           
           <div>
