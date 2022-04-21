@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
+
 import "../css/login.css";
 const LoginForm = ({ Login, error }) => {
   const [details, setDetails] = useState({ username: "", password: "" });
@@ -9,6 +10,21 @@ const LoginForm = ({ Login, error }) => {
 
     Login(details);
   };
+
+  const userRef = useRef();
+
+
+  const [user, setUser] = useState('');
+  const [pwd, setPwd] = useState('');
+  
+  
+
+  // useEffect(() =>{
+  //   userRef.current.focus();
+  // }, [])
+  
+  
+
   return (
     <>
       <div className="inputs">
@@ -42,19 +58,26 @@ const LoginForm = ({ Login, error }) => {
             />
           </label>
           <br></br>
-          <br></br>   
+          <br></br>    
 
-          <Link to="/ForgotPassword"> 
-          <a href="/" className="iforgor">Forgot Password?</a>
+           <Link to="/ForgotPassword"> 
+          <label href="/" className="iforgor">Forgot Password?</label>
           </Link>
-          <button type="submit" value="Login" className="login-button">
+          
+          <div>
+          <button 
+          type="submit" 
+          value="Login" 
+          className="login-button">
             Login
           </button>
           <Link to="/AccountApp">
             <button className="account-button">Create a new account</button>
           </Link>
+          </div>
         </form>
       </div>
+      
     </>
   );
 };
