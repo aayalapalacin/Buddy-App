@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import "../css/login.css";
 const LoginForm = ({ Login, error }) => {
-  const [details, setDetails] = useState({ username: "", password: "" });
+  // const [details, setDetails] = useState({ username: "", password: "" });
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -13,17 +13,12 @@ const LoginForm = ({ Login, error }) => {
 
   const userRef = useRef();
 
-
-  const [user, setUser] = useState('');
-  const [pwd, setPwd] = useState('');
-  
-  
+  const [user, setUser] = useState("");
+  const [pwd, setPwd] = useState("");
 
   // useEffect(() =>{
   //   userRef.current.focus();
   // }, [])
-  
-  
 
   return (
     <>
@@ -37,10 +32,11 @@ const LoginForm = ({ Login, error }) => {
               name="name"
               placeholder="Username"
               id="username"
-              onChange={(e) =>
-                setDetails({ ...details, username: e.target.value })
-              }
-              value={details.username}
+              ref={userRef}
+              autocomplete="off"
+              onChange={(e) => setUser(e.target.value)}
+              value={user}
+              required
             />
           </label>
           <br></br>
@@ -48,36 +44,35 @@ const LoginForm = ({ Login, error }) => {
             <input
               type="password"
               className="password"
-              name="name"
               placeholder="Password"
               id="password"
-              onChange={(e) =>
-                setDetails({ ...details, password: e.target.value })
-              }
-              value={details.password}
+              ref={userRef}
+              onChange={(e) => setPwd(e.target.value)}
+              value={pwd}
+              required
             />
           </label>
           <br></br>
-          <br></br>    
+          <br></br>
 
-           <Link to="/ForgotPassword"> 
-          <label href="/" className="iforgor">Forgot Password?</label>
+          <Link to="/ForgotPassword">
+            <label href="/" className="iforgor">
+              Forgot Password?
+            </label>
           </Link>
-          
+
           <div>
-          <button 
-          type="submit" 
-          value="Login" 
-          className="login-button">
-            Login
-          </button>
-          <Link to="/AccountApp">
-            <button className="account-button">Create a new account</button>
-          </Link>
+            <Link to="/WelcomeApp">
+              <button type="submit" value="Login" className="login-button">
+                Login
+              </button>
+            </Link>
+            <Link to="/AccountApp">
+              <button className="account-button">Create a new account</button>
+            </Link>
           </div>
         </form>
       </div>
-      
     </>
   );
 };
