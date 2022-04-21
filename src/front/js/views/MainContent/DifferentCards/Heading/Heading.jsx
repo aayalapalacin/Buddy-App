@@ -1,5 +1,5 @@
 import React from "react";
-import StockPhoto from "/workspace/Buddy-App/src/front/img/peoplelaughing.jpg";
+
 
 import "./heading.css";
 const Heading = () => {
