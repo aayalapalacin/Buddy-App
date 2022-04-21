@@ -1,17 +1,17 @@
 import React, { Fragment } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop.jsx";
+import Dashboard from "./views/Dashboard/dashboard.js";
 
 import injectContext from "./store/appContext";
 
-
 import LoginPage from "./views/LoginCode/LoginComponents/LoginPage.jsx";
-import RegisterApp from "./views/LoginCode/RegisterComponents/RegisterApp.jsx"
+import RegisterApp from "./views/LoginCode/RegisterComponents/RegisterApp.jsx";
 
 import TodoList from "./views/DragDrop/todoList.jsx";
 import Register from "./views/LoginCode/RegisterComponents/AccountApp.jsx";
 import ForgotPassword from "./views/LoginCode/LoginComponents/ForgotPassword/ForgotPassword.jsx";
-import IntroPage from "./views/MainContent/IntroPage.jsx"
+import IntroPage from "./views/MainContent/IntroPage.jsx";
 //create your first component
 const Layout = () => {
   //the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -24,7 +24,7 @@ const Layout = () => {
         <ScrollToTop>
           <Switch>
             <Route exact path="/">
-               <IntroPage /> 
+              <IntroPage />
             </Route>
             <Route exact path="/LoginPage">
               <LoginPage />
@@ -41,15 +41,17 @@ const Layout = () => {
             </Route>
             <Route exact path="/LoginApp">
               <LoginPage />
-              </Route>
+            </Route>
             <Route exact path="/todoList">
               <TodoList />
             </Route>
             <Route exact path="/">
               <LoginPage />
             </Route>
+            <Route exact path="/dashboard">
+              <Dashboard />
+            </Route>
             {/* add more routes when files merge */}
-           
           </Switch>
         </ScrollToTop>
       </BrowserRouter>

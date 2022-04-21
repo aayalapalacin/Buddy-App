@@ -5,8 +5,14 @@ const useStore = create((set, get) => ({
   vehicles: [],
   planets: [],
   categories: [],
+  selectedCategories: [],
 
   actions: {
+    selectedCategories: (array) => {
+      set({
+        selectedCategories: array,
+      });
+    },
     getCategories: () => {
       var requestOptions = {
         method: "GET",

@@ -6,6 +6,7 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import "./dragDrop.css";
 import buddyImg from "../../../img/buddyapp2.png";
+import { Link } from "react-router-dom";
 
 const TodoList = () => {
   return (
@@ -43,7 +44,9 @@ const TodoList = () => {
         </div>
         <div className="col-6 readyBtnCol font">
           <div className="readyButton font">
-            <button class="col btn btn-dark-moon">Ready!</button>
+            <Link to="/dashboard">
+              <button class="col btn btn-dark-moon">Ready!</button>
+            </Link>
           </div>
         </div>
       </div>

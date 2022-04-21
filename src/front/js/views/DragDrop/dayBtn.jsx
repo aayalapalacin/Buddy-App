@@ -30,6 +30,9 @@ const DayBtn = () => {
   const [item, setItem] = useState("");
   const [taskArray, setTaskArray] = useState(TASKS);
   useEffect(() => {
+    actions.selectedCategories(dayButton);
+  }, [dayButton]);
+  useEffect(() => {
     actions.getCategories();
   }, []);
   useEffect(() => {
