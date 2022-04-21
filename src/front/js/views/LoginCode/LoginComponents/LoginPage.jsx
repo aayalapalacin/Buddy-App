@@ -6,17 +6,17 @@ import { faSmile } from "@fortawesome/free-solid-svg-icons";
 import "../css/login.css";
 
 const LoginPage = () => {
-
   return (
     <>
-
-    <div className="login-page">
-      <div className="logo-title">
-      <h2><FontAwesomeIcon icon={faSmile} />
-        BuddyApp</h2>
+      <div className="login-page">
+        <div className="logo-title">
+          <h2>
+            <FontAwesomeIcon icon={faSmile} />
+            BuddyApp
+          </h2>
+        </div>
+        <LoginApp />
       </div>
-      <LoginApp />
-    </div>
     </>
   );
 };
