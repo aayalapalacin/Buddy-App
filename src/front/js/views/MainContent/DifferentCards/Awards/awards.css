@@ -1,0 +1,7 @@
+.award-container{
+    background: linear-gradient(-45deg, #4977ac, #41bdc9);
+    width: 700px;
+    height: 200px;
+    text-align: center;
+    border-radius: 10px;
+}

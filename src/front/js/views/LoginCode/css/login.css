@@ -122,11 +122,15 @@
   margin: auto;
   /* margin-top: 100px; */
   background: linear-gradient(-45deg, #bdbebe, gray) ;
-  height: 600px;
+  height: 100%;
   width: 800px;
   border-radius: 15px;
 }
-
+.welcome-card{
+ margin: auto;
+ position: relative;
+ top: 25%;
+}
 .welcome-title {
   font-size: 60px;
   font-stretch: 20px;
