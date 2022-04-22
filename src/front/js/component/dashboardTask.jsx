@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useStore from "../store/zustand";
 
 function DashboardTask() {
@@ -6,6 +6,10 @@ function DashboardTask() {
   let selectedCategories = useStore((state) => state.selectedCategories);
   console.log("selectedCat", selectedCategories);
   // let selectedCategories = [{ task: "task1" }, { task: "task2" }];
+  useEffect(() => {
+    if (selectedCategories.length > 0) {
+    }
+  }, [selectedCategories]);
   return (
     <div>
       <nav>

@@ -32,8 +32,11 @@ class Category(db.Model):
     professional = db.Column(db.String(120), unique=True, nullable=True)
     creative = db.Column(db.String(120), unique=True, nullable=True)
     selected_category = db.relationship('SelectedCategory',backref='category')
+    goals = db.relationship('Goal', backref='category')
     # is_active = db.Column(db.Boolean(), unique=False, nullable=False)
 
+    def __repr__(self):
+        return '<Category %r>' % self.task
 
     def serialize(self):
         return {
@@ -62,3 +65,16 @@ class SelectedCategory(db.Model):
             "category_id": self.category_id,
         }
     
+class Goal(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    goal_name = db.Column(db.String(120), unique=True, nullable=False)
+    category_id = db.Column(db.Integer, db.ForeignKey('category.id'))
+    # selected_category = db.relationship('SelectedCategory',backref='category')
+    # is_active = db.Column(db.Boolean(), unique=False, nullable=False)
+
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "goal_name": self.goal_name,
+        }
