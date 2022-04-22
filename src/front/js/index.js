@@ -6,11 +6,13 @@ import ReactDOM from "react-dom";
 import "../styles/index.css";
 
 //import your own components
+import { AuthProvider } from "./views/LoginCode/LoginComponents/AuthProvider";
 import Layout from "./layout.jsx";
-import Auth0ProviderWithHistory from "./views/LoginCode/LoginComponents/auth0-provider-with-history.js"
 // import ForgotPassword from "./views/LoginCode/LoginComponents/ForgotPassword/ForgotPassword.jsx";
-  //remove login page and replace with layout to see page.
+//remove login page and replace with layout to see page.
 //render your react application
-ReactDOM.render(<Auth0ProviderWithHistory>
+ReactDOM.render(
+<AuthProvider>
   <Layout />
-</Auth0ProviderWithHistory>, document.querySelector("#app"));
+</AuthProvider>
+  , document.querySelector("#app"));

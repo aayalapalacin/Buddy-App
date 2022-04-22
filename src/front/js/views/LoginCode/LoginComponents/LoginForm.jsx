@@ -1,18 +1,38 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
+import AuthContext from "./AuthProvider.js";
+import axios from "/workspace/Buddy-App/src/api/axios.js";
 import { Link } from "react-router-dom";
-
 import "../css/login.css";
+
+const LOGIN_URL = "./auth";
 const LoginForm = ({ Login, error }) => {
   // const [details, setDetails] = useState({ username: "", password: "" });
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-
-    Login(details);
+    try {
+      const response = await axios.post(
+        LOGIN_URL,
+        JSON.stringify({ user, pwd }),
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
+      console.log(JSON.stringify(response?.data));
+      const accessToken = response?.data?.accessToken;
+      const roles = response?.data?.roles;
+      setAuth({user, pwd, roles, accessToken})
+      setUser("");
+      setPwd("");
+    } catch (err) {
+      console.log("No response dawg");
+    }
   };
 
-  const userRef = useRef();
+  const { setAuth } = useContext(AuthContext);
 
+  const userRef = useRef();
   const [user, setUser] = useState("");
   const [pwd, setPwd] = useState("");
 
@@ -33,7 +53,7 @@ const LoginForm = ({ Login, error }) => {
               placeholder="Username"
               id="username"
               ref={userRef}
-              autocomplete="off"
+              autoComplete="off"
               onChange={(e) => setUser(e.target.value)}
               value={user}
               required
