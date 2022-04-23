@@ -27,10 +27,6 @@ class User(db.Model):
 class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     task = db.Column(db.String(120), unique=True, nullable=False)
-    school = db.Column(db.String(120), unique=True, nullable=True)
-    health = db.Column(db.String(120), unique=True, nullable=True)
-    professional = db.Column(db.String(120), unique=True, nullable=True)
-    creative = db.Column(db.String(120), unique=True, nullable=True)
     selected_category = db.relationship('SelectedCategory',backref='category')
     goals = db.relationship('Goal', backref='category')
     # is_active = db.Column(db.Boolean(), unique=False, nullable=False)
@@ -42,10 +38,6 @@ class Category(db.Model):
         return {
             "id": self.id,
             "task": self.task,
-            "school": self.school,
-            "health": self.health,
-            "professional": self.professional,
-            "creative": self.creative,
         }
 
 

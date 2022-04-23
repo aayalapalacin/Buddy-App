@@ -21,11 +21,11 @@ const useStore = create((set, get) => ({
       };
       console.log("process env", process.env.BACKEND_URL);
 
-      // fetch(process.env.BACKEND_URL + "/api/categories", requestOptions)
-      fetch(
-        "https://3001-avokeys-buddyapp-4rimlyd8qp6.ws-us41.gitpod.io/api/categories",
-        requestOptions
-      )
+      fetch(process.env.BACKEND_URL + "/api/categories", requestOptions)
+        // fetch(
+        //   "https://3001-avokeys-buddyapp-4rimlyd8qp6.ws-us41.gitpod.io/api/categories",
+        //   requestOptions
+        // )
         .then((response) => response.json())
         .then((result) => {
           set({

@@ -35,17 +35,19 @@ function DashboardTask() {
       </nav>
       <div className="tab-content" id="nav-tabContent">
         {selectedCategories.map((item, index) => {
-          <div
-            className={
-              index == 0 ? "tab-pane fade show active" : "tab-pane fade"
-            }
-            key={index}
-            id={`nav-${item.task.task}`}
-            role="tabpanel"
-            aria-labelledby={`nav-${item.task.task}-tab`}
-          >
-            ...
-          </div>;
+          return (
+            <div
+              className={
+                index == 0 ? "tab-pane fade show active" : "tab-pane fade"
+              }
+              key={index}
+              id={`nav-${item.task.task}`}
+              role="tabpanel"
+              aria-labelledby={`nav-${item.task.task}-tab`}
+            >
+              ...
+            </div>
+          );
         })}
       </div>
     </div>
