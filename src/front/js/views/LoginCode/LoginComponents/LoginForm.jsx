@@ -5,8 +5,16 @@ import { Link } from "react-router-dom";
 import "../css/login.css";
 
 const LOGIN_URL = "./auth";
-const LoginForm = ({ Login, error }) => {
+const LoginForm = () => {
   // const [details, setDetails] = useState({ username: "", password: "" });
+  const { setAuth } = useContext(AuthContext);
+
+  const userRef = useRef();
+  const errRef = useRef();
+
+  const [user, setUser] = useState("");
+  const [pwd, setPwd] = useState("");
+  const [errMsg, setErrMsg] = useState("");
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -22,29 +30,31 @@ const LoginForm = ({ Login, error }) => {
       console.log(JSON.stringify(response?.data));
       const accessToken = response?.data?.accessToken;
       const roles = response?.data?.roles;
-      setAuth({user, pwd, roles, accessToken})
+      setAuth({ user, pwd, roles, accessToken });
       setUser("");
       setPwd("");
     } catch (err) {
-      console.log("No response dawg");
+      if (!err?.response) {
+        setErrMsg("No Server Response");
+      } else if (err.response?.status === 400) {
+        setErrMsg("Missing Username or Password");
+      } else if (err.response?.status === 401) {
+        setErrMsg("Unauthorized");
+      } else {
+        setErrMsg("Login Failed");
+      }
     }
   };
 
-  const { setAuth } = useContext(AuthContext);
-
-  const userRef = useRef();
-  const [user, setUser] = useState("");
-  const [pwd, setPwd] = useState("");
-
-  // useEffect(() =>{
-  //   userRef.current.focus();
-  // }, [])
-
+  useEffect(() => {
+    setErrMsg("");
+  }, [user, pwd]);
   return (
     <>
       <div className="inputs">
+      <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
         <form onSubmit={submitHandler}>
-          {error != "" ? <div className="error">{error}</div> : ""}
+          {/* {error != "" ? <div className="error">{error}</div> : ""} */}
           <label>
             <input
               type="text"
@@ -66,7 +76,6 @@ const LoginForm = ({ Login, error }) => {
               className="password"
               placeholder="Password"
               id="password"
-              ref={userRef}
               onChange={(e) => setPwd(e.target.value)}
               value={pwd}
               required
