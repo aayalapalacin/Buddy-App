@@ -2,6 +2,9 @@ import React, { useEffect } from "react";
 import useStore from "../store/zustand";
 
 function DashboardTask() {
+  // const getGoals = useStore((state) => state.goals);
+  // const [goals, setGoals] = useState([]);
+
   // const [categories,setCategories]=useState();
   let selectedCategories = useStore((state) => state.selectedCategories);
   console.log("selectedCat", selectedCategories);
@@ -45,7 +48,9 @@ function DashboardTask() {
               role="tabpanel"
               aria-labelledby={`nav-${item.task.task}-tab`}
             >
-              ...
+              {item.task.goals.map((goal, goalIndex) => {
+                return <p key={goalIndex}>{goal.goal_name}</p>;
+              })}
             </div>
           );
         })}

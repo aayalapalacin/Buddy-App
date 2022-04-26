@@ -44,6 +44,22 @@ const injectContext = (PassedComponent) => {
           store.setCategories(result);
         });
     };
+    const loadGoals = (
+      store,
+      // url = "https://3001-avokeys-buddyapp-4rimlyd8qp6.ws-us41.gitpod.io/api/categories"
+      url = process.env.BACKEND_URL + "/api/goal"
+    ) => {
+      var requestOptions = {
+        method: "GET",
+        redirect: "follow",
+      };
+
+      fetch(url, requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+          store.setGoals(result);
+        });
+    };
 
     const loadVehicleData = (
       store,

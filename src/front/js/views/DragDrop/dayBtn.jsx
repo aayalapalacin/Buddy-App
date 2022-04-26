@@ -14,7 +14,7 @@ import dragAndDropIcon from "../../../img/icons8-drag-and-drop-50.png";
 const TASKS = [
   {
     id: 1,
-    task: "Health",
+    task: "Blah",
     img: dragAndDropIcon,
   },
   { id: 2, task: "School", img: dragAndDropIcon },

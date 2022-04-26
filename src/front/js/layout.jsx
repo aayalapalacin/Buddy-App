@@ -12,6 +12,7 @@ import TodoList from "./views/DragDrop/todoList.jsx";
 import Register from "./views/LoginCode/RegisterComponents/AccountApp.jsx";
 import ForgotPassword from "./views/LoginCode/LoginComponents/ForgotPassword/ForgotPassword.jsx";
 import IntroPage from "./views/MainContent/IntroPage.jsx";
+
 //create your first component
 const Layout = () => {
   //the basename is used when your project is published in a subdirectory and not in the root of the domain
