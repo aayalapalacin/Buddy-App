@@ -30,6 +30,11 @@ const IntroPage = () => {
             </Col>
           </Row>
         </Container>
+      <footer className="footer">
+        <h5>
+          All rights and shit goes to us assholes here
+        </h5>
+      </footer>
       </div>
     </div>
   );
