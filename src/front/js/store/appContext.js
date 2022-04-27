@@ -28,6 +28,39 @@ const injectContext = (PassedComponent) => {
         });
     };
 
+    const loadCategories = (
+      store,
+      // url = "https://3001-avokeys-buddyapp-4rimlyd8qp6.ws-us41.gitpod.io/api/categories"
+      url = process.env.BACKEND_URL + "/api/categories"
+    ) => {
+      var requestOptions = {
+        method: "GET",
+        redirect: "follow",
+      };
+
+      fetch(url, requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+          store.setCategories(result);
+        });
+    };
+    const loadGoals = (
+      store,
+      // url = "https://3001-avokeys-buddyapp-4rimlyd8qp6.ws-us41.gitpod.io/api/categories"
+      url = process.env.BACKEND_URL + "/api/goal"
+    ) => {
+      var requestOptions = {
+        method: "GET",
+        redirect: "follow",
+      };
+
+      fetch(url, requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+          store.setGoals(result);
+        });
+    };
+
     const loadVehicleData = (
       store,
       url = "https://swapi.dev/api/vehicles/"
@@ -72,10 +105,7 @@ const injectContext = (PassedComponent) => {
        * state.actions.loadSomeData(); <---- calling this function from the flux.js actions
        *
        **/
-
-      loadPeopleData(state);
-      loadVehicleData(state);
-      loadPlanets(state);
+      // loadCategories(state);
     }, []);
 
     // The initial value for the context is not null anymore, but the current state of this component,

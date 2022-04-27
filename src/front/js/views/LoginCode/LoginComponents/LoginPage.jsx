@@ -7,18 +7,16 @@ import BuddyLogo from "/src/front/img/buddyapp2.png"
 import "../css/login.css";
 
 const LoginPage = () => {
-
   return (
     <>
-
     <div className="login-page">
       <div>
         <img src={BuddyLogo} className="navbar-logo" />
       {/* <h2><FontAwesomeIcon icon={faSmile} />
         BuddyApp</h2> */}
+        </div>
+        <LoginApp />
       </div>
-      <LoginApp />
-    </div>
     </>
   );
 };

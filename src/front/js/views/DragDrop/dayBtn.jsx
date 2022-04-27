@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./dragDrop.css";
 import { useDrop } from "react-dnd";
 import Task from "./task.jsx";
@@ -6,21 +6,38 @@ import SelectedTask from "./selectedTask.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
+import Context from "../../store/appContext.js";
+import useStore from "../../store/zustand.js";
+
+import dragAndDropIcon from "../../../img/icons8-drag-and-drop-50.png";
 
 const TASKS = [
   {
     id: 1,
-    task: "Health",
+    task: "Blah",
+    img: dragAndDropIcon,
   },
-  { id: 2, task: "School" },
-  { id: 3, task: "Creative" },
-  { id: 4, task: "Professional" },
+  { id: 2, task: "School", img: dragAndDropIcon },
+  { id: 3, task: "Creative", img: dragAndDropIcon },
+  { id: 4, task: "Professional", img: dragAndDropIcon },
 ];
-
 const DayBtn = () => {
+  // const { store, actions } = useContext(Context);
+  const actions = useStore((state) => state.actions);
+  const categoriesInfo = useStore((state) => state.categories);
+  const [categories, setCategories] = useState([]);
   const [dayButton, setDayButton] = useState([]);
   const [item, setItem] = useState("");
   const [taskArray, setTaskArray] = useState(TASKS);
+  useEffect(() => {
+    actions.selectedCategories(dayButton);
+  }, [dayButton]);
+  useEffect(() => {
+    actions.getCategories();
+  }, []);
+  useEffect(() => {
+    setCategories(categoriesInfo);
+  }, [categoriesInfo]);
   useEffect(() => {
     let filteredArray = TASKS.filter((task) => {
       if (task.task == item) {
@@ -50,13 +67,15 @@ const DayBtn = () => {
     }),
   });
 
+  console.log("categories", categories);
+
   return (
     <React.Fragment>
       <div className="row">
         <div className="col-4 dropdownDiv">
-          <div className="dayBtnDiv dropdown">
+          <div className="dayBtnDiv dropdown font">
             <Task
-              className="btn btn-secondary dropdown-toggle"
+              className="btn btn-secondary dropdown-toggle font categoryBtn"
               element="button"
               id="dropdownMenuButton1"
               data-bs-toggle="dropdown"
@@ -66,10 +85,10 @@ const DayBtn = () => {
             />
 
             <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              {TASKS.map((task) => (
+              {categories.map((task) => (
                 <Task
                   element="li"
-                  className="dropdown-item taskBtn"
+                  className="dropdown-item font"
                   draggable
                   key={task.id}
                   task={task}
@@ -83,12 +102,15 @@ const DayBtn = () => {
             onClick={addedBtn}
           ></FontAwesomeIcon> */}
         </div>
-        <div className="col-4">
-          <FontAwesomeIcon icon={faArrowRightLong}></FontAwesomeIcon>
+        <div className="col-4 arrowRight">
+          <FontAwesomeIcon
+            className="arrowSize arrowRight"
+            icon={faArrowRightLong}
+          ></FontAwesomeIcon>
         </div>
         <div className="col-4 dayBtnCol">
           <div className="dayButton" ref={dropRef}>
-            <ul className="list-group list-group-flush">
+            <ul className="list-group list-group-flush font">
               {dayButton.map((task) => (
                 <SelectedTask key={task.id} task={task.task} />
               ))}
