@@ -3,16 +3,18 @@ import "./navbar.css"
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSmile } from "@fortawesome/free-solid-svg-icons";
+import BuddyLogo from "/src/front/img/buddyapp2.png"
 // import Logo from "src/front/img/buddyapp2.png"
 const Topbar = () => {
   return (
     <nav className="navbar">
       <div className="container">
         <div className="logo-title">
-          <h2>
+          {/* <h2>
             <FontAwesomeIcon icon={faSmile} />
             BuddyApp
-          </h2>
+          </h2> */}
+            <img src={BuddyLogo} className="navbar-logo" />
         </div>
 
         <div className="ml-auto">

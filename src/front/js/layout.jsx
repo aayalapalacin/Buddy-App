@@ -11,7 +11,11 @@ import RegisterApp from "./views/LoginCode/RegisterComponents/RegisterApp.jsx";
 import TodoList from "./views/DragDrop/todoList.jsx";
 import Register from "./views/LoginCode/RegisterComponents/AccountApp.jsx";
 import ForgotPassword from "./views/LoginCode/LoginComponents/ForgotPassword/ForgotPassword.jsx";
+
 import IntroPage from "./views/MainContent/IntroPage.jsx";
+import WelcomeApp from "./views/LoginCode/LoginComponents/WelcomeApp.jsx";
+
+
 
 //create your first component
 const Layout = () => {
@@ -30,6 +34,9 @@ const Layout = () => {
             <Route exact path="/LoginPage">
               <LoginPage />
               {/* Made login page the starting page */}
+            </Route>
+            <Route exact path="/WelcomeApp">
+              <WelcomeApp />
             </Route>
             <Route exact path="/ForgotPassword">
               <ForgotPassword />
