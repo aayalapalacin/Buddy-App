@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import useStore from "../store/zustand";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckSquare } from "@fortawesome/free-solid-svg-icons";
 
 function Goal(props) {
   const todoItemChecked = (event) => {
-    console.log(props.goalId);
+    console.log("props goal id", props.goalId);
     event.preventDefault();
     event.persist();
     if (event.target.checked == true) {
     }
-    console.log(event);
+    console.log("event", event);
   };
 
   return (
@@ -18,6 +20,7 @@ function Goal(props) {
         type="checkbox"
         name="r"
         value="1"
+        className="border border-primary rounded-circle"
         // checked={goal.is_done}
         onChange={todoItemChecked}
       />
@@ -45,7 +48,7 @@ function DashboardTask() {
     <div className="container-fluid">
       <div className="row">
         <nav>
-          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <div className="nav nav-tabs" id="nav-tab" role="tablist">
             {selectedCategories.map((item, index) => {
               return (
                 <button

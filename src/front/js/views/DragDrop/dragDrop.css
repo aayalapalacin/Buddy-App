@@ -202,7 +202,7 @@ h5 {
 #checklist label {
   color: var(--text);
   position: relative;
-  cursor: pointer;
+  /* cursor: pointer; */
   display: grid;
   align-items: center;
   width: -webkit-fit-content;
@@ -210,7 +210,7 @@ h5 {
   width: fit-content;
   transition: color 0.3s ease;
 }
-#checklist label::before,
+/* #checklist label::before, */
 #checklist label::after {
   content: "";
   position: absolute;
