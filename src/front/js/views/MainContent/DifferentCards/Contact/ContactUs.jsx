@@ -8,6 +8,7 @@ const ContactUs = () => {
           <div className="contact-opener">
             <div className="title-contact">
               <h1>Contact Us!</h1>
+              <h2>801-592-3998</h2>
             </div>
           </div>
         </div>

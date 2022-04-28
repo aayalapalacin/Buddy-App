@@ -1,10 +1,10 @@
 import React from "react";
 
-import Topbar from "./navbar.jsx";
-import Heading from "./DifferentCards/Heading/Heading.jsx";
-import ContactUs from "./DifferentCards/Contact/ContactUs.jsx";
-import Awards from "./DifferentCards/Awards/Awards.jsx";
-import IntroImg from "./DifferentCards/Heading/IntroImg.jsx";
+import Topbar from "../Navbar/navbar.jsx";
+import Heading from "../DifferentCards/Heading/Heading.jsx";
+import ContactUs from "../DifferentCards/Contact/ContactUs.jsx";
+import Awards from "../DifferentCards/Awards/Awards.jsx";
+import IntroImg from "../DifferentCards/Heading/IntroImg.jsx";
 import { Container } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
