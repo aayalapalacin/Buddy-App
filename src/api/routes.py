@@ -35,9 +35,12 @@ def cateogry_goals(cat_id):
 @api.route('/goal', methods=['POST'])
 @cross_origin()
 def post_goal():
-    checked_goal = Goal.query.all()
-    category_serialized = [category.serialize() for category in category_list] 
-    return jsonify(category_serialized), 200
+    json = request.json
+    checked_goal = Goal.query.filter_by(id=json["id"]).one_or_none()
+    checked_goal.is_done = json["is_done"]
+    db.session.add(checked_goal)
+    db.session.commit()
+    return jsonify(checked_goal.serialize()), 200
 
 # @api.route('/goals', methods=['GET'])
 # @cross_origin()
