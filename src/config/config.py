@@ -8,4 +8,4 @@ class ApplicationConfig:
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_ECHO = True
-    SQLALCHEMY_DATABASE_URL = r"DATABASE_URL=postgresql://gitpod@localhost:5432/example"
+    SQLALCHEMY_DATABASE_URI = r"sqlite:////tmp/test.db"

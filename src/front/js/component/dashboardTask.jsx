@@ -16,7 +16,7 @@ function DashboardTask() {
   return (
     <div>
       <nav>
-        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <div className="nav nav-tabs" id="nav-tab" role="tablist">
           {selectedCategories.map((item, index) => {
             return (
               <button

@@ -32,6 +32,36 @@ def cateogry_goals(cat_id):
     goal_serialized = [goal.serialize() for goal in goal_list] 
     return jsonify(goal_serialized), 200
 
+
+
+@api.route('/register', methods=['GET'])
+def get_register_user_data():
+    response_body = {
+        "message": "balls"
+    }
+    return jsonify(response_body), 200
+
+@api.route('/register', methods=['POST'])
+@cross_origin()
+def register_user():
+    email = request.json["email"]
+    password = request.json["password"]
+
+    user_exits =  User.query.filter_by(email=email).first() is not None
+
+    if user_exists:
+        abort(409)
+
+    hashed_password = bcrypt.generate_password_hash(password)
+    new_user = User(email=email, password=hashed_password)
+    db.session.add(new_user)
+    db.session.commit()
+
+    return jsonify ({
+        "id": new_users.id,
+        "email": new_users.email
+    }), 200
+
 # @api.route('/goals', methods=['GET'])
 # @cross_origin()
 # def cateogry_goals():

@@ -27,6 +27,27 @@ class User(db.Model):
         }
 
     
+# class Users(db.Model):
+#     __tablename__ = 'users'
+#     id = db.Column(db.String(32), primary_key=True, unique=True, default=get_uuid)
+#     email = db.Column(db.String(345), unique=True)
+#     password = db.Column(db.Text, nullable=False)
+
+#     def __repr__(self):
+#         return '<Users %r>' % self.id
+
+#     def serialize(self):
+#         return {
+#             "id": self.id,
+#             "email": self.email,
+            
+#             # serialize line10?
+#             # do not serialize the password, its a security breach
+#         }
+
+
+
+
 
 class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
