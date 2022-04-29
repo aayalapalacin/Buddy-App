@@ -48,7 +48,11 @@ function DashboardTask() {
     <div className="container-fluid">
       <div className="row">
         <nav>
-          <div className="nav nav-tabs" id="nav-tab" role="tablist">
+          <div
+            className="shadow-longer nav nav-tabs"
+            id="nav-tab"
+            role="tablist"
+          >
             {selectedCategories.map((item, index) => {
               return (
                 <button
@@ -70,32 +74,39 @@ function DashboardTask() {
         </nav>
       </div>
       <div className="row">
-        <div className="tab-content" id="nav-tabContent">
-          {selectedCategories.map((item, index) => {
-            return (
-              <div
-                className={
-                  index == 0 ? "tab-pane fade show active" : "tab-pane fade"
-                }
-                key={index}
-                id={`nav-${item.task.task}`}
-                role="tabpanel"
-                aria-labelledby={`nav-${item.task.task}-tab`}
-              >
-                {item.task.goals.map((goal, goalIndex) => {
-                  return (
-                    <Goal
-                      key={goalIndex}
-                      goal_name={goal.goal_name}
-                      isChecked={goal.is_done}
-                      goalId={goal.id}
-                    />
-                  );
-                })}
-              </div>
-            );
-          })}
+        <div className="col-5">
+          <div className="tab-content" id="nav-tabContent">
+            {selectedCategories.map((item, index) => {
+              return (
+                <div
+                  className={
+                    index == 0 ? "tab-pane fade show active" : "tab-pane fade"
+                  }
+                  key={index}
+                  id={`nav-${item.task.task}`}
+                  role="tabpanel"
+                  aria-labelledby={`nav-${item.task.task}-tab`}
+                >
+                  {item.task.goals.map((goal, goalIndex) => {
+                    return (
+                      <Goal
+                        key={goalIndex}
+                        goal_name={goal.goal_name}
+                        isChecked={goal.is_done}
+                        goalId={goal.id}
+                      />
+                    );
+                  })}
+                </div>
+              );
+            })}
+          </div>
         </div>
+        <div className="col-7">Find a Buddy</div>
+      </div>
+      <div className="row">
+        <div className="col-6">Todo List</div>
+        <div className="col-6"> User Progress</div>
       </div>
     </div>
   );
