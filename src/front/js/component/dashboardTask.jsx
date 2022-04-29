@@ -14,7 +14,7 @@ function Goal(props) {
   };
 
   return (
-    <div id="checklist">
+    <div id="checklist" className="checklistPadding">
       <input
         key={props.key}
         type="checkbox"
