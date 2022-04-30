@@ -458,28 +458,56 @@ h5 {
       -14px -8px 0 0px #4f29f0;
   }
 }
-body {
-  /* background: #e8ebf3; */
-  height: 100vh;
-  font: 400 16px "Varela Round", sans-serif;
+
+.Title {
+  font-size: 80px;
+  text-align: center;
+  margin: 5px;
+  font-family: "Source Code Pro", monospace;
+  font-weight: 20px;
+}
+
+.inputContainer {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: auto;
+  height: auto;
+  box-shadow: 10px 10px 5px lightblue;
 }
-body .socials {
-  position: fixed;
-  display: block;
-  left: 20px;
-  bottom: 20px;
+
+.itemsLeftDiv {
+  padding: 0px 0px 5px 12px;
 }
-body .socials > a {
-  display: block;
-  width: 30px;
-  opacity: 0.2;
-  transform: scale(var(--scale, 0.8));
-  transition: transform 0.3s cubic-bezier(0.38, -0.12, 0.24, 1.91);
+
+.item {
+  padding-left: 33px;
+  font-size: 19px;
+  width: 100%;
+  line-height: 36px;
+  display: flex;
+  justify-content: space-between;
 }
-body .socials > a:hover {
-  --scale: 1;
+
+.mouseOver:hover {
+  cursor: pointer;
+}
+
+.item.itemsLeft {
+  padding-left: 8px;
+  line-height: 20px;
+  font-size: 10px;
+}
+
+.inputField {
+  width: 100%;
+}
+
+#todoUL {
+  padding-left: 0;
+  overflow: hidden;
+}
+
+.itemLeftDiv {
+  display: flex;
 }

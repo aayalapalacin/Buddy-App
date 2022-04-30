@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import useStore from "../store/zustand";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckSquare } from "@fortawesome/free-solid-svg-icons";
+import { faUserGroup } from "@fortawesome/free-solid-svg-icons";
+import { UserInput } from "./UserInput";
 
 function Goal(props) {
   const todoItemChecked = (event) => {
@@ -102,10 +103,17 @@ function DashboardTask() {
             })}
           </div>
         </div>
-        <div className="col-7">Find a Buddy</div>
+        <div className="col-7">
+          <h5>Find a Buddy</h5>
+          <button>
+            <FontAwesomeIcon icon={faUserGroup}></FontAwesomeIcon>
+          </button>
+        </div>
       </div>
       <div className="row">
-        <div className="col-6">Todo List</div>
+        <div className="col-6">
+          <UserInput />
+        </div>
         <div className="col-6"> User Progress</div>
       </div>
     </div>
