@@ -1,9 +1,9 @@
 .nav-login{
     border: none;
     text-decoration: underline;
-    margin-right: 10px;
+    margin-right: 20px;
     background: none;
-   
+   margin-top: 40px;
 }
 
 .nav-register{
@@ -14,7 +14,7 @@
 
 .navbar-logo{
     width: 310px;
-    height: 170px;
+    height: 168px;
     border-radius: 20px;
     font-size: 60px;
     letter-spacing: 0.1em;

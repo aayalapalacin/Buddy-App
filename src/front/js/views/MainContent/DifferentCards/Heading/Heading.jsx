@@ -8,7 +8,7 @@ const Heading = () => {
       <div className="head-container">
         <div className="site-opener">
           <div className="title-card">
-            <h1>Welcome to BuddyApp</h1>
+            <h1 className="title">Welcome to BuddyApp!</h1>
           </div>
           <div className="card-dscrp">
             <h5>Have you ever wanted to connect with friends with likeminded interests?

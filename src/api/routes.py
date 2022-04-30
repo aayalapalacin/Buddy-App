@@ -41,26 +41,46 @@ def get_register_user_data():
     }
     return jsonify(response_body), 200
 
-@api.route('/register', methods=['POST'])
-@cross_origin()
-def register_user():
-    email = request.json["email"]
-    password = request.json["password"]
 
-    user_exits =  User.query.filter_by(email=email).first() is not None
+@api.route('/register', methods=['POST'])
+def register_user():
+    data = request.get_json()
+    user_exists =  User.query.filter(User.email==data["email"]).count()>0
 
     if user_exists:
-        abort(409)
+        return "user exists", 400
 
-    hashed_password = bcrypt.generate_password_hash(password)
-    new_user = User(email=email, password=hashed_password)
-    db.session.add(new_user)
+    user = User(
+        email = data["email"],
+        password = data["password"],
+        is_active = True
+    )
+    db.session.add(user)    
     db.session.commit()
+    return 204
 
-    return jsonify ({
-        "id": new_users.id,
-        "email": new_users.email
-    }), 200
+    # hashed_password = bcrypt.generate_password_hash(password)
+    # new_user = User(email=email, password=hashed_password)
+    # db.session.add(new_user)
+
+    # return jsonify ({
+    #     "id": new_users.id,
+    #     "email": new_users.email
+    # }), 200
+
+
+
+@api.route("/login", methods=["POST"])
+def login():
+    email = request.json.get("email", None)
+    password = request.json.get("password", None)
+    user = User.filter_by(email=email).one_or_none()
+    if user is not None:
+        if user.check_password_hash(password):
+            access_token = create_access_token(identity=email)
+            return jsonify(access_token=access_token)
+    return jsonify({"msg": "Invalid credentials."}), 401
+
 
 # @api.route('/goals', methods=['GET'])
 # @cross_origin()

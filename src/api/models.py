@@ -1,10 +1,9 @@
 from flask_sqlalchemy import SQLAlchemy
-from uuid import uuid4
+from sqlalchemy.ext.hybrid import hybrid_property
+from werkzeug.security import generate_password_hash, check_password_hash
 
 db = SQLAlchemy()
 
-def get_uuid():
-    return uuid4().hex
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -25,25 +24,19 @@ class User(db.Model):
             # serialize line10?
             # do not serialize the password, its a security breach
         }
+        
+    @hybrid_property
+    def password(self):
+        return self._password
 
+    @password.setter
+    def password(self, password):
+        self._password = generate_password_hash(password)
+
+    def check_password_hash(self, password):
+        return check_password_hash(self.password, password)
     
-# class Users(db.Model):
-#     __tablename__ = 'users'
-#     id = db.Column(db.String(32), primary_key=True, unique=True, default=get_uuid)
-#     email = db.Column(db.String(345), unique=True)
-#     password = db.Column(db.Text, nullable=False)
 
-#     def __repr__(self):
-#         return '<Users %r>' % self.id
-
-#     def serialize(self):
-#         return {
-#             "id": self.id,
-#             "email": self.email,
-            
-#             # serialize line10?
-#             # do not serialize the password, its a security breach
-#         }
 
 
 

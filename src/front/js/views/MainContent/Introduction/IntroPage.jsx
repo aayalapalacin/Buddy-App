@@ -14,27 +14,25 @@ const IntroPage = () => {
     <div>
       <Topbar />
       <div className="main-content">
+        <Heading />
         <Container>
           <Row>
             <Col>
               <div className="left-side">
-                <Heading />
-                <Awards />
+                <IntroImg />
               </div>
             </Col>
             <Col>
               <div className="right-side">
-                <IntroImg />
-                <ContactUs />
+                <Awards />
               </div>
             </Col>
           </Row>
         </Container>
-      <footer className="footer">
-        <h5>
-          All rights and shit goes to us assholes here
-        </h5>
-      </footer>
+        <ContactUs />
+        <footer className="footer">
+          <h5>All rights and shit goes to us assholes here</h5>
+        </footer>
       </div>
     </div>
   );
