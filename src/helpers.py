@@ -1,6 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from app import app, db
-from api.models import Category, Goal
+from api.models import Category, Goal, User
 
 def populate_categories(*categories):
     for category in categories:
@@ -8,6 +8,11 @@ def populate_categories(*categories):
             db.session.add(category)
     db.session.commit()
 
+def populate_users(*users):
+    for user in users:
+        if not User.query.filter_by(email=user.email).one_or_none():
+            db.session.add(user)
+    db.session.commit()
     
 def populate_goals(*goals):
     for goal in goals:
@@ -27,7 +32,12 @@ if __name__ == "__main__":
         professionalCat = Category.query.filter_by(task="Professional").one_or_none()
         creativeCat = Category.query.filter_by(task="Creative").one_or_none()
         healthCat = Category.query.filter_by(task="Health").one_or_none()
-        
+        testUser = User(username="admin", email="admin@admin.com")
+        testUser.password = "123"
+        print(testUser.password)
+        populate_users(
+            testUser
+        )
         populate_goals(    
             Goal(goal_name="Study for test/quiz",category_id=schoolCat.id),
             Goal(goal_name="Write paper",category_id=schoolCat.id),
