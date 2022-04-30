@@ -104,8 +104,8 @@ function DashboardTask() {
           </div>
         </div>
         <div className="col-7">
-          <h5>Find a Buddy</h5>
-          <button>
+          <button id="buddyBtn" className="raise">
+            <h5>Find a Buddy</h5>
             <FontAwesomeIcon icon={faUserGroup}></FontAwesomeIcon>
           </button>
         </div>
