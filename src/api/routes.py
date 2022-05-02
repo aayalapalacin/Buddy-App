@@ -95,6 +95,16 @@ def handle_register():
     db.session.commit()
     return "ok", 200
  
+
+
+@api.route('/register/<int:register_id>', methods=['GET'])
+def get_register(register_id):
+    registers = register.query.get(register_id)
+    if registers is None:
+        raise APIException('register not found', status_code=404)
+    return jsonify(registers.serialize()), 200
+
+
 @api.route('/login', methods=['GET'])
 def get_login_data():
     login = login.query.all()

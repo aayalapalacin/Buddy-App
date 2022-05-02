@@ -6,7 +6,8 @@ export const useAuth = create(
       error: false,
       success: false,
       token: null,
-
+      
+      
       register: async (email, password) => {
         const response = await fetch(process.env.BACKEND_URL + '/register',
           {
@@ -16,7 +17,7 @@ export const useAuth = create(
             {
               'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ email, password }),
+            body: JSON.stringify({ email: email, password: password}),
 
           });
         if (response.status === 204) {
@@ -38,7 +39,9 @@ export const useAuth = create(
 
           });
         if (response.status === 204) {
+         
           set({ success: true })
+          return response;
         } else {
           set({ error: true })
         }
@@ -46,6 +49,40 @@ export const useAuth = create(
     })
   )
 );
+
+// getCurrentSession: () => {
+//   const session = JSON.parse(localStorage.getItem("session"));
+//   setStore({ session });
+//   return session;
+// },
+// createNewSession: async (email, password) => {
+//   const options = {
+//     method: "POST",
+//     headers: { "Content-Type": "application/json" },
+//     body: JSON.stringify({ email: email, password: password }),
+//   };
+//   const response = await fetch(
+//     process.env.BACKEND_URL + `/api/token`,
+//     options
+//   );
+//   if (!response.ok)
+//     throw Error("There was a problem in the login request");
+//   if (response.status === 401) {
+//     throw "Invalid credentials";
+//   } else if (response.status === 400) {
+//     throw "Invalid email or password format";
+//   }
+//   if (response.status === 200) {
+//     const payload = await response.json();
+//     localStorage.setItem("session", JSON.stringify(payload));
+//     setStore({ session: payload });
+//     return payload; //this is gonna make the promise resolve
+//     // return jsonify({ "token": access_token, "user_id": user.id })
+//   } else {
+//     return await response.json();
+//   }
+// },
+
 const useStore = create((set, get) => ({
   categories: [],
   selectedCategories: [],
