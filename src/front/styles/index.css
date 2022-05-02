@@ -1,13 +1,13 @@
 /* 
     General Styles used on every website (Don't Repeat Yourself)
 */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap");
-
+/* @import url("https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap"); */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 body {
   margin: 0;
   padding: 0;
-  background: linear-gradient(3150deg, #f9ea8f 0%, #aff1da 74%) repeat-y;
-
+  /* background: linear-gradient(3150deg, #f9ea8f 0%, #aff1da 74%) repeat-y; */
+  font-family: 'Ubuntu', sans-serif;
   @media (max-width: 1400px) {
     html {
       font-size: 25px;

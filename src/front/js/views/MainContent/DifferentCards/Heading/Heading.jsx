@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import IntroImg from "/workspace/Buddy-App/src/front/js/views/MainContent/DifferentCards/Heading/IntroImg.jsx";
 import "./heading.css";
 const Heading = () => {
   return (
@@ -7,8 +8,10 @@ const Heading = () => {
       <div className="head-container">
         <div className="site-opener">
           <div className="title-card">
-            <h1 className="title">Welcome to BuddyApp!</h1>
+            <h2 className="title">Connect, Grow, and Accomplish</h2>
+            <h1 className="title">We're here to help</h1>
           </div>
+          <IntroImg />
           <div className="card-dscrp">
             <h5>
               Have you ever wanted to connect with friends with likeminded

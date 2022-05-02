@@ -12,16 +12,15 @@
 
 .stock-photo {
   border-radius: 5px;
-  /* box-shadow: 0 0 0 0.35rem rgba(254, 255, 170, 0.89); */
   height: 370px;
   margin-top: 50px;
   width: 555px;
 }
 
 .title {
-  font-size: 90px;
-  color: #4897ff;
-  text-shadow: 2px 2px #4b481e;
+  font-size: 60px;
+  color: #40afe2;
+  /* text-shadow: 2px 2px #4b481e; */
 }
 
 .card-dscrp{
