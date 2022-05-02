@@ -8,5 +8,8 @@
     margin: 0 auto;
     position: relative;
     bottom: 0;
-    margin-top: 800px;
+    margin-top: 900px;
+}
+.awards-table{
+    font-size: 20px;
 }

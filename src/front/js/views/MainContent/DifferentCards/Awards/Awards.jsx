@@ -8,7 +8,11 @@ const Awards = () => {
           <div className="award-opener">
             <div className="title-award">
               <h1>Awards</h1>
-              <h4>Bro for realsies we got some totally awesome awards cuz we totes yeet yo</h4>
+              <ul className="awards-table">
+                <li>Awarded Nobel Peace Prize</li>
+                <li>Maker of this table once won a trip to circles of care</li>
+                <li>Another Award</li>
+              </ul>
             </div>
           </div>
         </div>
