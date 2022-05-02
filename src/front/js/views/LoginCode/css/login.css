@@ -7,7 +7,9 @@
   width: 500px;
   border-radius: 30px;
   /* background-color: #2f848b; */
-  background: linear-gradient(-45deg, #35577D, #2f848b);
+  /* background: linear-gradient(-45deg, #35577D, #2f848b); */
+  background: linear-gradient(-45deg, #40bcc7, #4199a1);
+  /* background: linear-gradient(-45deg, #becad8, #3dd1df); */
   margin: auto;
 
   position: absolute;

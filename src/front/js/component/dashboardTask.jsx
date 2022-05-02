@@ -46,6 +46,28 @@ function DashboardTask() {
   }, [selectedCategories]);
 
   return (
+
+    <div>
+      <nav>
+        <div className="nav nav-tabs" id="nav-tab" role="tablist">
+          {selectedCategories.map((item, index) => {
+            return (
+              <button
+                className={index == 0 ? "nav-link active" : "nav-link"}
+                key={index}
+                id={`nav-${item.task.task}-tab`}
+                data-bs-toggle="tab"
+                data-bs-target={`#nav-${item.task.task}`}
+                type="button"
+                role="tab"
+                aria-controls={`nav-${item.task.task}`}
+                aria-selected={index == 0 ? "true" : "false"}
+              >
+                {item.task.task}
+              </button>
+            );
+          })}
+
     <div className="container-fluid">
       <div className="row">
         <nav>
@@ -113,6 +135,7 @@ function DashboardTask() {
       <div className="row">
         <div className="col-6">
           <UserInput />
+
         </div>
         <div className="col-6"> User Progress</div>
       </div>

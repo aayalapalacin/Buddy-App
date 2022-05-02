@@ -1,17 +1,59 @@
 .head-container {
-  background: linear-gradient(-45deg, #4977ac, #41bdc9);
-  width: 500px;
-  height: 200px;
+  /* background: linear-gradient(-45deg, #becad8, #3dd1df); */
+  width: 980px;
+  height: 390px;
   text-align: center;
-  border-radius: 10px;
-  margin-top: 70px;
-
+  border-radius: 5px;
+  margin-top: 20px;
+  border: none;
+  /* box-shadow: 0 0 0.25rem #3dd1df; */
+  margin: auto;
 }
 
 .stock-photo {
+  border-radius: 5px;
+  /* box-shadow: 0 0 0 0.35rem rgba(254, 255, 170, 0.89); */
+  height: 370px;
+  margin-top: 50px;
+  width: 555px;
+}
+
+.title {
+  font-size: 90px;
+  color: #4897ff;
+  text-shadow: 2px 2px #4b481e;
+}
+
+.card-dscrp{
+  justify-content: space-between;
+  letter-spacing: 0.15rem;
+  font-size: 30px;
+}
+
+.intro-button {
+  font-size: 20px;
   border-radius: 10px;
-  height: 300px;
-  width: 460px;
-  max-width: 460px;
-  
+  width: 170px;
+}
+
+.intro-button:hover {
+  transform: scale(1.04);
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.intro-button2 {
+  font-size: 20px;
+  border-radius: 10px;
+  width: 130px;
+}
+.intro-button2:hover {
+  transform: scale(1.04);
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.d-block{
+  height: 60vh;
+  border-radius: 5px;
 }

@@ -1,12 +1,15 @@
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.ext.hybrid import hybrid_property
+from werkzeug.security import generate_password_hash, check_password_hash
 
 db = SQLAlchemy()
+
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(120), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.String(80), unique=False, nullable=False)
+    _password = db.Column(db.String(160), unique=False, nullable=False)
     selected_category = db.relationship('SelectedCategory', backref='user',lazy=True)
     # is_active = db.Column(db.Boolean(), unique=False, nullable=False)
 
@@ -21,8 +24,23 @@ class User(db.Model):
             # serialize line10?
             # do not serialize the password, its a security breach
         }
+        
+    @hybrid_property
+    def password(self):
+        return self._password
 
+    @password.setter
+    def password(self, password):
+        self._password = generate_password_hash(password)
+
+    def check_password_hash(self, password):
+        return check_password_hash(self.password, password)
     
+
+
+
+
+
 
 class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)

@@ -1,5 +1,51 @@
 import create from "zustand";
+import { persist } from "zustand/middleware";
+export const useAuth = create(
+  persist(
+    set => ({
+      error: false,
+      success: false,
+      token: null,
 
+      register: async (email, password) => {
+        const response = await fetch(process.env.BACKEND_URL + '/register',
+          {
+            method: 'POST',
+
+            headers:
+            {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password }),
+
+          });
+        if (response.status === 204) {
+          set({ success: true })
+        } else {
+          set({ error: true })
+        }
+      },
+      login: async (email, password) => {
+        const response = await fetch(process.env.BACKEND_URL + '/login',
+          {
+            method: 'POST',
+
+            headers:
+            {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password }),
+
+          });
+        if (response.status === 204) {
+          set({ success: true })
+        } else {
+          set({ error: true })
+        }
+      }
+    })
+  )
+);
 const useStore = create((set, get) => ({
   categories: [],
   selectedCategories: [],

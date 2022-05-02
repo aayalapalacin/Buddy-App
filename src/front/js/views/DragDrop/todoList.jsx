@@ -45,7 +45,7 @@ const TodoList = () => {
         <div className="col-6 readyBtnCol font">
           <div className="readyButton font">
             <Link to="/dashboard">
-              <button class="col btn btn-dark-moon">Ready!</button>
+              <button className="col btn btn-dark-moon">Ready!</button>
             </Link>
           </div>
         </div>

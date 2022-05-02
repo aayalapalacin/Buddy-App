@@ -12,7 +12,7 @@ import TodoList from "./views/DragDrop/todoList.jsx";
 import Register from "./views/LoginCode/RegisterComponents/AccountApp.jsx";
 import ForgotPassword from "./views/LoginCode/LoginComponents/ForgotPassword/ForgotPassword.jsx";
 
-import IntroPage from "./views/MainContent/IntroPage.jsx";
+import IntroPage from "./views/MainContent/Introduction/IntroPage.jsx";
 import WelcomeApp from "./views/LoginCode/LoginComponents/WelcomeApp.jsx";
 
 

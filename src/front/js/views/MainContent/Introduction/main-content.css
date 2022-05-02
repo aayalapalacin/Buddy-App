@@ -1,0 +1,17 @@
+/* .left-side{
+  float: left;
+} */
+
+.right-side {
+  float: right;
+}
+.main-content {
+  margin-top: 10px;
+  /* margin-left: 30px;
+  margin-right: 30px; */
+  height: 50vh;
+}
+.footer {
+  margin-top: 50px;
+  text-align: center;
+}
