@@ -1,7 +1,5 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
 // import {useAuth} from "src/front/js/store/zustand.js";
-import AuthContext from "./AuthProvider.js";
-import axios from "/workspace/Buddy-App/src/api/axios.js";
 import { Link } from "react-router-dom";
 import "../css/login.css";
 
@@ -19,10 +17,7 @@ const LoginForm = () => {
               name="name"
               placeholder="Username"
               id="username"
-              // ref={userRef}
               autoComplete="off"
-              // onChange={(e) => setUser(e.target.value)}
-              // value={user}
               required
             />
           </label>
@@ -33,8 +28,6 @@ const LoginForm = () => {
               className="password"
               placeholder="Password"
               id="password"
-              // onChange={(e) => setPwd(e.target.value)}
-              // value={pwd}
               required
             />
           </label>

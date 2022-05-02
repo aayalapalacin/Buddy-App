@@ -42,33 +42,64 @@ def cateogry_goals(cat_id):
 
 
 
+# @api.route('/register', methods=['GET'])
+# def get_register_user_data():
+#     response_body = {
+#         "message": ""
+#     }
+#     return jsonify(response_body), 200
+
+
 @api.route('/register', methods=['GET'])
-def get_register_user_data():
-    response_body = {
-        "message": "balls"
-    }
-    return jsonify(response_body), 200
+def get_user_data():
+    registers = register.query.all()
+    all_registers = list(map(lambda x:x.serialize(),registers))
+    return jsonify(all_registers), 200    
+
+
+# @api.route('/register', methods=['POST'])
+# def register_user():
+#     data = request.get_json()
+#     user_exists =  User.query.filter(User.email==data["email"]).count()>0
+
+#     if user_exists:
+#         return "user exists", 400
+
+#     user = User(
+#         email = data["email"],
+#         password = data["password"],
+#         is_active = True
+#     )
+#     db.session.add(user)    
+#     db.session.commit()
+#     return jsonify(user), 200
+
 
 
 @api.route('/register', methods=['POST'])
-def register_user():
-    data = request.get_json()
-    user_exists =  User.query.filter(User.email==data["email"]).count()>0
+def handle_register():
 
-    if user_exists:
-        return "user exists", 400
+    # First we get the payload json
+    body = request.get_json()
 
-    user = User(
-        email = data["email"],
-        password = data["password"],
-        is_active = True
-    )
-    db.session.add(user)    
+    if body is None:
+        raise APIException("You need to specify the request body as a json object", status_code=400)
+    if 'username' not in body:
+        raise APIException('You need to specify the username', status_code=400)
+    if 'email' not in body:
+        raise APIException('You need to specify the email', status_code=400)
+
+    # at this point, all data has been validated, we can proceed to inster into the bd
+    user1 = register(username=body['username'], email=body['email'])
+    db.session.add(user1)
     db.session.commit()
-    return 204
-
+    return "ok", 200
  
-
+@api.route('/login', methods=['GET'])
+def get_login_data():
+    login = login.query.all()
+    all_login = list(map(lambda x:x.serialize(),registers))
+    return jsonify(user), 200  
 
 @api.route("/login", methods=["POST"])
 def login():

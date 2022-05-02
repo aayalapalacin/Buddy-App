@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useContext} from "react";
 import {
   faCheck,
   faTimes,
@@ -15,7 +15,7 @@ const Register = () => {
   const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
   const REGISTER_URL = "/register";
 
-  const userRef = useRef();
+  
   const errRef = useRef();
 
   const [user, setUser] = useState("");
@@ -33,18 +33,18 @@ const Register = () => {
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
 
-  useEffect(() => {
-    setValidName(USER_REGEX.test(user));
-  }, [user]);
+  // useEffect(() => {
+  //   setValidName(USER_REGEX.test(user));
+  // }, [user]);
 
-  useEffect(() => {
-    setValidPwd(PWD_REGEX.test(pwd));
-    setValidMatch(pwd === matchPwd);
-  }, [pwd, matchPwd]);
+  // useEffect(() => {
+  //   setValidPwd(PWD_REGEX.test(pwd));
+  //   setValidMatch(pwd === matchPwd);
+  // }, [pwd, matchPwd]);
 
-  useEffect(() => {
-    setErrMsg("");
-  }, [user, pwd, matchPwd]);
+  // useEffect(() => {
+  //   setErrMsg("");
+  // }, [user, pwd, matchPwd]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
