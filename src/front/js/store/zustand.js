@@ -8,17 +8,17 @@ export const useAuth = create(
       token: null,
 
       register: async (email, password) => {
-        const response = await fetch(process.env.BACKEND_URL + '/register', 
-        {
-          method: 'POST',
-        
-          headers: 
+        const response = await fetch(process.env.BACKEND_URL + '/register',
           {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ email, password }),
+            method: 'POST',
 
-        });
+            headers:
+            {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password }),
+
+          });
         if (response.status === 204) {
           set({ success: true })
         } else {
@@ -26,13 +26,26 @@ export const useAuth = create(
         }
       },
       login: async (email, password) => {
-        const response = await fetch(process.env.BACKEND_URL + '/login')
+        const response = await fetch(process.env.BACKEND_URL + '/login',
+          {
+            method: 'POST',
+
+            headers:
+            {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password }),
+
+          });
+        if (response.status === 204) {
+          set({ success: true })
+        } else {
+          set({ error: true })
+        }
       }
-  });
-
-
-
-
+    })
+  )
+);
 const useStore = create((set, get) => ({
   categories: [],
   selectedCategories: [],

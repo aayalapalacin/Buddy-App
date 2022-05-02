@@ -1,6 +1,6 @@
 .head-container {
   /* background: linear-gradient(-45deg, #becad8, #3dd1df); */
-  width: 1000px;
+  width: 980px;
   height: 390px;
   text-align: center;
   border-radius: 5px;
@@ -16,9 +16,44 @@
   height: 370px;
   margin-top: 50px;
   width: 555px;
-  
 }
 
-.title{
+.title {
   font-size: 90px;
+  color: #4897ff;
+  text-shadow: 2px 2px #4b481e;
+}
+
+.card-dscrp{
+  justify-content: space-between;
+  letter-spacing: 0.15rem;
+  font-size: 30px;
+}
+
+.intro-button {
+  font-size: 20px;
+  border-radius: 10px;
+  width: 170px;
+}
+
+.intro-button:hover {
+  transform: scale(1.04);
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.intro-button2 {
+  font-size: 20px;
+  border-radius: 10px;
+  width: 130px;
+}
+.intro-button2:hover {
+  transform: scale(1.04);
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.d-block{
+  height: 60vh;
+  border-radius: 5px;
 }

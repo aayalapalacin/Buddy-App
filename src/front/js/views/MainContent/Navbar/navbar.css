@@ -3,7 +3,7 @@
     text-decoration: underline;
     margin-right: 20px;
     background: none;
-   margin-top: 40px;
+    margin-top: 0px;
 }
 
 .nav-register{
@@ -13,8 +13,8 @@
 }
 
 .navbar-logo{
-    width: 310px;
-    height: 168px;
+    width: 210px;
+    height: 100px;
     border-radius: 20px;
     font-size: 60px;
     letter-spacing: 0.1em;

@@ -82,9 +82,4 @@ def login():
     return jsonify({"msg": "Invalid credentials."}), 401
 
 
-# @api.route('/goals', methods=['GET'])
-# @cross_origin()
-# def cateogry_goals():
-#     goal_list = Goal.query.all()
-#     goal_serialized = [goal.serialize() for goal in goal_list] 
-#     return jsonify(goal_serialized), 200
+

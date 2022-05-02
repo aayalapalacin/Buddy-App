@@ -1,60 +1,17 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
+// import {useAuth} from "src/front/js/store/zustand.js";
 import AuthContext from "./AuthProvider.js";
 import axios from "/workspace/Buddy-App/src/api/axios.js";
 import { Link } from "react-router-dom";
 import "../css/login.css";
 
-const LOGIN_URL = "./auth";
 const LoginForm = () => {
-  // const [details, setDetails] = useState({ username: "", password: "" });
-  const { setAuth } = useContext(AuthContext);
+  // const useAuth = useStore((state) => state.useAuth);
 
-  const userRef = useRef();
-  const errRef = useRef();
-
-  const [user, setUser] = useState("");
-  const [pwd, setPwd] = useState("");
-  const [errMsg, setErrMsg] = useState("");
-
-  const submitHandler = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post(
-        LOGIN_URL,
-        JSON.stringify({ user, pwd }),
-        {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
-        }
-      );
-      console.log(JSON.stringify(response?.data));
-      const accessToken = response?.data?.accessToken;
-      const roles = response?.data?.roles;
-      setAuth({ user, pwd, roles, accessToken });
-      setUser("");
-      setPwd("");
-    } catch (err) {
-      if (!err?.response) {
-        setErrMsg("No Server Response");
-      } else if (err.response?.status === 400) {
-        setErrMsg("Missing Username or Password");
-      } else if (err.response?.status === 401) {
-        setErrMsg("Unauthorized");
-      } else {
-        setErrMsg("Login Failed");
-      }
-    }
-  };
-
-  useEffect(() => {
-    setErrMsg("");
-  }, [user, pwd]);
   return (
     <>
       <div className="inputs">
-      <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-        <form onSubmit={submitHandler}>
-          {/* {error != "" ? <div className="error">{error}</div> : ""} */}
+        <form>
           <label>
             <input
               type="text"
@@ -62,10 +19,10 @@ const LoginForm = () => {
               name="name"
               placeholder="Username"
               id="username"
-              ref={userRef}
+              // ref={userRef}
               autoComplete="off"
-              onChange={(e) => setUser(e.target.value)}
-              value={user}
+              // onChange={(e) => setUser(e.target.value)}
+              // value={user}
               required
             />
           </label>
@@ -76,8 +33,8 @@ const LoginForm = () => {
               className="password"
               placeholder="Password"
               id="password"
-              onChange={(e) => setPwd(e.target.value)}
-              value={pwd}
+              // onChange={(e) => setPwd(e.target.value)}
+              // value={pwd}
               required
             />
           </label>
