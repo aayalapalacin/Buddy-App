@@ -42,12 +42,6 @@ def cateogry_goals(cat_id):
 
 
 
-# @api.route('/register', methods=['GET'])
-# def get_register_user_data():
-#     response_body = {
-#         "message": ""
-#     }
-#     return jsonify(response_body), 200
 
 
 @api.route('/register', methods=['GET'])
@@ -123,4 +117,15 @@ def login():
     return jsonify({"msg": "Invalid credentials."}), 401
 
 
+
+
+@api.route('/goal', methods=['POST'])
+@cross_origin()
+def post_goal():
+    json = request.json
+    checked_goal = Goal.query.filter_by(id=json["id"]).one_or_none()
+    checked_goal.is_done = json["is_done"]
+    db.session.add(checked_goal)
+    db.session.commit()
+    return jsonify(checked_goal.serialize()), 200
 

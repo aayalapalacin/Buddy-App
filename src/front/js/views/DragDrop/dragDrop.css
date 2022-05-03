@@ -6,7 +6,7 @@
   align-items: center;
   display: flex;
   justify-content: center;
-  margin-top: 6%;
+  margin-top: 0.1rem;
   filter: drop-shadow(black 0px 2px 1px);
   margin-bottom: 1rem;
 }
@@ -31,8 +31,8 @@
 }
 
 .box2 {
-  width: 19rem;
-  height: 7.5rem;
+  width: 20rem;
+  height: 8.5rem;
   border-width: 3px 3px 5px 5px;
   border-radius: 4% 95% 6% 95%/95% 4% 92% 5%;
   transform: rotate(-2deg);
@@ -48,13 +48,13 @@
   color: black;
   border: none;
   width: 11rem;
-  font-size: 1.5rem;
-  height: 3rem;
+  font-size: 1.9rem;
+  height: 3.8rem;
   filter: drop-shadow(black 1px 3px 1px);
 }
 
 .evenboxinner {
-  padding-top: 0.5rem;
+  padding-top: 0.9rem;
 }
 h5 {
   font-family: "Patrick Hand", cursive;
@@ -74,6 +74,13 @@ h5 {
   height: 1.5rem;
 }
 
+.containerWidth {
+  width: 100vw;
+}
+.container-fluid {
+  margin: 1rem;
+}
+
 #photoSampleDiv {
   width: 21rem;
   height: 14rem;
@@ -83,7 +90,10 @@ h5 {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-left: 6rem;
+}
+
+#app {
+  width: 100vw;
 }
 .arrowDownLeft {
   transform: rotate(24deg);
@@ -130,7 +140,7 @@ h5 {
 }
 
 .dayBtnCol {
-  justify-content: center;
+  justify-content: start;
   display: flex;
 }
 
@@ -178,4 +188,356 @@ h5 {
   text-decoration: underline;
   text-decoration-thickness: 1px;
   background-color: unset;
+}
+
+#checklist {
+  /* --background: #ffffff; */
+  --text: #414856;
+  --check: #4f29f0;
+  --disabled: #ffffff;
+  --width: 20rem;
+  --height: 0.1rem;
+  --border-radius: 10px;
+  background: var(--background);
+  width: var(--width);
+  height: var(--height);
+  border-radius: var(--border-radius);
+  position: relative;
+  padding: 1.2rem 1rem;
+  display: grid;
+  grid-template-columns: 2rem auto;
+  align-items: center;
+}
+#checklist label {
+  color: var(--text);
+  position: relative;
+  /* cursor: pointer; */
+  display: grid;
+  align-items: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  transition: color 0.3s ease;
+}
+/* #checklist label::before, */
+#checklist label::after {
+  content: "";
+  position: absolute;
+}
+#checklist label::before {
+  height: 2px;
+  width: 8px;
+  left: -27px;
+  background: var(--check);
+  border-radius: 2px;
+  transition: background 0.3s ease;
+}
+#checklist label:after {
+  height: 4px;
+  width: 4px;
+  top: 8px;
+  left: -25px;
+  border-radius: 50%;
+}
+#checklist input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: relative;
+  height: 1rem;
+  width: 1rem;
+  outline: none;
+  border: 0;
+  cursor: pointer;
+  background: var(--background);
+  display: grid;
+  align-items: center;
+}
+#checklist input[type="checkbox"]::before,
+#checklist input[type="checkbox"]::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  top: auto;
+  background: var(--check);
+  border-radius: 2px;
+}
+#checklist input[type="checkbox"]::before {
+  width: 0px;
+  right: 60%;
+  transform-origin: right bottom;
+}
+#checklist input[type="checkbox"]::after {
+  width: 0px;
+  left: 40%;
+  transform-origin: left bottom;
+}
+#checklist input[type="checkbox"]:checked::before {
+  -webkit-animation: check-01 0.4s ease forwards;
+  animation: check-01 0.4s ease forwards;
+}
+#checklist input[type="checkbox"]:checked::after {
+  -webkit-animation: check-02 0.4s ease forwards;
+  animation: check-02 0.4s ease forwards;
+}
+#checklist input[type="checkbox"]:checked + label {
+  color: var(--disabled);
+  -webkit-animation: move 0.3s ease 0.1s forwards;
+  animation: move 0.3s ease 0.1s forwards;
+}
+#checklist input[type="checkbox"]:checked + label::before {
+  background: var(--disabled);
+  -webkit-animation: slice 0.4s ease forwards;
+  animation: slice 0.4s ease forwards;
+}
+#checklist input[type="checkbox"]:checked + label::after {
+  -webkit-animation: firework 0.5s ease forwards 0.1s;
+  animation: firework 0.5s ease forwards 0.1s;
+}
+
+.checklistPadding {
+  padding: 0;
+}
+@-webkit-keyframes move {
+  50% {
+    padding-left: 8px;
+    padding-right: 0px;
+  }
+  100% {
+    padding-right: 4px;
+  }
+}
+
+@keyframes move {
+  50% {
+    padding-left: 8px;
+    padding-right: 0px;
+  }
+  100% {
+    padding-right: 4px;
+  }
+}
+@-webkit-keyframes slice {
+  60% {
+    width: 100%;
+    left: 4px;
+  }
+  100% {
+    width: 100%;
+    left: -2px;
+    padding-left: 0;
+  }
+}
+@keyframes slice {
+  60% {
+    width: 100%;
+    left: 4px;
+  }
+  100% {
+    width: 100%;
+    left: -2px;
+    padding-left: 0;
+  }
+}
+@-webkit-keyframes check-01 {
+  0% {
+    width: 4px;
+    top: auto;
+    transform: rotate(0);
+  }
+  50% {
+    width: 0px;
+    top: auto;
+    transform: rotate(0);
+  }
+  51% {
+    width: 0px;
+    top: 8px;
+    transform: rotate(45deg);
+  }
+  100% {
+    width: 5px;
+    top: 8px;
+    transform: rotate(45deg);
+  }
+}
+@keyframes check-01 {
+  0% {
+    width: 4px;
+    top: auto;
+    transform: rotate(0);
+  }
+  50% {
+    width: 0px;
+    top: auto;
+    transform: rotate(0);
+  }
+  51% {
+    width: 0px;
+    top: 8px;
+    transform: rotate(45deg);
+  }
+  100% {
+    width: 5px;
+    top: 8px;
+    transform: rotate(45deg);
+  }
+}
+@-webkit-keyframes check-02 {
+  0% {
+    width: 4px;
+    top: auto;
+    transform: rotate(0);
+  }
+  50% {
+    width: 0px;
+    top: auto;
+    transform: rotate(0);
+  }
+  51% {
+    width: 0px;
+    top: 8px;
+    transform: rotate(-45deg);
+  }
+  100% {
+    width: 10px;
+    top: 8px;
+    transform: rotate(-45deg);
+  }
+}
+@keyframes check-02 {
+  0% {
+    width: 4px;
+    top: auto;
+    transform: rotate(0);
+  }
+  50% {
+    width: 0px;
+    top: auto;
+    transform: rotate(0);
+  }
+  51% {
+    width: 0px;
+    top: 8px;
+    transform: rotate(-45deg);
+  }
+  100% {
+    width: 10px;
+    top: 8px;
+    transform: rotate(-45deg);
+  }
+}
+@-webkit-keyframes firework {
+  0% {
+    opacity: 1;
+    box-shadow: 0 0 0 -2px #4f29f0, 0 0 0 -2px #4f29f0, 0 0 0 -2px #4f29f0,
+      0 0 0 -2px #4f29f0, 0 0 0 -2px #4f29f0, 0 0 0 -2px #4f29f0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    box-shadow: 0 -15px 0 0px #4f29f0, 14px -8px 0 0px #4f29f0,
+      14px 8px 0 0px #4f29f0, 0 15px 0 0px #4f29f0, -14px 8px 0 0px #4f29f0,
+      -14px -8px 0 0px #4f29f0;
+  }
+}
+@keyframes firework {
+  0% {
+    opacity: 1;
+    box-shadow: 0 0 0 -2px #4f29f0, 0 0 0 -2px #4f29f0, 0 0 0 -2px #4f29f0,
+      0 0 0 -2px #4f29f0, 0 0 0 -2px #4f29f0, 0 0 0 -2px #4f29f0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    box-shadow: 0 -15px 0 0px #4f29f0, 14px -8px 0 0px #4f29f0,
+      14px 8px 0 0px #4f29f0, 0 15px 0 0px #4f29f0, -14px 8px 0 0px #4f29f0,
+      -14px -8px 0 0px #4f29f0;
+  }
+}
+
+.Title {
+  font-size: 80px;
+  text-align: center;
+  margin: 5px;
+  font-family: "Source Code Pro", monospace;
+  font-weight: 20px;
+}
+
+.inputContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: auto;
+  box-shadow: 10px 10px 5px lightblue;
+}
+
+.itemsLeftDiv {
+  padding: 0px 0px 5px 12px;
+}
+
+.item {
+  padding-left: 33px;
+  font-size: 19px;
+  width: 100%;
+  line-height: 36px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.mouseOver:hover {
+  cursor: pointer;
+}
+
+.item.itemsLeft {
+  padding-left: 8px;
+  line-height: 20px;
+  font-size: 10px;
+}
+
+.inputField {
+  width: 100%;
+}
+
+#todoUL {
+  padding-left: 0;
+  overflow: hidden;
+}
+
+.itemLeftDiv {
+  display: flex;
+}
+
+.raise:hover,
+.raise:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.25em);
+}
+
+.raise {
+  --color: #ffa260;
+  --hover: #e5ff60;
+}
+
+button {
+  color: var(--color);
+  transition: 0.25s;
+}
+button:hover,
+button:focus {
+  border-color: var(--hover);
+  color: #fff;
+}
+
+#buddyBtn {
+  background: none;
+  border: 2px solid;
+  font: inherit;
+  line-height: 1;
+  margin: 0.5em;
+  padding: 1em 2em;
 }
