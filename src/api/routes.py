@@ -52,7 +52,7 @@ def cateogry_goals(cat_id):
 
 @api.route('/register', methods=['GET'])
 def get_user_data():
-    registers = user.query.all()
+    registers = User.query.all()
     all_registers = list(map(lambda x:x.serialize(),user))
     return jsonify(all_registers), 200    
 
