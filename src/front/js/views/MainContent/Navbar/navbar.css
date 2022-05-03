@@ -4,6 +4,7 @@
     margin-right: 20px;
     background: none;
     margin-top: 0px;
+    
 }
 
 .nav-register{
@@ -13,8 +14,8 @@
 }
 
 .navbar-logo{
-    width: 210px;
-    height: 100px;
+    width: 310px;
+    height: 160px;
     border-radius: 20px;
     font-size: 60px;
     letter-spacing: 0.1em;

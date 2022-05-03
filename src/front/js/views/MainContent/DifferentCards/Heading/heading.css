@@ -1,30 +1,26 @@
 .head-container {
-  /* background: linear-gradient(-45deg, #becad8, #3dd1df); */
   width: 980px;
   height: 390px;
   text-align: center;
   border-radius: 5px;
   margin-top: 20px;
   border: none;
-  /* box-shadow: 0 0 0.25rem #3dd1df; */
   margin: auto;
 }
 
 .stock-photo {
   border-radius: 5px;
-  /* box-shadow: 0 0 0 0.35rem rgba(254, 255, 170, 0.89); */
   height: 370px;
   margin-top: 50px;
   width: 555px;
 }
 
 .title {
-  font-size: 90px;
-  color: #4897ff;
-  text-shadow: 2px 2px #4b481e;
+  font-size: 60px;
+  color: #40afe2;
 }
 
-.card-dscrp{
+.card-dscrp {
   justify-content: space-between;
   letter-spacing: 0.15rem;
   font-size: 30px;
@@ -46,6 +42,7 @@
   font-size: 20px;
   border-radius: 10px;
   width: 130px;
+  margin-bottom: 50px;
 }
 .intro-button2:hover {
   transform: scale(1.04);
@@ -53,7 +50,13 @@
   cursor: pointer;
 }
 
-.d-block{
-  height: 60vh;
-  border-radius: 5px;
+.have-you {
+  font-size: 30px;
+  border: 8px solid #40afe2;
+  padding: 2rem;
+}
+
+
+.login-info {
+  border-bottom: 1px solid #40afe2;
 }
