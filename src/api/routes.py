@@ -52,69 +52,69 @@ def cateogry_goals(cat_id):
 
 @api.route('/register', methods=['GET'])
 def get_user_data():
-    registers = register.query.all()
-    all_registers = list(map(lambda x:x.serialize(),registers))
+    registers = user.query.all()
+    all_registers = list(map(lambda x:x.serialize(),user))
     return jsonify(all_registers), 200    
 
 
-# @api.route('/register', methods=['POST'])
-# def register_user():
-#     data = request.get_json()
-#     user_exists =  User.query.filter(User.email==data["email"]).count()>0
-
-#     if user_exists:
-#         return "user exists", 400
-
-#     user = User(
-#         email = data["email"],
-#         password = data["password"],
-#         is_active = True
-#     )
-#     db.session.add(user)    
-#     db.session.commit()
-#     return jsonify(user), 200
-
-
-
 @api.route('/register', methods=['POST'])
-def handle_register():
+def register_user():
+    data = request.get_json()
+    user_exists =  User.query.filter(User.email==data["email"]).count()>0
 
-    # First we get the payload json
-    body = request.get_json()
+    if user_exists:
+        return "user exists", 400
 
-    if body is None:
-        raise APIException("You need to specify the request body as a json object", status_code=400)
-    if 'username' not in body:
-        raise APIException('You need to specify the username', status_code=400)
-    if 'email' not in body:
-        raise APIException('You need to specify the email', status_code=400)
-
-    # at this point, all data has been validated, we can proceed to inster into the bd
-    user1 = register(username=body['username'], email=body['email'])
-    db.session.add(user1)
+    user = User(
+        email = data["email"],
+        password = data["password"],
+        is_active = True
+    )
+    db.session.add(user)    
     db.session.commit()
-    return "ok", 200
+    return jsonify(user), 200
+
+
+
+# @api.route('/register', methods=['POST'])
+# def handle_register():
+
+#     # First we get the payload json
+#     body = request.get_json()
+
+#     if body is None:
+#         raise APIException("You need to specify the request body as a json object", status_code=400)
+#     if 'username' not in body:
+#         raise APIException('You need to specify the username', status_code=400)
+#     if 'email' not in body:
+#         raise APIException('You need to specify the email', status_code=400)
+
+#     # at this point, all data has been validated, we can proceed to inster into the bd
+#     user1 = register(username=body['username'], email=body['email'])
+#     db.session.add(user1)
+#     db.session.commit()
+#     return "ok", 200
  
 
 
 @api.route('/register/<int:register_id>', methods=['GET'])
 def get_register(register_id):
-    registers = register.query.get(register_id)
+    registers = User.query.get(user_id)
     if registers is None:
-        raise APIException('register not found', status_code=404)
+        raise APIException('user not found', status_code=404)
     return jsonify(registers.serialize()), 200
 
 
 @api.route('/login', methods=['GET'])
 def get_login_data():
-    login = login.query.all()
+    login = User.query.all()
     all_login = list(map(lambda x:x.serialize(),registers))
-    return jsonify(user), 200  
+    return jsonify(login), 200  
 
 @api.route("/login", methods=["POST"])
 def login():
     email = request.json.get("email", None)
-    password = request.json.get("password", None)
+    _password = request.json.get("password", None)
     user = User.query.filter_by(email=email).one_or_none()
     if user is not None:
         if user.check_password_hash(password):

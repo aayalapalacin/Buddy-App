@@ -10,7 +10,7 @@ const Awards = () => {
               <h1>Awards</h1>
               <ul className="awards-table">
                 <li>Awarded Nobel Peace Prize</li>
-                <li>Maker of this table once won a trip to circles of care</li>
+                <li>Second Award</li>
                 <li>Another Award</li>
               </ul>
             </div>

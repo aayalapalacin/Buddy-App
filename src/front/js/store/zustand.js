@@ -20,8 +20,9 @@ export const useAuth = create(
             body: JSON.stringify({ email: email, password: password}),
 
           });
-        if (response.status === 204) {
+        if (response.status === 200) {
           set({ success: true })
+          return response;
         } else {
           set({ error: true })
         }
@@ -35,10 +36,10 @@ export const useAuth = create(
             {
               'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ email, password }),
+            body: JSON.stringify({ email: email, password: password}),
 
           });
-        if (response.status === 204) {
+        if (response.status === 200) {
          
           set({ success: true })
           return response;
