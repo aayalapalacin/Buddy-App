@@ -27,9 +27,16 @@
 }
 
 .intro-button {
-  font-size: 20px;
+  font-size: 27px;
+  color: #000000;
+  background: linear-gradient(3150deg, #f9ea8f 0%, #5bf0bc 74%) repeat-y;
   border-radius: 10px;
-  width: 170px;
+  border: none;
+  letter-spacing: 0.1em;
+  width: 300px;
+  height: 45px;
+  margin-bottom: 20px;
+  font-weight: bold;
 }
 
 .intro-button:hover {
@@ -39,10 +46,15 @@
 }
 
 .intro-button2 {
-  font-size: 20px;
+  font-size: 22px;
+  width: 290px;
+  height: 45px;
+  color: #000000;
+  background: linear-gradient(-3150deg, #f9ea8f 0%, #5bf0bc 74%) repeat-y;
   border-radius: 10px;
-  width: 130px;
-  margin-bottom: 50px;
+  border: none;
+  margin-bottom: 60px;
+  font-weight: bold;
 }
 .intro-button2:hover {
   transform: scale(1.04);
@@ -54,9 +66,10 @@
   font-size: 30px;
   border: 8px solid #40afe2;
   padding: 2rem;
+  line-height: 70px;
 }
 
 
 .login-info {
-  border-bottom: 1px solid #40afe2;
+  border-bottom: 1px solid #000000;
 }
