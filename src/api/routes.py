@@ -10,6 +10,7 @@ from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import JWTManager
+from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token, decode_token
 
 
 api = Blueprint('api', __name__)
@@ -42,12 +43,6 @@ def cateogry_goals(cat_id):
 
 
 
-# @api.route('/register', methods=['GET'])
-# def get_register_user_data():
-#     response_body = {
-#         "message": ""
-#     }
-#     return jsonify(response_body), 200
 
 
 @api.route('/register', methods=['GET'])
@@ -74,26 +69,6 @@ def register_user():
     db.session.commit()
     return jsonify(user), 200
 
-
-
-# @api.route('/register', methods=['POST'])
-# def handle_register():
-
-#     # First we get the payload json
-#     body = request.get_json()
-
-#     if body is None:
-#         raise APIException("You need to specify the request body as a json object", status_code=400)
-#     if 'username' not in body:
-#         raise APIException('You need to specify the username', status_code=400)
-#     if 'email' not in body:
-#         raise APIException('You need to specify the email', status_code=400)
-
-#     # at this point, all data has been validated, we can proceed to inster into the bd
-#     user1 = register(username=body['username'], email=body['email'])
-#     db.session.add(user1)
-#     db.session.commit()
-#     return "ok", 200
  
 
 
@@ -111,10 +86,11 @@ def get_login_data():
     all_login = list(map(lambda x:x.serialize(),registers))
     return jsonify(login), 200  
 
+
 @api.route("/login", methods=["POST"])
 def login():
     email = request.json.get("email", None)
-    _password = request.json.get("password", None)
+    password = request.json.get("password", None)
     user = User.query.filter_by(email=email).one_or_none()
     if user is not None:
         if user.check_password_hash(password):
@@ -124,3 +100,9 @@ def login():
 
 
 
+@api.route('/coordinator', methods=['GET'])
+@jwt_required()
+def coordinator():
+    current_coordinator_id = get_jwt_identity()
+    coordinator = Coordinator.query.get(current_coordinator_id)
+    return jsonify({"id": coordinator.id, "email": coordinator.email }), 200

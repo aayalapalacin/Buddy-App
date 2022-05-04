@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useRef, useEffect, useContext } from "react";
+// import useParams from "useParams";
 import {
   faCheck,
   faTimes,
@@ -12,7 +13,7 @@ import useAuth from "/workspace/Buddy-App/src/front/js/store/zustand.js"
 import "../css/register.css";
 
 const Register = () => {
-
+  
 
   const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
   const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;

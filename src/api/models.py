@@ -9,7 +9,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(120), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    _password = db.Column(db.String(160), unique=False, nullable=False)
+    password = db.Column(db.String(80), unique=False, nullable=False)
     selected_category = db.relationship('SelectedCategory', backref='user',lazy=True)
     # is_active = db.Column(db.Boolean(), unique=False, nullable=False)
 
