@@ -22,7 +22,7 @@ const TodoList = () => {
         <div className="col-4"></div>
         <div className="col-4">
           <div class="box box2">
-            <div class="evenboxinner">
+            <div class="evenboxinner font">
               <h5>1. Choose Your Goals</h5>
               <h5>2. Drag to Commit</h5>
               <h5>3. Click Ready to Start Your Journey!</h5>
@@ -36,7 +36,7 @@ const TodoList = () => {
           ></FontAwesomeIcon>
         </div>
       </div>
-      <div className="row">
+      <div className="row ">
         <div className="col-6">
           <div id="photoSampleDiv">
             <img id="pieChart" src={buddyImg} alt="pie chart" />

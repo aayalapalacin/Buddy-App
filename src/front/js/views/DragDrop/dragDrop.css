@@ -56,9 +56,13 @@ body {
 .evenboxinner {
   padding-top: 0.9rem;
 }
-h5 {
+.evenboxinner h5 {
   font-family: "Patrick Hand", cursive;
-  padding-left: 1rem;
+  padding-left: 1.5rem;
+}
+
+#findBuddy h5 {
+  font-size: 1.4rem;
 }
 .arrowRight {
   display: flex;
@@ -117,6 +121,19 @@ h5 {
   display: inline;
 }
 
+#strikeBtn {
+  border: none;
+  background-color: transparent;
+  color: black;
+}
+
+.rowMiddle {
+  margin-bottom: 2rem;
+}
+#strikeBtn button:hover,
+button:focus {
+  color: black;
+}
 .font {
   font-family: "Patrick Hand", cursive;
 }
@@ -191,7 +208,6 @@ h5 {
 }
 
 #checklist {
-  /* --background: #ffffff; */
   --text: #414856;
   --check: #4f29f0;
   --disabled: #ffffff;
@@ -205,8 +221,9 @@ h5 {
   position: relative;
   padding: 1.2rem 1rem;
   display: grid;
-  grid-template-columns: 2rem auto;
+  grid-template-columns: 2.5rem auto;
   align-items: center;
+  font-size: 1.4rem;
 }
 #checklist label {
   color: var(--text);
@@ -481,10 +498,9 @@ h5 {
 }
 
 .item {
-  padding-left: 33px;
-  font-size: 19px;
-  width: 100%;
-  line-height: 36px;
+  padding-left: 1rem;
+  font-size: 1.15rem;
+  width: 20rem;
   display: flex;
   justify-content: space-between;
 }
@@ -519,18 +535,25 @@ h5 {
 }
 
 .raise {
-  --color: #ffa260;
-  --hover: #e5ff60;
+  --hover: black;
 }
 
 button {
   color: var(--color);
   transition: 0.25s;
 }
-button:hover,
+button:hover {
+  border-color: var(--hover);
+  color: #fff;
+}
+
 button:focus {
   border-color: var(--hover);
   color: #fff;
+}
+
+.goalTaskCol {
+  padding-right: 0;
 }
 
 #buddyBtn {
@@ -538,6 +561,141 @@ button:focus {
   border: 2px solid;
   font: inherit;
   line-height: 1;
-  margin: 0.5em;
-  padding: 1em 2em;
+  padding: 0.6rem;
+  width: 8rem;
+  color: #078dff;
+  border-radius: 25%;
+  filter: drop-shadow(black 0px -1px 0px);
+  right: 3rem;
+  top: 1rem;
+  font-size: 1.4rem;
+  position: relative;
+}
+
+.findBtnCol {
+  padding-left: 0;
+}
+#checkboxIcon {
+  margin-top: auto;
+  margin-bottom: 0.5rem;
+}
+
+#strikeBtn :hover {
+  /* border-color: var(--hover); */
+  color: black;
+}
+
+#strikeBtn :focus {
+  /* border-color: var(--hover); */
+  color: black;
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+  background-color: transparent;
+  font-size: 1.6rem;
+  color: black;
+  border: solid black;
+  border-color: black;
+  float: left;
+  width: 13rem;
+  border-width: 3px 3px 5px 5px;
+  border-radius: 4% 94% 7% 143%/69% 26% 107% 18%;
+  transform: rotate(-2deg);
+  padding: 0.01rem;
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active::before {
+  background-color: transparent;
+  border: solid black;
+  border-color: black;
+  float: left;
+  width: 8rem;
+  border-width: 3px 3px 5px 5px;
+  border-radius: 4% 94% 7% 143%/69% 6% 76% 3%;
+  transform: rotate(-2deg);
+  padding: 0.01rem;
+}
+
+.nav-link {
+  display: block;
+  font-size: 1.6rem;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
+  color: black;
+}
+
+#userGoalPic {
+  width: auto;
+  height: 11rem;
+}
+.Card-text {
+  margin: 0 100% 1% 0;
+  padding-left: 7%;
+  white-space: nowrap;
+  word-wrap: break-word;
+}
+
+.Card-title {
+  margin: 4% 100% 4% 0;
+  padding-left: 7%;
+  white-space: nowrap;
+}
+
+.btn .btn-outline-primary {
+  margin: 5% 100% 5% 6%;
+  white-space: nowrap;
+  padding: 3% 4%;
+}
+
+.btn .btn-outline-warning {
+  margin: 5% 6% 5% 100%;
+}
+
+/* button{
+  margin: 5% 100% 5% 6%;
+  white-space: nowrap;
+  padding: 3% 4%;
+} */
+
+.btDiv {
+  display: flex;
+  justify-content: space-between;
+}
+.h2Title {
+  margin: 1% 100% 4% 0;
+  color: rgb(221, 98, 60);
+}
+
+.characters {
+  display: flex;
+}
+
+.fullCard {
+  margin-right: 3.5%;
+  border: groove 1.8px rgba(0, 0, 0, 0.4);
+  background-color: white;
+}
+
+.singleText {
+  text-align: center;
+}
+
+.horizontalScroll {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  flex-wrap: nowrap;
+}
+
+.modal-body {
+  position: relative;
+  flex: 1 1 auto;
+  padding: 1rem;
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  flex-wrap: nowrap;
 }

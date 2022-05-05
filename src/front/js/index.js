@@ -1,7 +1,7 @@
 //import react into the bundle
 import React from "react";
 import ReactDOM from "react-dom";
-
+import "bootstrap/dist/css/bootstrap.min.css";
 //include your index.scss file into the bundle
 import "../styles/index.css";
 
@@ -12,7 +12,8 @@ import Layout from "./layout.jsx";
 //remove login page and replace with layout to see page.
 //render your react application
 ReactDOM.render(
-<AuthProvider>
-  <Layout />
-</AuthProvider>
-  , document.querySelector("#app"));
+  <AuthProvider>
+    <Layout />
+  </AuthProvider>,
+  document.querySelector("#app")
+);

@@ -3,6 +3,7 @@ import useStore from "../store/zustand";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserGroup } from "@fortawesome/free-solid-svg-icons";
 import { UserInput } from "./UserInput";
+import { UserGoalProfile } from "./UserGoalProfile";
 
 function Goal(props) {
   const todoItemChecked = (event) => {
@@ -19,6 +20,7 @@ function Goal(props) {
       <input
         key={props.key}
         type="checkbox"
+        label={props.goal_name}
         name="r"
         value="1"
         className="border border-primary rounded-circle"
@@ -74,8 +76,8 @@ function DashboardTask() {
           </div>
         </nav>
       </div>
-      <div className="row">
-        <div className="col-5">
+      <div className="row rowMiddle">
+        <div className="col-5 goalTaskCol">
           <div className="tab-content" id="nav-tabContent">
             {selectedCategories.map((item, index) => {
               return (
@@ -103,18 +105,56 @@ function DashboardTask() {
             })}
           </div>
         </div>
-        <div className="col-7">
-          <button id="buddyBtn" className="raise">
-            <h5>Find a Buddy</h5>
+        <div className="col-7 findBtnCol">
+          <button
+            id="buddyBtn"
+            className="raise"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            <h5 id="findBuddy">Find a Buddy</h5>
             <FontAwesomeIcon icon={faUserGroup}></FontAwesomeIcon>
           </button>
+          <div
+            className="modal fade"
+            id="exampleModal"
+            tabIndex="-1"
+            aria-labelledby="modal-title"
+            aria-hidden="true"
+          >
+            <div className="modal-dialog">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title" id="modal-title">
+                    Modal Title
+                  </h5>
+                  <button
+                    type="button"
+                    className="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div className="modal-body">
+                  <UserGoalProfile />
+                  <UserGoalProfile />
+                  <UserGoalProfile />
+                  <UserGoalProfile />
+                  <UserGoalProfile />
+                </div>
+                <div className="modal-footer">
+                  <p>this is the modal footer</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div className="row">
         <div className="col-6">
           <UserInput />
         </div>
-        <div className="col-6"> User Progress</div>
+        <div className="col-6"> User Progress (Sieras code!!!)</div>
       </div>
     </div>
   );

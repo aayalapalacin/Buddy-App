@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSquareCheck } from "@fortawesome/free-solid-svg-icons";
+import { faStrikethrough } from "@fortawesome/free-solid-svg-icons";
+import "../views/DragDrop/dragDrop.css";
 
 export const UserInput = () => {
   const [listItem, setListItem] = useState("");
@@ -11,11 +15,18 @@ export const UserInput = () => {
     }
   };
   const todo = variable.map((item, index) => {
-    console.log("item", item);
-    console.log("index", index);
-    console.log("variable", variable);
+    const strikeThroughItem = () => {
+      return <p className="text-decoration-line-through">{item}</p>;
+    };
     return (
-      <li className="list-group-item item" key={index}>
+      <li className="list-group-item item " key={index}>
+        <button id="strikeBtn">
+          <FontAwesomeIcon
+            id="checkboxIcon"
+            icon={faSquareCheck}
+            onClick={strikeThroughItem}
+          ></FontAwesomeIcon>
+        </button>
         {item}
 
         <div className="mouseOver" onClick={() => remove(index)}>
@@ -35,7 +46,7 @@ export const UserInput = () => {
       <div>
         <input
           type="text"
-          className="item userInput"
+          className="item userInput font"
           onKeyDown={todoItem}
           value={listItem}
           onChange={(e) => setListItem(e.target.value)}
@@ -43,7 +54,10 @@ export const UserInput = () => {
         />
       </div>
       <div>
-        <ul id="todoUL">{todo}</ul>
+        <ul className="font" id="todoUL">
+          {" "}
+          {todo}
+        </ul>
       </div>
     </div>
   );
