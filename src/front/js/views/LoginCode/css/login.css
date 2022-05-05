@@ -70,7 +70,8 @@
   left: 0px;
   top: 20px;
   color: #3f3f3f;
-  background-color: #dbdbdb;
+  /* background-color: #dbdbdb; */
+  background-color: #cecece;
   border-radius: 10px;
   border: none;
   /* border-color: #ebbdd8; */
@@ -91,7 +92,7 @@
   left: 0px;
   top: 40px;
   color: #3f3f3f;
-  background-color: #dbdbdb;
+  background-color: #cecece;
   border-radius: 10px;
   border: none;
   /* border-color: #ebbdd8; */
