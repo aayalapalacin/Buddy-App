@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Category, Goal
+from api.models import db, Account, Category, Goal
 from api.utils import generate_sitemap, APIException
 from flask_cors import cross_origin
 
@@ -47,7 +47,7 @@ def cateogry_goals(cat_id):
 
 @api.route('/register', methods=['GET'])
 def get_user_data():
-    registers = User.query.all()
+    registers = Account.query.all()
     all_registers = list(map(lambda x:x.serialize(),user))
     return jsonify(all_registers), 200    
 
@@ -55,12 +55,12 @@ def get_user_data():
 @api.route('/register', methods=['POST'])
 def register_user():
     data = request.get_json()
-    user_exists =  User.query.filter(User.email==data["email"]).count()>0
+    user_exists =  Account.query.filter(Account.email==data["email"]).count()>0
 
     if user_exists:
         return "user exists", 400
 
-    user = User(
+    user = Account(
         email = data["email"],
         password = data["password"],
         is_active = True
@@ -74,7 +74,7 @@ def register_user():
 
 @api.route('/register/<int:register_id>', methods=['GET'])
 def get_register(register_id):
-    registers = User.query.get(user_id)
+    registers = Account.query.get(user_id)
     if registers is None:
         raise APIException('user not found', status_code=404)
     return jsonify(registers.serialize()), 200
@@ -82,7 +82,7 @@ def get_register(register_id):
 
 @api.route('/login', methods=['GET'])
 def get_login_data():
-    login = User.query.all()
+    login = Account.query.all()
     all_login = list(map(lambda x:x.serialize(),registers))
     return jsonify(login), 200  
 
@@ -91,7 +91,7 @@ def get_login_data():
 def login():
     email = request.json.get("email", None)
     password = request.json.get("password", None)
-    user = User.query.filter_by(email=email).one_or_none()
+    user = Account.query.filter_by(email=email).one_or_none()
     if user is not None:
         if user.check_password_hash(password):
             access_token = create_access_token(identity=email)
@@ -100,9 +100,9 @@ def login():
 
 
 
-@api.route('/coordinator', methods=['GET'])
-@jwt_required()
-def coordinator():
-    current_coordinator_id = get_jwt_identity()
-    coordinator = Coordinator.query.get(current_coordinator_id)
-    return jsonify({"id": coordinator.id, "email": coordinator.email }), 200
+# @api.route('/coordinator', methods=['GET'])
+# @jwt_required()
+# def coordinator():
+#     current_coordinator_id = get_jwt_identity()
+#     coordinator = Coordinator.query.get(current_coordinator_id)
+#     return jsonify({"id": coordinator.id, "email": coordinator.email }), 200
