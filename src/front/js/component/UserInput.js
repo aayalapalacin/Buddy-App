@@ -7,6 +7,7 @@ import "../views/DragDrop/dragDrop.css";
 export const UserInput = () => {
   const [listItem, setListItem] = useState("");
   const [variable, setVariable] = useState([]);
+
   const todoItem = (event) => {
     if (event.keyCode === 13) {
       const newTodoItem = [...variable, listItem];
@@ -14,20 +15,28 @@ export const UserInput = () => {
       setListItem("");
     }
   };
+
+  const strikeThroughItem = () => {
+    if (strikeStatus === false) {
+      setStrikeStatus(true);
+    } else {
+      setStrikeStatus(false);
+    }
+  };
+
   const todo = variable.map((item, index) => {
-    const strikeThroughItem = () => {
-      return <p className="text-decoration-line-through">{item}</p>;
-    };
     return (
       <li className="list-group-item item " key={index}>
-        <button id="strikeBtn">
+        {/* <button id="strikeBtn">
           <FontAwesomeIcon
             id="checkboxIcon"
             icon={faSquareCheck}
-            onClick={strikeThroughItem}
+            // onClick={strikeThroughItem}
           ></FontAwesomeIcon>
-        </button>
-        {item}
+        </button> */}
+
+        <input name="cb" type="checkbox" id="cb"></input>
+        <p class="strikethrough">{item}</p>
 
         <div className="mouseOver" onClick={() => remove(index)}>
           x

@@ -501,8 +501,12 @@ button:focus {
   padding-left: 1rem;
   font-size: 1.15rem;
   width: 20rem;
+  bacgkround-color: red;
+  background-color: #ffefd5;
   display: flex;
   justify-content: space-between;
+  border-color: white;
+  filter: drop-shadow(black 3px 1px 1px);
 }
 
 .mouseOver:hover {
@@ -698,4 +702,13 @@ button:focus {
   overflow-x: scroll;
   overflow-y: hidden;
   flex-wrap: nowrap;
+}
+
+#cb {
+  background: black;
+  color: white;
+}
+
+input[id="cb"]:checked ~ p.strikethrough {
+  text-decoration: line-through;
 }
