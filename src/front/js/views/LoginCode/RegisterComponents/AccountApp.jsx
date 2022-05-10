@@ -8,13 +8,28 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import useAuth from "/workspace/Buddy-App/src/front/js/store/zustand.js"
+import useAuth from "/workspace/Buddy-App/src/front/js/store/zustand.js";
+
 import "../css/register.css";
 
 const Register = () => {
-  
+  const actions = useAuth((state) => state.actions);
+  const [name, setName] = useState("");
+  const [user, setUser] = useState("");
+  const [pwd, setPwd] = useState("");
+  const [item, setItem] = useState("");
+  const [taskArray, setTaskArray] = useState(TASKS);
+  useEffect(() => {
+    actions.setName(name);
+  }, []);
+  useEffect(() => {
+    actions.setUser(user);
+  }, []);
+  useEffect(() => {
+    actions.setPwd(pwd);
+  }, []);
 
+ 
   // const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
   // const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
   
@@ -86,16 +101,8 @@ const Register = () => {
           <div className="form">
             <div className="form-group">
               <form >
-                <p
-                
-                  
-                  aria-live="assertive"
-                >
-                  
-                </p>
                 <label htmlFor="username">
                   Username
-          
                 </label>
                 <br></br>
                 <input
