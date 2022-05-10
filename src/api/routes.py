@@ -48,52 +48,52 @@ def cateogry_goals(cat_id):
 @api.route('/register', methods=['GET'])
 def get_user_data():
     registers = Account.query.all()
-    all_registers = list(map(lambda x:x.serialize(),user))
+    all_registers = list(map(lambda x:x.serialize(),registers))
     return jsonify(all_registers), 200    
 
 
 @api.route('/register', methods=['POST'])
 def register_user():
     data = request.get_json()
-    user_exists =  Account.query.filter(Account.email==data["email"]).count()>0
+    account_exists =  Account.query.filter(Account.email==data["email"]).count()>0
 
-    if user_exists:
-        return "user exists", 400
+    if account_exists:
+        return "account exists", 400
 
-    user = Account(
+    account = Account(
         email = data["email"],
         password = data["password"],
         is_active = True
     )
-    db.session.add(user)    
+    db.session.add(account)    
     db.session.commit()
-    return jsonify(user), 200
+    return jsonify(account), 200
 
  
 
 
 @api.route('/register/<int:register_id>', methods=['GET'])
 def get_register(register_id):
-    registers = Account.query.get(user_id)
+    registers = Account.query.get(register_id)
     if registers is None:
-        raise APIException('user not found', status_code=404)
+        raise APIException('account not found', status_code=404)
     return jsonify(registers.serialize()), 200
 
 
 @api.route('/login', methods=['GET'])
 def get_login_data():
     login = Account.query.all()
-    all_login = list(map(lambda x:x.serialize(),registers))
-    return jsonify(login), 200  
+    all_login = list(map(lambda x:x.serialize(),login))
+    return jsonify(all_login), 200  
 
 
 @api.route("/login", methods=["POST"])
 def login():
     email = request.json.get("email", None)
     password = request.json.get("password", None)
-    user = Account.query.filter_by(email=email).one_or_none()
-    if user is not None:
-        if user.check_password_hash(password):
+    account = Account.query.filter_by(email=email).one_or_none()
+    if account is not None:
+        if account.check_password_hash(password):
             access_token = create_access_token(identity=email)
             return jsonify(access_token=access_token)
     return jsonify({"msg": "Invalid credentials."}), 401
