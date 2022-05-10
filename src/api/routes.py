@@ -45,25 +45,27 @@ def cateogry_goals(cat_id):
 
 
 
-@api.route('/register', methods=['GET'])
-def get_user_data():
-    registers = Account.query.all()
-    all_registers = list(map(lambda x:x.serialize(),registers))
-    return jsonify(all_registers), 200    
+@api.route('/accounts', methods=['GET'])
+def get_account_data():
+    accounts = Account.query.all()
+    all_accounts = list(map(lambda x:x.serialize(),accounts))
+    return jsonify(all_accounts), 200    
 
 
 @api.route('/register', methods=['POST'])
 def register_user():
     data = request.get_json()
+    print(data)
     account_exists =  Account.query.filter(Account.email==data["email"]).count()>0
 
     if account_exists:
         return "account exists", 400
 
     account = Account(
+        username = data["username"],
         email = data["email"],
         password = data["password"],
-        is_active = True
+        # is_active = True
     )
     db.session.add(account)    
     db.session.commit()

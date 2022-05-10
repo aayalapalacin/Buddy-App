@@ -1,10 +1,15 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
-// import {useAuth} from "src/front/js/store/zustand.js";
+import useStore from "/workspace/Buddy-App/src/front/js/store/zustand.js";
 import { Link } from "react-router-dom";
 import "../css/login.css";
 
 const LoginForm = () => {
-  // const useAuth = useStore((state) => state.useAuth);
+  const actions = useStore((state) => state.actions);
+
+
+  const [email, setEmail] = useState("")
+  const [pwd, setPwd] = useState("")
+
 
   return (
     <>
@@ -15,8 +20,8 @@ const LoginForm = () => {
               type="text"
               className="username"
               name="name"
-              placeholder="Username"
-              id="username"
+              placeholder="Email"
+              id="email"
               autoComplete="off"
               required
             />
@@ -42,7 +47,7 @@ const LoginForm = () => {
 
           <div>
             <Link to="/WelcomeApp">
-              <button type="submit" value="Login" className="login-button">
+              <button onClick={() => actions.login(email, pwd)} type="submit" value="Login" className="login-button">
                 Login
               </button>
             </Link>

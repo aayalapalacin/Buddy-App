@@ -8,26 +8,36 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
-import useAuth from "/workspace/Buddy-App/src/front/js/store/zustand.js";
+import useStore from "/workspace/Buddy-App/src/front/js/store/zustand.js";
 
 import "../css/register.css";
 
 const Register = () => {
-  const actions = useAuth((state) => state.actions);
-  const [name, setName] = useState("");
+  const actions = useStore((state) => state.actions);
+  
+  const [email, setEmail] = useState("");
   const [user, setUser] = useState("");
   const [pwd, setPwd] = useState("");
-  const [item, setItem] = useState("");
-  const [taskArray, setTaskArray] = useState(TASKS);
-  useEffect(() => {
-    actions.setName(name);
-  }, []);
-  useEffect(() => {
-    actions.setUser(user);
-  }, []);
-  useEffect(() => {
-    actions.setPwd(pwd);
-  }, []);
+  
+ console.log(email);
+ console.log(user);
+ console.log(pwd);
+ 
+ 
+ 
+ 
+ 
+  // const [item, setItem] = useState("");
+  // const [taskArray, setTaskArray] = useState(TASKS);
+  // useEffect(() => {
+  //   actions.setName(name);
+  // }, []);
+  // useEffect(() => {
+  //   actions.setUser(user);
+  // }, []);
+  // useEffect(() => {
+  //   actions.setPwd(pwd);
+  // }, []);
 
  
   // const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
@@ -110,8 +120,8 @@ const Register = () => {
                   type="text"
                   id="username"
                   placeholder="username"
-                  // onChange={(e) => setUser(e.target.value)}
-                  // value={user}
+                  onChange={(e) => setUser(e.target.value)}
+                  value={user}
                   required
                   // aria-invalid={validName ? "false" : "true"}
                   // aria-describedby="uidnote"
@@ -135,8 +145,8 @@ const Register = () => {
                 </p> */}
 
                 <div className="form-group">
-                  <label htmlFor="password">
-                    Password
+                  <label htmlFor="email">
+                    Email
                     {/* <FontAwesomeIcon
                       icon={faCheck}
                       className={validPwd ? "valid" : "hide"}
@@ -149,11 +159,11 @@ const Register = () => {
                   <br></br>
                   <input
                     className="reg-user"
-                    type="password"
-                    id="password"
-                    placeholder="password"
-                    // onChange={(e) => setPwd(e.target.value)}
-                    // value={pwd}
+                    type="text"
+                    id="email"
+                    placeholder="email"
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
                     required
                     // aria-invalid={validPwd ? "false" : "true"}
                     // aria-describedby="pwdnote"
@@ -181,8 +191,8 @@ const Register = () => {
                   </p> */}
                 </div>
                 <div className="form-group">
-                  <label htmlFor="confirm_pwd">
-                    Confirm Password
+                  <label htmlFor="pwd">
+                  Password
                     {/* <FontAwesomeIcon
                       icon={faCheck}
                       className={validMatch && matchPwd ? "valid" : "hide"}
@@ -196,10 +206,10 @@ const Register = () => {
                   <input
                     className="reg-user"
                     type="password"
-                    name="confirm_pwd"
-                    placeholder="confirm password"
-                    // onChange={(e) => setMatchPwd(e.target.value)}
-                    // value={matchPwd}
+                    name="pwd"
+                    placeholder="password"
+                    onChange={(e) => setPwd(e.target.value)}
+                    value={pwd}
                     required
                     // aria-invalid={validMatch ? "false" : "true"}
                     // aria-describedby="confirmnote"
@@ -221,7 +231,7 @@ const Register = () => {
           </div>
           <div className="footer">
             <Link to="/RegisterApp">
-              <button type="button" className="reg-btn">
+              <button onClick={() =>actions.register(user, email, pwd)} type="button" className="reg-btn">
                 Register
               </button>
             </Link>

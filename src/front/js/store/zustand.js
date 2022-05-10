@@ -6,47 +6,47 @@ export const useAuth = create(
       error: false,
       success: false,
       token: null,
-      
-      
-      register: async (email, password) => {
-        const response = await fetch(process.env.BACKEND_URL + '/register',
-          {
-            method: 'POST',
 
-            headers:
-            {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ email: email, password: password}),
 
-          });
-        if (response.status === 200) {
-          set({ success: true })
-          return response;
-        } else {
-          set({ error: true })
-        }
-      },
-      login: async (email, password) => {
-        const response = await fetch(process.env.BACKEND_URL + '/login',
-          {
-            method: 'POST',
+      // register: async (email, password) => {
+      //   const response = await fetch(process.env.BACKEND_URL + '/register',
+      //     {
+      //       method: 'POST',
 
-            headers:
-            {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ email: email, password: password}),
+      //       headers:
+      //       {
+      //         'Content-Type': 'application/json'
+      //       },
+      //       body: JSON.stringify({ email: email, password: password}),
 
-          });
-        if (response.status === 200) {
-         
-          set({ success: true })
-          return response;
-        } else {
-          set({ error: true })
-        }
-      }
+      //     });
+      //   if (response.status === 200) {
+      //     set({ success: true })
+      //     return response;
+      //   } else {
+      //     set({ error: true })
+      //   }
+      // },
+      // login: async (email, password) => {
+      //   const response = await fetch(process.env.BACKEND_URL + '/login',
+      //     {
+      //       method: 'POST',
+
+      //       headers:
+      //       {
+      //         'Content-Type': 'application/json'
+      //       },
+      //       body: JSON.stringify({ email: email, password: password }),
+
+      //     });
+      //   if (response.status === 200) {
+
+      //     set({ success: true })
+      //     return response;
+      //   } else {
+      //     set({ error: true })
+      //   }
+      // }
     })
   )
 );
@@ -140,6 +140,45 @@ const useStore = create((set, get) => ({
           });
         });
     },
+    register: async (username, email, password) => {
+      const response = await fetch(process.env.BACKEND_URL + '/register',
+        {
+          method: 'POST',
+
+          headers:
+          {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ username: username, email: email, password: password }),
+
+        });
+      if (response.status === 200) {
+        set({ success: true })
+        return response;
+      } else {
+        set({ error: true })
+      }
+    },
+    login: async (email, password) => {
+      const response = await fetch(process.env.BACKEND_URL + '/login',
+        {
+          method: 'POST',
+
+          headers:
+          {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ email: email, password: password }),
+
+        });
+      if (response.status === 200) {
+
+        set({ success: true })
+        return response;
+      } else {
+        set({ error: true })
+      }
+    }
   },
 }));
 
