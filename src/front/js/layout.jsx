@@ -14,8 +14,7 @@ import ForgotPassword from "./views/LoginCode/LoginComponents/ForgotPassword/For
 
 import IntroPage from "./views/MainContent/IntroPage.jsx";
 import WelcomeApp from "./views/LoginCode/LoginComponents/WelcomeApp.jsx";
-
-
+import { Navbar } from "./component/navbar.jsx";
 
 //create your first component
 const Layout = () => {
@@ -51,12 +50,14 @@ const Layout = () => {
               <LoginPage />
             </Route>
             <Route exact path="/todoList">
+              <Navbar />
               <TodoList />
             </Route>
             <Route exact path="/">
               <LoginPage />
             </Route>
             <Route exact path="/dashboard">
+              <Navbar />
               <Dashboard />
             </Route>
             {/* add more routes when files merge */}

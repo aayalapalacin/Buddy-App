@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserGroup } from "@fortawesome/free-solid-svg-icons";
 import { UserInput } from "./UserInput";
 import { UserGoalProfile } from "./UserGoalProfile";
-
 function Goal(props) {
   const todoItemChecked = (event) => {
     console.log("props goal id", props.goalId);
@@ -49,7 +48,7 @@ function DashboardTask() {
 
   return (
     <div className="container-fluid">
-      <div className="row">
+      <div className="row categoryRow">
         <nav>
           <div
             className="shadow-longer nav nav-tabs"

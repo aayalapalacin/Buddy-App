@@ -71,7 +71,7 @@ const DayBtn = () => {
 
   return (
     <React.Fragment>
-      <div className="row">
+      <div className="row dayBtnRow">
         <div className="col-4 dropdownDiv">
           <div className="dayBtnDiv dropdown font">
             <Task
