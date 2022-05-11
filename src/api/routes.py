@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Category, Goal
+from api.models import db, Account, Category, Goal
 from api.utils import generate_sitemap, APIException
 from flask_cors import cross_origin
 
@@ -10,6 +10,7 @@ from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import JWTManager
+from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token, decode_token
 
 
 api = Blueprint('api', __name__)
@@ -44,74 +45,57 @@ def cateogry_goals(cat_id):
 
 
 
-@api.route('/register', methods=['GET'])
-def get_user_data():
-    registers = User.query.all()
-    all_registers = list(map(lambda x:x.serialize(),user))
-    return jsonify(all_registers), 200    
+@api.route('/accounts', methods=['GET'])
+def get_account_data():
+    accounts = Account.query.all()
+    all_accounts = list(map(lambda x:x.serialize(),accounts))
+    return jsonify(all_accounts), 200    
 
 
 @api.route('/register', methods=['POST'])
 def register_user():
     data = request.get_json()
-    user_exists =  User.query.filter(User.email==data["email"]).count()>0
+    print(data)
+    account_exists =  Account.query.filter(Account.email==data["email"]).count()>0
 
-    if user_exists:
-        return "user exists", 400
+    if account_exists:
+        return "account exists", 400
 
-    user = User(
+    account = Account(
+        username = data["username"],
         email = data["email"],
         password = data["password"],
-        is_active = True
+        # is_active = True
     )
-    db.session.add(user)    
+    db.session.add(account)    
     db.session.commit()
-    return jsonify(user), 200
+    return jsonify(account.serialize()), 200
 
-
-
-# @api.route('/register', methods=['POST'])
-# def handle_register():
-
-#     # First we get the payload json
-#     body = request.get_json()
-
-#     if body is None:
-#         raise APIException("You need to specify the request body as a json object", status_code=400)
-#     if 'username' not in body:
-#         raise APIException('You need to specify the username', status_code=400)
-#     if 'email' not in body:
-#         raise APIException('You need to specify the email', status_code=400)
-
-#     # at this point, all data has been validated, we can proceed to inster into the bd
-#     user1 = register(username=body['username'], email=body['email'])
-#     db.session.add(user1)
-#     db.session.commit()
-#     return "ok", 200
  
 
 
 @api.route('/register/<int:register_id>', methods=['GET'])
 def get_register(register_id):
-    registers = User.query.get(user_id)
+    registers = Account.query.get(register_id)
     if registers is None:
-        raise APIException('user not found', status_code=404)
+        raise APIException('account not found', status_code=404)
     return jsonify(registers.serialize()), 200
 
 
 @api.route('/login', methods=['GET'])
 def get_login_data():
-    login = User.query.all()
-    all_login = list(map(lambda x:x.serialize(),registers))
-    return jsonify(login), 200  
+    login = Account.query.all()
+    all_login = list(map(lambda x:x.serialize(),login))
+    return jsonify(all_login), 200  
+
 
 @api.route("/login", methods=["POST"])
 def login():
     email = request.json.get("email", None)
-    _password = request.json.get("password", None)
-    user = User.query.filter_by(email=email).one_or_none()
-    if user is not None:
-        if user.check_password_hash(password):
+    password = request.json.get("password", None)
+    account = Account.query.filter_by(email=email).one_or_none()
+    if account is not None:
+        if account.password==password:
             access_token = create_access_token(identity=email)
             return jsonify(access_token=access_token)
     return jsonify({"msg": "Invalid credentials."}), 401
@@ -128,4 +112,5 @@ def post_goal():
     db.session.add(checked_goal)
     db.session.commit()
     return jsonify(checked_goal.serialize()), 200
+
 

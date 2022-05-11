@@ -8,8 +8,26 @@
     margin: 0 auto;
     position: relative;
     bottom: 0;
-    margin-top: 1170px;
+    margin-top: 1500px;
+    border-bottom: 1px solid #40afe2;
 }
 .awards-table{
     font-size: 20px;
+    list-style: none;
 }
+
+/* .awards-title{
+    font-size: 60px;
+} */
+
+.awards-table li{
+    margin-top: 35px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+.awards-icon{
+    color: green;
+    position: absolute;
+    left: 0;
+    font-size: 1.5em;
+}    

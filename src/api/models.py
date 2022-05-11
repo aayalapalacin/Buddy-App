@@ -5,11 +5,11 @@ from werkzeug.security import generate_password_hash, check_password_hash
 db = SQLAlchemy()
 
 
-class User(db.Model):
+class Account(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(120), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    _password = db.Column(db.String(160), unique=False, nullable=False)
+    password = db.Column(db.String(80), unique=False, nullable=False)
     selected_category = db.relationship('SelectedCategory', backref='user',lazy=True)
     # is_active = db.Column(db.Boolean(), unique=False, nullable=False)
 
@@ -25,15 +25,13 @@ class User(db.Model):
             # do not serialize the password, its a security breach
         }
         
-    @hybrid_property
-    def password(self):
-        return self._password
-
-    @password.setter
-    def password(self, password):
-        self._password = generate_password_hash(password)
+    
+   
+    def update_password(self, password):
+        self.password = generate_password_hash(password)
 
     def check_password_hash(self, password):
+        print(generate_password_hash(password))
         return check_password_hash(self.password, password)
     
 
@@ -63,7 +61,7 @@ class Category(db.Model):
 
 class SelectedCategory(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    account_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)
     task_id = db.Column(db.Integer, db.ForeignKey('category.id'), nullable=False)
 
     # def __repr__(self):
@@ -72,7 +70,7 @@ class SelectedCategory(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "user_id": self.user_id,
+            "account_id": self.account_id,
             "category_id": self.category_id,
         }
     

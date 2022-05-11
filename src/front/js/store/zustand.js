@@ -6,47 +6,47 @@ export const useAuth = create(
       error: false,
       success: false,
       token: null,
-      
-      
-      register: async (email, password) => {
-        const response = await fetch(process.env.BACKEND_URL + '/register',
-          {
-            method: 'POST',
 
-            headers:
-            {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ email: email, password: password}),
 
-          });
-        if (response.status === 200) {
-          set({ success: true })
-          return response;
-        } else {
-          set({ error: true })
-        }
-      },
-      login: async (email, password) => {
-        const response = await fetch(process.env.BACKEND_URL + '/login',
-          {
-            method: 'POST',
+      // register: async (email, password) => {
+      //   const response = await fetch(process.env.BACKEND_URL + '/register',
+      //     {
+      //       method: 'POST',
 
-            headers:
-            {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ email: email, password: password}),
+      //       headers:
+      //       {
+      //         'Content-Type': 'application/json'
+      //       },
+      //       body: JSON.stringify({ email: email, password: password}),
 
-          });
-        if (response.status === 200) {
-         
-          set({ success: true })
-          return response;
-        } else {
-          set({ error: true })
-        }
-      }
+      //     });
+      //   if (response.status === 200) {
+      //     set({ success: true })
+      //     return response;
+      //   } else {
+      //     set({ error: true })
+      //   }
+      // },
+      // login: async (email, password) => {
+      //   const response = await fetch(process.env.BACKEND_URL + '/login',
+      //     {
+      //       method: 'POST',
+
+      //       headers:
+      //       {
+      //         'Content-Type': 'application/json'
+      //       },
+      //       body: JSON.stringify({ email: email, password: password }),
+
+      //     });
+      //   if (response.status === 200) {
+
+      //     set({ success: true })
+      //     return response;
+      //   } else {
+      //     set({ error: true })
+      //   }
+      // }
     })
   )
 );
@@ -63,7 +63,7 @@ export const useAuth = create(
 //     body: JSON.stringify({ email: email, password: password }),
 //   };
 //   const response = await fetch(
-//     process.env.BACKEND_URL + `/api/token`,
+//     process.env.BACKEND_URL + `/token`,
 //     options
 //   );
 //   if (!response.ok)
@@ -102,7 +102,7 @@ const useStore = create((set, get) => ({
         mode: "cors",
       };
 
-      fetch(process.env.BACKEND_URL + "/api/goals", requestOptions)
+      fetch(process.env.BACKEND_URL + "/goals", requestOptions)
         // fetch(
         //   "https://3001-avokeys-buddyapp-4rimlyd8qp6.ws-us41.gitpod.io/api/categories",
         //   requestOptions
@@ -128,7 +128,7 @@ const useStore = create((set, get) => ({
       };
       console.log("process env", process.env.BACKEND_URL);
 
-      fetch(process.env.BACKEND_URL + "/api/categories", requestOptions)
+      fetch(process.env.BACKEND_URL + "/categories", requestOptions)
         // fetch(
         //   "https://3001-avokeys-buddyapp-4rimlyd8qp6.ws-us41.gitpod.io/api/categories",
         //   requestOptions
@@ -140,6 +140,43 @@ const useStore = create((set, get) => ({
           });
         });
     },
+    register: async (username, email, password) => {
+      const response = await fetch(process.env.BACKEND_URL + '/register',
+        {
+          method: 'POST',
+
+          headers:
+          {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ username: username, email: email, password: password }),
+
+        });
+      if (response.status === 200) {
+        set({ success: true })
+        return response;
+      } else {
+        set({ error: true })
+      }
+    },
+    login: async (email, password) => {
+      const response = await fetch(process.env.BACKEND_URL + '/login',
+        {
+          method: 'POST',
+
+          headers:
+          {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ email: email, password: password }),
+
+        });
+      if (response.status === 200) {      
+        return await response.json();
+      } else {
+       throw Error("We couldn't find an account with that email and password");
+      }
+    }
   },
 }));
 

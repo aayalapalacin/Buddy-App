@@ -1,24 +1,33 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
-// import {useAuth} from "src/front/js/store/zustand.js";
-import { Link } from "react-router-dom";
+import useStore from "/workspace/Buddy-App/src/front/js/store/zustand.js";
+import { Link, useHistory } from "react-router-dom";
 import "../css/login.css";
 
 const LoginForm = () => {
-  // const useAuth = useStore((state) => state.useAuth);
+  const actions = useStore((state) => state.actions);
+  const history = useHistory();
+
+  const [email, setEmail] = useState("");
+  const [pwd, setPwd] = useState("");
+  const [err, setErr] = useState(null);
 
   return (
     <>
+      {" "}
+      {err && <div className="alert alert-danger">{err}</div>}
       <div className="inputs">
-        <form>
+        <form onSubmit={(e) => e.preventDefault()}>
           <label>
             <input
               type="text"
               className="username"
               name="name"
-              placeholder="Username"
-              id="username"
+              placeholder="Email"
+              id="email"
               autoComplete="off"
               required
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
             />
           </label>
           <br></br>
@@ -29,6 +38,8 @@ const LoginForm = () => {
               placeholder="Password"
               id="password"
               required
+              onChange={(e) => setPwd(e.target.value)}
+              value={pwd}
             />
           </label>
           <br></br>
@@ -41,11 +52,19 @@ const LoginForm = () => {
           </Link>
 
           <div>
-            <Link to="/WelcomeApp">
-              <button type="submit" value="Login" className="login-button">
-                Login
-              </button>
-            </Link>
+            <button
+              onClick={() =>
+                actions
+                  .login(email, pwd)
+                  .then(() => history.push("/WelcomeApp"))
+                  .catch((error) => setErr(error.message))
+              }
+              type="submit"
+              value="Login"
+              className="login-button"
+            >
+              Login
+            </button>
             <Link to="/AccountApp">
               <button className="account-button">Create a new account</button>
             </Link>
