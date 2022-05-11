@@ -69,7 +69,7 @@ def register_user():
     )
     db.session.add(account)    
     db.session.commit()
-    return jsonify(account), 200
+    return jsonify(account.serialize()), 200
 
  
 
@@ -95,7 +95,7 @@ def login():
     password = request.json.get("password", None)
     account = Account.query.filter_by(email=email).one_or_none()
     if account is not None:
-        if account.check_password_hash(password):
+        if account.password==password:
             access_token = create_access_token(identity=email)
             return jsonify(access_token=access_token)
     return jsonify({"msg": "Invalid credentials."}), 401

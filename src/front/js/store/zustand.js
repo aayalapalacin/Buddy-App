@@ -63,7 +63,7 @@ export const useAuth = create(
 //     body: JSON.stringify({ email: email, password: password }),
 //   };
 //   const response = await fetch(
-//     process.env.BACKEND_URL + `/api/token`,
+//     process.env.BACKEND_URL + `/token`,
 //     options
 //   );
 //   if (!response.ok)
@@ -102,7 +102,7 @@ const useStore = create((set, get) => ({
         mode: "cors",
       };
 
-      fetch(process.env.BACKEND_URL + "/api/goals", requestOptions)
+      fetch(process.env.BACKEND_URL + "/goals", requestOptions)
         // fetch(
         //   "https://3001-avokeys-buddyapp-4rimlyd8qp6.ws-us41.gitpod.io/api/categories",
         //   requestOptions
@@ -128,7 +128,7 @@ const useStore = create((set, get) => ({
       };
       console.log("process env", process.env.BACKEND_URL);
 
-      fetch(process.env.BACKEND_URL + "/api/categories", requestOptions)
+      fetch(process.env.BACKEND_URL + "/categories", requestOptions)
         // fetch(
         //   "https://3001-avokeys-buddyapp-4rimlyd8qp6.ws-us41.gitpod.io/api/categories",
         //   requestOptions
@@ -171,12 +171,10 @@ const useStore = create((set, get) => ({
           body: JSON.stringify({ email: email, password: password }),
 
         });
-      if (response.status === 200) {
-
-        set({ success: true })
-        return response;
+      if (response.status === 200) {      
+        return await response.json();
       } else {
-        set({ error: true })
+       throw Error("We couldn't find an account with that email and password");
       }
     }
   },
