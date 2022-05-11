@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 const TodoList = () => {
   return (
-    <div className="container">
+    <div className="container-fluid">
       <div className="row">
         <div className="col-12">
           <DndProvider backend={HTML5Backend}>

@@ -102,9 +102,15 @@ def login():
 
 
 
-# @api.route('/coordinator', methods=['GET'])
-# @jwt_required()
-# def coordinator():
-#     current_coordinator_id = get_jwt_identity()
-#     coordinator = Coordinator.query.get(current_coordinator_id)
-#     return jsonify({"id": coordinator.id, "email": coordinator.email }), 200
+
+@api.route('/goal', methods=['POST'])
+@cross_origin()
+def post_goal():
+    json = request.json
+    checked_goal = Goal.query.filter_by(id=json["id"]).one_or_none()
+    checked_goal.is_done = json["is_done"]
+    db.session.add(checked_goal)
+    db.session.commit()
+    return jsonify(checked_goal.serialize()), 200
+
+
