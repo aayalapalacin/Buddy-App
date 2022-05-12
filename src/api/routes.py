@@ -35,12 +35,23 @@ def cateogry_goals(cat_id):
 @api.route('/goal', methods=['PUT'])
 @cross_origin()
 def change_goal():
-    json = request.json
-    checked_goal = Goal.query.filter_by(id=json["id"]).one_or_none()
-    checked_goal.is_done = json["is_done"]
+    data = request.get_json()
+    print("data variable",data)
+    # print(data["id"])
+    # print(data["is_done"])
+    checked_goal = Goal.query.filter_by(id=data["id"]).one_or_none()
+    checked_goal.is_done = data["is_done"]
     db.session.commit()
     return jsonify(checked_goal.serialize()), 200
 
+@api.route("/signup", methods=['POST'])
+@cross_origin()
+def user_signup():
+    data = request.get_json()
+    user = User(username = data["username"],email = data["email"],password = data["password"], inspiration = data["inspiration"], fun_fact = data["fun_fact"])
+    db.session.add(user)
+    db.session.commit()
+    return jsonify(user.serialize())
 # @api.route('/update_goal', methods=['PUT'])
 # @cross_origin()
 # def change_goal():

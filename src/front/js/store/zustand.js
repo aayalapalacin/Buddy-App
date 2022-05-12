@@ -31,12 +31,34 @@ const useStore = create((set, get) => ({
         });
     },
 
+    register: (user, email, pwd, inspiration, funFact) => {
+      var requestOptions = {
+        method: "POST",
+        // redirect: "follow",
+        // mode: "cors",
+        body: JSON.stringify({
+          username: user,
+          email: email,
+          password: pwd,
+          inspiration: inspiration,
+          fun_fact: funFact,
+        }),
+        headers: { "Content-type": "application/json" },
+      };
+      fetch(process.env.BACKEND_URL + "/api/signup", requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+          console.log(result);
+        });
+    },
+
     changeGoal: (boolean, id) => {
       var requestOptions = {
         method: "PUT",
-        redirect: "follow",
-        mode: "cors",
+        // redirect: "follow",
+        // mode: "cors",
         body: JSON.stringify({ is_done: boolean, id: id }),
+        headers: { "Content-type": "application/json" },
       };
       fetch(process.env.BACKEND_URL + "/api/goal", requestOptions)
         .then((response) => response.json())

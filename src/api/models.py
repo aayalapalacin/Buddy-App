@@ -8,6 +8,11 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
     selected_category = db.relationship('SelectedCategory', backref='user',lazy=True)
+    inspiration = db.Column(db.String(250), unique=False, nullable=False)
+    fun_fact = db.Column(db.String(250), unique=False, nullable=False)
+
+
+
     # is_active = db.Column(db.Boolean(), unique=False, nullable=False)
 
     def __repr__(self):
@@ -17,9 +22,12 @@ class User(db.Model):
         return {
             "id": self.id,
             "email": self.email,
-            "username": self.username
+            "username": self.username,
+            "inspiration": self.inspiration,
+            "fun_fact": self.fun_fact
+
             # serialize line10?
-            # do not serialize the password, its a security breach
+            # do not serialize the password,l its a security breach
         }
 
     

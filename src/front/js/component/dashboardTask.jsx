@@ -7,6 +7,7 @@ import { UserGoalProfile } from "./UserGoalProfile";
 
 function Goal(props) {
   const actions = useStore((state) => state.actions);
+  const [boolean, setBoolean] = useState(props.isChecked);
 
   const todoItemChecked = (event) => {
     console.log("props goal id", props.goalId);
@@ -14,8 +15,8 @@ function Goal(props) {
     event.persist();
     // if (event.target.checked == true) {
     // }
-    actions.changeGoal(!event.target.checked, props.goalId);
-    console.log("event", event);
+    console.log("event target checked", event.target.checked);
+    actions.changeGoal(!boolean, props.goalId);
   };
 
   return (
