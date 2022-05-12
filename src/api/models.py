@@ -78,7 +78,6 @@ class Goal(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     goal_name = db.Column(db.String(120), unique=True, nullable=False)
     category_id = db.Column(db.Integer, db.ForeignKey('category.id'))
-    is_done = db.Column(db.Boolean, default= False)
     # category = db.relationship('Category')
     # selected_category = db.relationship('SelectedCategory',backref='category')
     # is_active = db.Column(db.Boolean(), unique=False, nullable=False)
@@ -88,6 +87,5 @@ class Goal(db.Model):
         return {
             "id": self.id,
             "goal_name": self.goal_name,
-            "is_done": self.is_done
             
         }
