@@ -1,9 +1,9 @@
 .register-container {
-  height: 600px;
+  height: 555px;
   width: 600px;
   border-radius: 30px;
   /* background-color: #2f848b; */
-  background: linear-gradient(-45deg, #35577D, #2f848b);
+  background: linear-gradient(-45deg, #35577d, #2f848b);
   color: #fff;
   margin: auto;
   position: absolute;
@@ -21,13 +21,13 @@
   flex-direction: column;
   justify-content: flex-start;
   padding: 1rem;
+  margin-top: 8rem;
 }
 
-.buddy-logo{
+.buddy-logo {
   color: rgba(255, 255, 255, 0.5);
   width: 190px;
   border-radius: 5px;
- 
 }
 /* .content {
   text-align: center;
@@ -47,7 +47,6 @@ h1 {
   font-weight: 600;
   border: none;
 }
-
 
 .reg-btn {
   font-size: 20px;

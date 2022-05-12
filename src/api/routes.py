@@ -32,15 +32,26 @@ def cateogry_goals(cat_id):
     goal_serialized = [goal.serialize() for goal in goal_list] 
     return jsonify(goal_serialized), 200
 
-@api.route('/goal', methods=['POST'])
+@api.route('/goal', methods=['PUT'])
 @cross_origin()
-def post_goal():
+def change_goal():
     json = request.json
     checked_goal = Goal.query.filter_by(id=json["id"]).one_or_none()
     checked_goal.is_done = json["is_done"]
-    db.session.add(checked_goal)
     db.session.commit()
     return jsonify(checked_goal.serialize()), 200
+
+# @api.route('/update_goal', methods=['PUT'])
+# @cross_origin()
+# def change_goal():
+#     json = request.json
+#     current_goal = Goal.query.filter_by(id=json["id"]).first() 
+#     print(current_goal)
+#     checked_goal.is_done = json["is_done"]
+#     db.session.add(checked_goal)
+#     db.session.commit()
+#     return jsonify(checked_goal.serialize()), 200
+
 
 # @api.route('/goals', methods=['GET'])
 # @cross_origin()

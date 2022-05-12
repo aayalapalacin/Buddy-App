@@ -5,7 +5,7 @@ export function Navbar() {
   return (
     <header className="main-header">
       <div className="container">
-        <nav className="navbar navbar-expand-lg main-nav px-0 pt-0">
+        <nav className="navbar navbar-expand-lg main-nav px-0 pt-0 navbarContainer">
           <img
             src={buddyImg}
             id="userGoalPic"
@@ -28,13 +28,20 @@ export function Navbar() {
           <div className="collapse navbar-collapse" id="mainMenu">
             <ul className="navbar-nav ml-auto text-uppercase f1">
               <li>
-                <a href="#home">Home</a>
+                <a href="/">Home</a>
               </li>
               <li>
-                <a href="#about">Login</a>
+                <a href="/LoginPage">Login</a>
               </li>
               <li>
-                <a href="#service">About</a>
+                <a href="/AccountApp">Sign Up</a>
+                {/* <Link to="/LoginPage">
+            <button className="nav-login">Login</button>
+          </Link>
+    
+          <Link to="/AccountApp">
+            <button className="nav-register">Sign up</button>
+          </Link> */}
               </li>
             </ul>
           </div>

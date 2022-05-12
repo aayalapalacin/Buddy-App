@@ -5,13 +5,13 @@ import DayBtn from "./dayBtn.jsx";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import "./dragDrop.css";
-import buddyImg from "../../../img/buddyapp2.png";
+import sucess from "../../../img/sucess.png";
 import { Link } from "react-router-dom";
 
 const TodoList = () => {
   return (
     <div className="container-fluid">
-      <div className="row">
+      <div className="row dayBtnRow1">
         <div className="col-12">
           <DndProvider backend={HTML5Backend}>
             <DayBtn />
@@ -21,7 +21,7 @@ const TodoList = () => {
       <div className="row">
         <div className="col-4"></div>
         <div className="col-4">
-          <div class="box box2">
+          <div class="box box2 boxDrag">
             <div class="evenboxinner font">
               <h5>1. Choose Your Goals</h5>
               <h5>2. Drag to Commit</h5>
@@ -36,10 +36,10 @@ const TodoList = () => {
           ></FontAwesomeIcon>
         </div>
       </div>
-      <div className="row ">
+      <div className="row dayBtnRow1 ">
         <div className="col-6">
           <div id="photoSampleDiv">
-            <img id="pieChart" src={buddyImg} alt="pie chart" />
+            <img id="pieChart" src={sucess} alt="pie chart" />
           </div>
         </div>
         <div className="col-6 readyBtnCol font">

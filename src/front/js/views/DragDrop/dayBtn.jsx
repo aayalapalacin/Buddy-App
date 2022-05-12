@@ -110,7 +110,7 @@ const DayBtn = () => {
         </div>
         <div className="col-4 dayBtnCol">
           <div className="dayButton" ref={dropRef}>
-            <ul className="list-group list-group-flush font">
+            <ul className="list-group list-group-flush font dropBtn">
               {dayButton.map((task) => (
                 <SelectedTask key={task.id} task={task.task} />
               ))}

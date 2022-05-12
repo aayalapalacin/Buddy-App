@@ -31,6 +31,25 @@ const useStore = create((set, get) => ({
         });
     },
 
+    changeGoal: (boolean, id) => {
+      var requestOptions = {
+        method: "PUT",
+        redirect: "follow",
+        mode: "cors",
+        body: JSON.stringify({ is_done: boolean, id: id }),
+      };
+      fetch(process.env.BACKEND_URL + "/api/goal", requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+          let info = get().goals;
+          let filter = info.filter((item, index) => item.id != id);
+          let updated = [...filter, result];
+          set({
+            goals: updated,
+          });
+        });
+    },
+
     selectedCategories: (array) => {
       set({
         selectedCategories: array,

@@ -4,13 +4,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserGroup } from "@fortawesome/free-solid-svg-icons";
 import { UserInput } from "./UserInput";
 import { UserGoalProfile } from "./UserGoalProfile";
+
 function Goal(props) {
+  const actions = useStore((state) => state.actions);
+
   const todoItemChecked = (event) => {
     console.log("props goal id", props.goalId);
     event.preventDefault();
     event.persist();
-    if (event.target.checked == true) {
-    }
+    // if (event.target.checked == true) {
+    // }
+    actions.changeGoal(!event.target.checked, props.goalId);
     console.log("event", event);
   };
 
@@ -47,11 +51,11 @@ function DashboardTask() {
   }, [selectedCategories]);
 
   return (
-    <div className="container-fluid">
+    <div className="container-fluid ">
       <div className="row categoryRow">
         <nav>
           <div
-            className="shadow-longer nav nav-tabs"
+            className="shadow-longer nav nav-tabs "
             id="nav-tab"
             role="tablist"
           >
@@ -112,7 +116,10 @@ function DashboardTask() {
             data-bs-target="#exampleModal"
           >
             <h5 id="findBuddy">Find a Buddy</h5>
-            <FontAwesomeIcon icon={faUserGroup}></FontAwesomeIcon>
+            <FontAwesomeIcon
+              className="dashBuddyIcon"
+              icon={faUserGroup}
+            ></FontAwesomeIcon>
           </button>
           <div
             className="modal fade"
@@ -147,13 +154,21 @@ function DashboardTask() {
               </div>
             </div>
           </div>
+          <div className="box box2 instructionsDashboard">
+            <div className="evenboxinner font">
+              <h5>1. Choose Your Goals</h5>
+              <h5>2. Drag to Commit</h5>
+              <h5>3. Click Ready to Start Your Journey!</h5>
+            </div>
+          </div>
         </div>
       </div>
-      <div className="row">
+      <div className="row todoListRow">
         <div className="col-6">
+          <h1 className="font todoListTitle">Todo List</h1>
           <UserInput />
         </div>
-        <div className="col-6"> User Progress (Sieras code!!!)</div>
+        <div className="col-6"></div>
       </div>
     </div>
   );

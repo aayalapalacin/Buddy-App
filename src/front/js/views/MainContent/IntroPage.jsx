@@ -1,6 +1,5 @@
 import React from "react";
 
-import Topbar from "./navbar.jsx";
 import Heading from "./DifferentCards/Heading/Heading.jsx";
 import ContactUs from "./DifferentCards/Contact/ContactUs.jsx";
 import Awards from "./DifferentCards/Awards/Awards.jsx";
@@ -12,7 +11,6 @@ import "./main-content.css";
 const IntroPage = () => {
   return (
     <div>
-      <Topbar />
       <div className="main-content">
         <Container>
           <Row>

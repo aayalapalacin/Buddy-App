@@ -89,6 +89,7 @@
 		"react-dnd": "^15.1.1",
 		"react-dnd-html5-backend": "^15.1.2",
 		"react-dom": "^16.8.4",
+		"react-gradient-progress": "^1.0.3",
 		"react-polyfills": "0.0.1",
 		"react-router-dom": "^5.2.0",
 		"zustand": "^3.7.1"

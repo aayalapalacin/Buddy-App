@@ -6,24 +6,23 @@
 body {
   margin: 0;
   padding: 0;
-  background: linear-gradient(315deg, #f9ea8f 0%,  #aff1da 74%);
+  background-color: rgb(214 210 210);
+
   /* background: linear-gra; */
   /* background-color: #f0f1f3;; */
-  
+
   @media (max-width: 1400px) {
     html {
       font-size: 25px;
     }
   }
-  
-  
-  
+
   @media (max-width: 768px) {
     html {
       font-size: 18px;
     }
   }
-  
+
   @media (max-width: 450px) {
     html {
       font-size: 12px;
@@ -31,4 +30,3 @@ body {
   }
 }
 /*  */
-

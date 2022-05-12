@@ -1,15 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&display=swap");
 
-
-
 .login-container {
   height: 550px;
   width: 500px;
   border-radius: 30px;
   /* background-color: #2f848b; */
-  background: linear-gradient(-45deg, #35577D, #2f848b);
+  background: linear-gradient(-45deg, #35577d, #2f848b);
   margin: auto;
-
+  margin-top: 8rem;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -103,7 +101,6 @@
 
 /* logo stuff */
 
-
 /* welcome stuff*/
 
 .welcome {
@@ -115,15 +112,15 @@
   text-align: center;
   margin: auto;
   /* margin-top: 100px; */
-  background: linear-gradient(-45deg, #bdbebe, gray) ;
+  background: linear-gradient(-45deg, #bdbebe, gray);
   height: 100%;
   width: 800px;
   border-radius: 15px;
 }
-.welcome-card{
- margin: auto;
- position: relative;
- top: 25%;
+.welcome-card {
+  margin: auto;
+  position: relative;
+  top: 25%;
 }
 .welcome-title {
   font-size: 60px;
@@ -142,7 +139,7 @@
 
 /* logged in page css */
 
-.buttonsnshit{
+.buttonsnshit {
   margin-top: 100px;
 }
 

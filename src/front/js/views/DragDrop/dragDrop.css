@@ -7,8 +7,19 @@
   display: flex;
   justify-content: center;
   margin-top: 0.1rem;
+  position: relative;
   filter: drop-shadow(black 0px 2px 1px);
   margin-bottom: 1rem;
+}
+
+.instructionsDashboard {
+  width: 22rem;
+  height: 11.5rem;
+  border-width: 3px 3px 5px 5px;
+  position: relative;
+  border-radius: 4% 95% 6% 95%/95% 4% 92% 5%;
+  transform: rotate(-2deg);
+  left: 8rem;
 }
 
 .btn-dark-moon {
@@ -17,6 +28,9 @@
   border: 3px solid #eee;
 }
 
+.todoListRow {
+  margin-top: 1rem;
+}
 .btn:hover {
   border: 3px solid #00fff6;
   color: white;
@@ -31,23 +45,24 @@
 }
 
 .box2 {
-  width: 20rem;
-  height: 8.5rem;
+  width: 22rem;
+  height: 11.5rem;
   border-width: 3px 3px 5px 5px;
   border-radius: 4% 95% 6% 95%/95% 4% 92% 5%;
   transform: rotate(-2deg);
 }
 
 body {
-  background-color: #f9ea8f;
-  background-image: linear-gradient(315deg, #f9ea8f 0%, #aff1da 74%);
+  background-color: rgb(222 222 222);
 }
+/* background-color: #f9ea8f;
+  background-image: linear-gradient(315deg, #f9ea8f 0%, #aff1da 74%); */
 
 .categoryBtn {
   background-color: #ffefd5;
   color: black;
   border: none;
-  width: 11rem;
+  width: 15rem;
   font-size: 1.9rem;
   height: 3.8rem;
   filter: drop-shadow(black 1px 3px 1px);
@@ -58,19 +73,27 @@ body {
 }
 .evenboxinner h5 {
   font-family: "Patrick Hand", cursive;
-  padding-left: 1.5rem;
+  padding-left: 2.3rem;
+  font-size: 1.7rem;
 }
 
-#findBuddy h5 {
-  font-size: 1.4rem;
+.dashBuddyIcon {
+  font-size: 2.3rem;
+}
+
+#findBuddy {
+  font-size: 2rem;
 }
 .arrowRight {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  right: 1.5rem;
+  bottom: 1rem;
 }
 .arrowSize {
-  font-size: 3.6rem;
+  font-size: 4.5rem;
 }
 #gripIcon {
   padding-left: 0.5rem;
@@ -82,12 +105,31 @@ body {
   width: 100vw;
 }
 .container-fluid {
-  margin: 6.5rem 3rem 3rem 3rem;
+  margin: 2.5rem 3rem 3rem 3rem;
 }
 
 #photoSampleDiv {
-  width: 21rem;
+  width: 16rem;
   height: 14rem;
+  margin-left: 4.5rem;
+}
+
+.dropBtn {
+  font-size: 1.3rem;
+}
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 0.25rem 1rem;
+  clear: both;
+  font-weight: 400;
+  color: #212529;
+  text-align: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+  font-size: 1.3rem;
+  background-color: transparent;
+  border: 0;
 }
 
 .dropdownDiv {
@@ -107,6 +149,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: end;
+  position: relative;
+}
+
+.boxDrag {
+  position: relative;
+  top: 2rem;
 }
 
 #pieChart {
@@ -114,7 +162,6 @@ body {
   height: auto;
   position: relative;
   left: 2rem;
-  margin-bottom: 3rem;
 }
 .dayBtnDiv {
   display: inline;
@@ -126,27 +173,41 @@ body {
   color: black;
 }
 
-.dayBtnRow {
-  margin-top: 2rem;
+.navbarContainer {
+  height: 6rem;
 }
+/* .dayBtnRow {
+  margin-top: 2rem;
+} */
 /* .rowMiddle {
   margin-bottom: 2rem;
 } */
 
-.categoryRow {
-  padding-top: 3rem;
-}
 #strikeBtn button:hover,
 button:focus {
   color: black;
 }
+
 .font {
   font-family: "Patrick Hand", cursive;
+}
+
+.homeParagraph {
+  font-size: 1.3rem;
+  padding: 0.5rem 0rem 0rem 1rem;
+}
+.homeHeader {
+  font-size: 3.4rem;
+  padding-left: 1rem;
+}
+
+.homeBtn {
+  border-radius: 5rem;
 }
 .readyButton {
   justify-content: right;
   display: flex;
-  margin-bottom: 2rem;
+  position: relative;
 }
 
 .readyButton button {
@@ -177,6 +238,11 @@ button:focus {
   box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.812);
   background-color: #ffefd5;
   color: black;
+}
+
+.categoryBtn {
+  position: relative;
+  bottom: 2rem;
 }
 
 .btn-warning {
@@ -502,16 +568,26 @@ button:focus {
 .itemsLeftDiv {
   padding: 0px 0px 5px 12px;
 }
+.todoListTitle {
+  margin-top: 0rem;
+}
+
+.rowMiddle {
+  margin-top: 1rem;
+}
 
 .item {
   padding-left: 1rem;
   font-size: 1.15rem;
   width: 20rem;
+  padding-bottom: 0.3rem;
+  padding-top: 0.4rem;
   background-color: #ffefd5;
   display: flex;
   justify-content: space-between;
   border-color: white;
   filter: drop-shadow(black 3px 1px 1px);
+  height: 2.5rem;
 }
 
 .mouseOver:hover {
@@ -571,18 +647,22 @@ button:focus {
   font: inherit;
   line-height: 1;
   padding: 0.6rem;
-  width: 8rem;
+  width: 11rem;
+  height: 10rem;
   color: #078dff;
   border-radius: 25%;
   filter: drop-shadow(black 0px -1px 0px);
-  right: 3rem;
+  right: 41rem;
   top: 1rem;
-  font-size: 1.4rem;
+  font-size: 2.4rem;
   position: relative;
 }
 
+.checked-item {
+  text-decoration: line-through;
+}
 .findBtnCol {
-  padding-left: 0;
+  padding-left: 6rem;
 }
 #checkboxIcon {
   margin-top: auto;
@@ -637,10 +717,15 @@ button:focus {
   color: black;
 }
 
+.dayBtnRow1 {
+  height: 10rem;
+}
+
 #userGoalPic {
   width: auto;
   height: 6rem;
-  margin-bottom: 2rem;
+  position: relative;
+  top: 0.5rem;
 }
 .Card-text {
   margin: 0 100% 1% 0;
@@ -783,9 +868,7 @@ input[id="cb"]:checked ~ p.strikethrough {
 }
 
 .main-header {
-  position: fixed;
-  top: 25px;
-  left: 0;
+  position: relative;
   z-index: 99;
   width: 100%;
   -webkit-transition: all 0.4s ease;
