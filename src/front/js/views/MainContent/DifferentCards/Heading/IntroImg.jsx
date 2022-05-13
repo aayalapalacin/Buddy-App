@@ -1,11 +1,11 @@
 import React from "react";
-import StockPhoto from "/workspace/Buddy-App/src/front/img/peoplelaughing.jpg";
+import StockPhoto3 from "/workspace/Buddy-App/src/front/img/headingimg.jpg";
 import "./heading.css";
 const IntroImg = () => {
   return (
     <>
       <div className="rightside">
-        <img src={StockPhoto} className="stock-photo" />
+        <img src={StockPhoto3} className="stock-photo" />
       </div>
     </>
   );

@@ -3,11 +3,13 @@ import AuthContext from "./AuthProvider.js";
 import axios from "/workspace/Buddy-App/src/api/axios.js";
 import { Link } from "react-router-dom";
 import "../css/login.css";
+import useStore from "../../../store/zustand";
 
 const LOGIN_URL = "./auth";
 const LoginForm = () => {
   // const [details, setDetails] = useState({ username: "", password: "" });
   const { setAuth } = useContext(AuthContext);
+  const actions = useStore((state) => state.actions);
 
   const userRef = useRef();
   const errRef = useRef();
@@ -52,7 +54,13 @@ const LoginForm = () => {
   return (
     <>
       <div className="inputs">
-      <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+        <p
+          ref={errRef}
+          className={errMsg ? "errmsg" : "offscreen"}
+          aria-live="assertive"
+        >
+          {errMsg}
+        </p>
         <form onSubmit={submitHandler}>
           {/* {error != "" ? <div className="error">{error}</div> : ""} */}
           <label>
@@ -92,7 +100,12 @@ const LoginForm = () => {
 
           <div>
             <Link to="/WelcomeApp">
-              <button type="submit" value="Login" className="login-button">
+              <button
+                onClick={() => actions.login(user, pwd)}
+                type="submit"
+                value="Login"
+                className="login-button"
+              >
                 Login
               </button>
             </Link>

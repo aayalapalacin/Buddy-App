@@ -18,9 +18,8 @@ const Register = () => {
     <>
       <div className="register-container">
         <div className="header">
-          <h1>First time?</h1>
-          <br></br>
-          <h3>Let's get you ready for your future</h3>
+          <h3 id="firstTimeReg">First time?</h3>
+          <h5>Let's get you ready for your future</h5>
         </div>
         <div className="content">
           <div className="form">

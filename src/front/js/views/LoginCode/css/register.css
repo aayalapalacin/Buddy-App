@@ -20,7 +20,6 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 1rem;
   margin-top: 8rem;
 }
 
@@ -71,6 +70,9 @@ h1 {
 
 /*register page*/
 
+.register-button:hover {
+  background-color: aquamarine;
+}
 .instructions {
   font-size: 0.75rem;
   border-radius: 0.5rem;
@@ -113,4 +115,8 @@ h1 {
 }
 .line {
   display: inline-block;
+}
+
+#firstTimeReg {
+  margin-top: 11px;
 }

@@ -32,6 +32,12 @@ def cateogry_goals(cat_id):
     goal_serialized = [goal.serialize() for goal in goal_list] 
     return jsonify(goal_serialized), 200
 
+@api.route('/user/<int:user_id>', methods=['GET'])
+@cross_origin()
+def get_user(user_id):
+    user = User.query.filter_by(id=user_id).one_or_none()
+    return jsonify(user.serialize()), 200
+
 @api.route('/goal', methods=['PUT'])
 @cross_origin()
 def change_goal():
@@ -52,6 +58,33 @@ def user_signup():
     db.session.add(user)
     db.session.commit()
     return jsonify(user.serialize())
+
+@api.route("/login", methods=['POST'])
+@cross_origin()
+def user_login():
+    data = request.get_json()
+    user = User.query.filter_by(username=data["username"],password=data["password"]).one_or_none()
+    return jsonify(user.serialize())
+
+@api.route("/userCategory", methods=['PUT'])
+@cross_origin()
+def user_category():
+    data = request.get_json()
+    user = User.query.filter_by(id=data["id"]).one_or_none()
+    print(user)
+    categories = []
+
+    for category in data["categories"]:
+        catItem = Category.query.filter_by(id=category["id"]).one_or_none()
+        categories.append(catItem)
+    user["categories"] = categories
+
+    # db.session.add(user)
+    db.session.commit()
+    return jsonify(user.serialize())
+
+
+
 # @api.route('/update_goal', methods=['PUT'])
 # @cross_origin()
 # def change_goal():

@@ -12,22 +12,14 @@ const IntroPage = () => {
   return (
     <div>
       <div className="main-content">
-        <Container>
-          <Row>
-            <Col>
-              <div className="left-side">
-                <Heading />
-                <Awards />
-              </div>
-            </Col>
-            <Col>
-              <div className="right-side">
-                <IntroImg />
-                <ContactUs />
-              </div>
-            </Col>
-          </Row>
-        </Container>
+        <Heading />
+        <div className="secondhalf">
+          <Awards />
+          <ContactUs />
+        </div>
+        <footer className="footer">
+          <h5 className="footerRightsTxt">All rights go to BuddyApp</h5>
+        </footer>
       </div>
     </div>
   );

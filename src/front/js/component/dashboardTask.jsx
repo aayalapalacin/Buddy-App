@@ -41,15 +41,19 @@ function DashboardTask() {
   // const [goals, setGoals] = useState([]);
 
   // const [categories,setCategories]=useState();
-  let selectedCategories = useStore((state) => state.selectedCategories);
+  let info = useStore((state) => state.selectedCategories);
+  console.log("info", info);
+
+  const actions = useStore((state) => state.actions);
+
+  const [selectedCategories, setSelectedCategories] = useState(info);
   console.log("selectedCat", selectedCategories);
   // let selectedCategories = [{ task: "task1" }, { task: "task2" }];
   const [checkedTodo, setCheckedTodo] = useState([]);
 
-  useEffect(() => {
-    if (selectedCategories.length > 0) {
-    }
-  }, [selectedCategories]);
+  // (() => {
+  //   actions.getSelectedCategories(user.id).then();
+  // }, []);
 
   return (
     <div className="container-fluid ">
@@ -60,53 +64,55 @@ function DashboardTask() {
             id="nav-tab"
             role="tablist"
           >
-            {selectedCategories.map((item, index) => {
-              return (
-                <button
-                  className={index == 0 ? "nav-link active" : "nav-link"}
-                  key={index}
-                  id={`nav-${item.task.task}-tab`}
-                  data-bs-toggle="tab"
-                  data-bs-target={`#nav-${item.task.task}`}
-                  type="button"
-                  role="tab"
-                  aria-controls={`nav-${item.task.task}`}
-                  aria-selected={index == 0 ? "true" : "false"}
-                >
-                  {item.task.task}
-                </button>
-              );
-            })}
+            {selectedCategories.length > 0 &&
+              selectedCategories.map((item, index) => {
+                return (
+                  <button
+                    className={index == 0 ? "nav-link active" : "nav-link"}
+                    key={index}
+                    id={`nav-${item.task}-tab`}
+                    data-bs-toggle="tab"
+                    data-bs-target={`#nav-${item.task}`}
+                    type="button"
+                    role="tab"
+                    aria-controls={`nav-${item.task}`}
+                    aria-selected={index == 0 ? "true" : "false"}
+                  >
+                    {item.task}
+                  </button>
+                );
+              })}
           </div>
         </nav>
       </div>
       <div className="row rowMiddle">
         <div className="col-5 goalTaskCol">
           <div className="tab-content" id="nav-tabContent">
-            {selectedCategories.map((item, index) => {
-              return (
-                <div
-                  className={
-                    index == 0 ? "tab-pane fade show active" : "tab-pane fade"
-                  }
-                  key={index}
-                  id={`nav-${item.task.task}`}
-                  role="tabpanel"
-                  aria-labelledby={`nav-${item.task.task}-tab`}
-                >
-                  {item.task.goals.map((goal, goalIndex) => {
-                    return (
-                      <Goal
-                        key={goalIndex}
-                        goal_name={goal.goal_name}
-                        isChecked={goal.is_done}
-                        goalId={goal.id}
-                      />
-                    );
-                  })}
-                </div>
-              );
-            })}
+            {selectedCategories.length > 0 &&
+              selectedCategories.map((item, index) => {
+                return (
+                  <div
+                    className={
+                      index == 0 ? "tab-pane fade show active" : "tab-pane fade"
+                    }
+                    key={index}
+                    id={`nav-${item.task}`}
+                    role="tabpanel"
+                    aria-labelledby={`nav-${item.task}-tab`}
+                  >
+                    {item.goals.map((goal, goalIndex) => {
+                      return (
+                        <Goal
+                          key={goalIndex}
+                          goal_name={goal.goal_name}
+                          isChecked={goal.is_done}
+                          goalId={goal.id}
+                        />
+                      );
+                    })}
+                  </div>
+                );
+              })}
           </div>
         </div>
         <div className="col-7 findBtnCol">
@@ -132,9 +138,9 @@ function DashboardTask() {
             <div className="modal-dialog">
               <div className="modal-content">
                 <div className="modal-header">
-                  <h5 className="modal-title" id="modal-title">
-                    Modal Title
-                  </h5>
+                  <h3 className="modal-title font" id="modal-title">
+                    We have the same goals as you!!
+                  </h3>
                   <button
                     type="button"
                     className="btn-close"

@@ -4,6 +4,7 @@ const useStore = create((set, get) => ({
   categories: [],
   selectedCategories: [],
   goals: [],
+  user: [],
 
   actions: {
     goals: (array) => {
@@ -52,6 +53,27 @@ const useStore = create((set, get) => ({
         });
     },
 
+    login: (username, pwd) => {
+      var requestOptions = {
+        method: "POST",
+        // redirect: "follow",
+        // mode: "cors",
+        body: JSON.stringify({
+          username: username,
+          password: pwd,
+        }),
+        headers: { "Content-type": "application/json" },
+      };
+      fetch(process.env.BACKEND_URL + "/api/login", requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+          set({
+            user: result,
+            selectedCategories: result.categories,
+          });
+        });
+    },
+
     changeGoal: (boolean, id) => {
       var requestOptions = {
         method: "PUT",
@@ -94,6 +116,25 @@ const useStore = create((set, get) => ({
         .then((result) => {
           set({
             categories: result,
+          });
+        });
+    },
+    getSelectedCategories: (id) => {
+      var requestOptions = {
+        method: "GET",
+        redirect: "follow",
+        mode: "cors",
+      };
+
+      fetch(process.env.BACKEND_URL + `/api/user/${id}`, requestOptions)
+        // fetch(
+        //   "https://3001-avokeys-buddyapp-4rimlyd8qp6.ws-us41.gitpod.io/api/categories",
+        //   requestOptions
+        // )
+        .then((response) => response.json())
+        .then((result) => {
+          set({
+            selectedCategories: result.categories,
           });
         });
     },

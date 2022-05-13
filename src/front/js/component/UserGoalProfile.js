@@ -11,10 +11,12 @@ export const UserGoalProfile = () => {
         alt="..."
       />
       <div className="CharacterCard-body">
-        <h5 className="Card-title">Username</h5>
-        <p className="Card-text">Inspiration: My grandather</p>
-        <p className="Card-text">Fun Fact: I like to play music in the dark </p>
-        <p className="Card-text">User Progress: 25% </p>
+        <h5 className="Card-title font">Username</h5>
+        <p className="Card-text font">Inspiration: My grandather</p>
+        <p className="Card-text font">
+          Fun Fact: I like to play music in the dark{" "}
+        </p>
+        <p className="Card-text font">User Progress: 25% </p>
       </div>
     </div>
   );

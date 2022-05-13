@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGripVertical } from "@fortawesome/free-solid-svg-icons";
 import dragAndDropIcon from "../../../img/icons8-drag-and-drop-50.png";
 
-const Task = ({ id, task, func, element, defaultLabel, ...rest }) => {
+const Task = ({ id, task, func, goals, element, defaultLabel, ...rest }) => {
   const [newTaskItem, setNewTaskItem] = useState([]);
 
   const addTask = (event) => {
@@ -18,7 +18,7 @@ const Task = ({ id, task, func, element, defaultLabel, ...rest }) => {
   const Elm = element;
   const [{ isDragging }, dragRef] = useDrag({
     type: "task",
-    item: { id, task },
+    item: { id, task, goals },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
@@ -32,7 +32,7 @@ const Task = ({ id, task, func, element, defaultLabel, ...rest }) => {
       // data-bs-toggle="dropdown"
       // aria-expanded="false"
     >
-      {task.task || defaultLabel}
+      {task || defaultLabel}
       {/* {!!task.img ? <img id="gripIcon" src={task.img} /> : null} */}
       {task != "" ? <img id="gripIcon" src={dragAndDropIcon} /> : null}
 

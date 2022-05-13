@@ -1,6 +1,6 @@
 import React from "react";
 import buddyImg from "../../img/buddyapp2.png";
-
+import "/workspace/Buddy-App/src/front/js/views/MainContent/navbar.css";
 export function Navbar() {
   return (
     <header className="main-header">

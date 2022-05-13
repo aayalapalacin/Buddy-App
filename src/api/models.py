@@ -2,14 +2,24 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
+
+association = db.Table('association',
+    db.Column('user_id',db.Integer, db.ForeignKey('user.id'),primary_key=True),
+    db.Column('category_id',db.Integer, db.ForeignKey('category.id'),primary_key=True)
+)
+
+
+    
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(120), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
-    selected_category = db.relationship('SelectedCategory', backref='User',lazy=True)
+    # selected_category = db.relationship('SelectedCategory', backref='User',lazy=True)
     inspiration = db.Column(db.String(250), unique=False, nullable=False)
     fun_fact = db.Column(db.String(250), unique=False, nullable=False)
+    
+    categories = db.relationship("Category", secondary=association)
 
 
 
@@ -24,7 +34,8 @@ class User(db.Model):
             "email": self.email,
             "username": self.username,
             "inspiration": self.inspiration,
-            "fun_fact": self.fun_fact
+            "fun_fact": self.fun_fact,
+            "categories": list(map(lambda category: category.serialize(), self.categories))
 
             # serialize line10?
             # do not serialize the password,l its a security breach
@@ -37,6 +48,8 @@ class Category(db.Model):
     task = db.Column(db.String(120), unique=True, nullable=False)
     selected_category = db.relationship('SelectedCategory',backref='category')
     goals = db.relationship('Goal', backref='category')
+
+
     # is_active = db.Column(db.Boolean(), unique=False, nullable=False)
 
     def __repr__(self):

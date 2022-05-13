@@ -1,28 +1,74 @@
 .head-container {
-  background: linear-gradient(-45deg, #4977ac, #41bdc9);
-  width: 500px;
-  height: 200px;
+  width: 980px;
+  height: 390px;
   text-align: center;
-  border-radius: 10px;
-  margin-top: 70px;
+  border-radius: 5px;
+  margin-top: 20px;
+  border: none;
+  margin: auto;
 }
 
 .stock-photo {
-  border-radius: 10px;
-  height: 300px;
-  width: 460px;
-  max-width: 460px;
-}
-.border-info {
-  border-radius: 31px;
-  width: 35rem;
-  height: 18rem;
-  background-color: transparent;
-  margin-top: 4rem;
+  border-radius: 5px;
+  height: 570px;
+  margin-top: 50px;
+  width: 655px;
 }
 
-.right-side {
-  float: right;
-  margin-top: 4rem;
-  width: 42rem;
+.title {
+  font-size: 60px;
+  color: #40afe2;
+}
+
+.card-dscrp {
+  justify-content: space-between;
+  letter-spacing: 0.15rem;
+  font-size: 30px;
+}
+
+.intro-button {
+  font-size: 27px;
+  color: #000000;
+  background: linear-gradient(-45deg, #40bcc7, #40afe2);
+  border-radius: 10px;
+  border: none;
+  letter-spacing: 0.1em;
+  width: 300px;
+  height: 45px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.intro-button:hover {
+  transform: scale(1.04);
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.intro-button2 {
+  font-size: 22px;
+  width: 290px;
+  height: 45px;
+  color: #000000;
+  background: #acacac;
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 60px;
+  font-weight: bold;
+}
+.intro-button2:hover {
+  transform: scale(1.04);
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.have-you {
+  font-size: 30px;
+  border: 8px solid #40afe2;
+  padding: 2rem;
+  line-height: 70px;
+}
+
+.login-info {
+  border-bottom: 1px solid #000000;
 }

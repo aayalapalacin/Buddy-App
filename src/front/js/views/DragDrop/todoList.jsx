@@ -23,8 +23,8 @@ const TodoList = () => {
         <div className="col-4">
           <div class="box box2 boxDrag">
             <div class="evenboxinner font">
-              <h5>1. Choose Your Goals</h5>
-              <h5>2. Drag to Commit</h5>
+              <h5 className=".categoriesHover">1. Choose Your Categories</h5>
+              <h5>2. Drag to Commit Box</h5>
               <h5>3. Click Ready to Start Your Journey!</h5>
             </div>
           </div>
