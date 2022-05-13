@@ -7,7 +7,7 @@ class User(db.Model):
     username = db.Column(db.String(120), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
-    selected_category = db.relationship('SelectedCategory', backref='user',lazy=True)
+    selected_category = db.relationship('SelectedCategory', backref='User',lazy=True)
     inspiration = db.Column(db.String(250), unique=False, nullable=False)
     fun_fact = db.Column(db.String(250), unique=False, nullable=False)
 

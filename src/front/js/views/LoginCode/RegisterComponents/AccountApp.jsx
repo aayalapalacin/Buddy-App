@@ -72,7 +72,7 @@ const Register = () => {
                     type="text"
                     name="insp"
                     placeholder="Inspiration"
-                    onChange={(e) => setInspiration(e.target.value)}
+                    onChange={(e) => setInsp(e.target.value)}
                     value={insp}
                     required
                   ></input>

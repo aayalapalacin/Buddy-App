@@ -3,8 +3,8 @@ from app import app, db
 from api.models import Category, Goal
 
 def populate_categories(*categories):
-    for category in categories:
-        if not Category.query.filter_by(task=category.task).one_or_none():
+    for Category in categories:
+        if not Category.query.filter_by(task=Category.task).one_or_none():
             db.session.add(Category)
     db.session.commit()
 
