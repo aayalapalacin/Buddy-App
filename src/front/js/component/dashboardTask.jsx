@@ -149,27 +149,26 @@ function DashboardTask() {
                   <UserGoalProfile />
                   <UserGoalProfile />
                 </div>
-                <div className="modal-footer">
-                  <p>this is the modal footer</p>
-                </div>
+                <div className="modal-footer"></div>
               </div>
             </div>
           </div>
           <div className="box box2 instructionsDashboard">
-            <div className="evenboxinner font">
-              <h5>1. Choose Your Goals</h5>
-              <h5>2. Drag to Commit</h5>
-              <h5>3. Click Ready to Start Your Journey!</h5>
+            <div className="evenboxinner font instructionDivDash ">
+              <p className="dashBoxText">1. Select Your Goals</p>
+              <p className="dashBoxText">
+                2. Make todo list to track your progress
+              </p>
+              <p className="dashBoxText">3. Find a buddy, Complete Goals </p>
             </div>
           </div>
         </div>
       </div>
       <div className="row todoListRow">
-        <div className="col-6">
+        <div className="col-12">
           <h1 className="font todoListTitle">Todo List</h1>
           <UserInput />
         </div>
-        <div className="col-6"></div>
       </div>
     </div>
   );

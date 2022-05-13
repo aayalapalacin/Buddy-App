@@ -1,5 +1,5 @@
 .dayButton {
-  background-color: #ffefd5;
+  background-color: #cbffdc;
   width: 17vw;
   height: 15vw;
   border-radius: 19%;
@@ -8,19 +8,13 @@
   justify-content: center;
   margin-top: 0.1rem;
   position: relative;
-  filter: drop-shadow(black 0px 2px 1px);
+  filter: drop-shadow(black 4px 1px 3px);
   margin-bottom: 1rem;
 }
 
-.instructionsDashboard {
-  width: 22rem;
-  height: 11.5rem;
-  border-width: 3px 3px 5px 5px;
-  position: relative;
-  border-radius: 4% 95% 6% 95%/95% 4% 92% 5%;
-  transform: rotate(-2deg);
-  left: 8rem;
-}
+/* .instructionDivDash {
+  padding-top: 1.5rem;
+} */
 
 .btn-dark-moon {
   background: linear-gradient(to right, #187dee, #141e30);
@@ -59,13 +53,15 @@ body {
   background-image: linear-gradient(315deg, #f9ea8f 0%, #aff1da 74%); */
 
 .categoryBtn {
-  background-color: #ffefd5;
+  background-color: #cbffdc;
   color: black;
   border: none;
-  width: 15rem;
-  font-size: 1.9rem;
-  height: 3.8rem;
-  filter: drop-shadow(black 1px 3px 1px);
+  width: 18rem;
+  font-size: 2.3rem;
+  height: 4.8rem;
+  filter: drop-shadow(black 3px 4px 4px);
+  position: relative;
+  bottom: 2rem;
 }
 
 .evenboxinner {
@@ -78,7 +74,7 @@ body {
 }
 
 .dashBuddyIcon {
-  font-size: 2.3rem;
+  font-size: 3rem;
 }
 
 #findBuddy {
@@ -211,10 +207,10 @@ button:focus {
 }
 
 .readyButton button {
-  width: 12rem;
-  height: 5rem;
+  width: 15rem;
+  height: 6.2rem;
   border-radius: 3rem;
-  font-size: 2rem;
+  font-size: 3rem;
 }
 
 .readyBtnCol {
@@ -236,13 +232,8 @@ button:focus {
 /* .btn-secondary:hover */
 .categoryBtn:hover {
   box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.812);
-  background-color: #ffefd5;
+  background-color: #cbffdc;
   color: black;
-}
-
-.categoryBtn {
-  position: relative;
-  bottom: 2rem;
 }
 
 .btn-warning {
@@ -268,7 +259,7 @@ button:focus {
 
 .btn-secondary:focus {
   color: black;
-  background-color: #ffefd5;
+  background-color: #cbffdc;
   border-color: #c8dceb;
   box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.5);
 }
@@ -291,11 +282,15 @@ button:focus {
   height: var(--height);
   border-radius: var(--border-radius);
   position: relative;
-  padding: 1.2rem 1rem;
+  padding: 1.5rem 1rem;
   display: grid;
   grid-template-columns: 2.5rem auto;
   align-items: center;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
+}
+
+.progressChartCircle {
+  position: relative;
 }
 #checklist label {
   color: var(--text);
@@ -369,7 +364,7 @@ button:focus {
   animation: check-02 0.4s ease forwards;
 }
 #checklist input[type="checkbox"]:checked + label {
-  color: var(--disabled);
+  color: #ff5c5c;
   -webkit-animation: move 0.3s ease 0.1s forwards;
   animation: move 0.3s ease 0.1s forwards;
 }
@@ -582,12 +577,13 @@ button:focus {
   width: 20rem;
   padding-bottom: 0.3rem;
   padding-top: 0.4rem;
-  background-color: #ffefd5;
+  background-color: #cbffdc;
   display: flex;
   justify-content: space-between;
-  border-color: white;
-  filter: drop-shadow(black 3px 1px 1px);
+  border-color: #dedbeb;
+  filter: drop-shadow(black 2px 6px 6px);
   height: 2.5rem;
+  margin-right: 14rem;
 }
 
 .mouseOver:hover {
@@ -613,8 +609,7 @@ button:focus {
   display: flex;
 }
 
-.raise:hover,
-.raise:focus {
+.raise:hover {
   box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
   transform: translateY(-0.25em);
 }
@@ -647,13 +642,14 @@ button:focus {
   font: inherit;
   line-height: 1;
   padding: 0.6rem;
-  width: 11rem;
-  height: 10rem;
+  width: 11.5rem;
+  height: 11.5rem;
   color: #078dff;
   border-radius: 25%;
   filter: drop-shadow(black 0px -1px 0px);
-  right: 41rem;
-  top: 1rem;
+  top: 1.3rem;
+  right: 46rem;
+  /* left: 10rem; */
   font-size: 2.4rem;
   position: relative;
 }
@@ -682,12 +678,14 @@ button:focus {
 .nav-tabs .nav-item.show .nav-link,
 .nav-tabs .nav-link.active {
   background-color: transparent;
-  font-size: 1.6rem;
+  font-family: "Patrick Hand";
+  font-size: 2.5rem;
   color: black;
   border: solid black;
   border-color: black;
-  float: left;
-  width: 13rem;
+  /* float: left; */
+  width: 14.2rem;
+  height: 4.5rem;
   border-width: 3px 3px 5px 5px;
   border-radius: 4% 94% 7% 143%/69% 26% 107% 18%;
   transform: rotate(-2deg);
@@ -998,4 +996,21 @@ input[id="cb"]:checked ~ p.strikethrough {
   }
 
   /*header ends*/
+}
+.dashBoxText {
+  font-family: "Patrick Hand", cursive;
+  padding-left: 2rem;
+  font-size: 1.75rem;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0;
+}
+
+.instructionsDashboard {
+  width: 25rem;
+  height: 14.5rem;
+  border-width: 3px 3px 5px 5px;
+  border-radius: 4% 95% 6% 95%/95% 4% 92% 5%;
+  transform: rotate(-2deg);
+  left: 7rem;
+  position: relative;
 }

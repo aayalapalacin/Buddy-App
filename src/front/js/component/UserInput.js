@@ -86,7 +86,6 @@ export const UserInput = () => {
   };
 
   const calculateProgress = () => {
-    console.log("cacul", calculateProgress);
     let percentage = (checked.length / variable.length) * 100;
     if (isNaN(percentage)) {
       return null;
@@ -98,6 +97,7 @@ export const UserInput = () => {
     // console.log("variable length", variable.length);
     // console.log("checked length", checked.length);
   };
+
   return (
     <div className="d-flex">
       <div>
@@ -118,17 +118,31 @@ export const UserInput = () => {
           </ul>
         </div>
       </div>
-
-      {calculateProgress() == null ? (
-        <CircleProgress percentage={0} strokeWidth={8} />
-      ) : (
-        <CircleProgress
-          percentage={calculateProgress()}
-          strokeWidth={8}
-          primaryColor={["#fcba03", "#92d7f1"]}
-          width={300}
-        />
-      )}
+      <div className="progressChart">
+        {calculateProgress() == null ? (
+          <CircleProgress
+            className="progressChartCircle"
+            percentage={0}
+            strokeWidth={12}
+            primaryColor={["#00ff2f", "#078dff"]}
+            width={350}
+            fontFamily={"Patrick Hand"}
+            fontColor={"#618eff"}
+            fontSize={"84px"}
+          />
+        ) : (
+          <CircleProgress
+            className="progressChartCircle"
+            percentage={calculateProgress()}
+            strokeWidth={12}
+            primaryColor={["#00ff2f", "#078dff"]}
+            width={350}
+            fontFamily={"Patrick Hand"}
+            fontColor={"#618eff"}
+            fontSize={"84px"}
+          />
+        )}
+      </div>
     </div>
   );
 };
