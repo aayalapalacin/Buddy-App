@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .award-container {
   /* background: #bfcad8; */
   max-width: 700px;
@@ -15,31 +14,12 @@
 .awards-table {
   font-size: 20px;
   list-style: none;
-=======
-.award-container{
-    /* background: #bfcad8; */
-    max-width: 700px;
-    width: 500px;
-    height: 400px;
-    text-align: center;
-    border-radius: 10px;
-    margin: 0 auto;
-    position: relative;
-    bottom: 0;
-    margin-top: 1500px;
-    border-bottom: 1px solid #40afe2;
-}
-.awards-table{
-    font-size: 20px;
-    list-style: none;
->>>>>>> e19f89acf1b7e91473a9e760864bee6116dac16e
 }
 
 /* .awards-title{
     font-size: 60px;
 } */
 
-<<<<<<< HEAD
 .awards-table li {
   margin-top: 35px;
   margin-bottom: 20px;
@@ -51,16 +31,3 @@
   left: 0;
   font-size: 1.5em;
 }
-=======
-.awards-table li{
-    margin-top: 35px;
-    margin-bottom: 20px;
-    font-weight: bold;
-}
-.awards-icon{
-    color: green;
-    position: absolute;
-    left: 0;
-    font-size: 1.5em;
-}    
->>>>>>> e19f89acf1b7e91473a9e760864bee6116dac16e

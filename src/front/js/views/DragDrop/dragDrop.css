@@ -46,8 +46,7 @@
   transform: rotate(-2deg);
 }
 
-<<<<<<< HEAD
-body {
+<<<<<<< HEAD body {
   background-color: white;
 }
 =======
@@ -820,11 +819,7 @@ input[id="cb"]:checked ~ p.strikethrough {
 #mainMenu li > a {
   font-size: 1.1rem;
   letter-spacing: 0.1rem;
-<<<<<<< HEAD
   color: #5d5757;
-=======
-  color: #000;
->>>>>>> e19f89acf1b7e91473a9e760864bee6116dac16e
   font-weight: 600;
   position: relative;
   z-index: 1;
@@ -845,11 +840,7 @@ input[id="cb"]:checked ~ p.strikethrough {
   content: "";
   width: calc(100% - 1px);
   height: 1px;
-<<<<<<< HEAD
   background: #5d5757;
-=======
-  background: #000;
->>>>>>> e19f89acf1b7e91473a9e760864bee6116dac16e
   bottom: -6px;
   left: 0;
 

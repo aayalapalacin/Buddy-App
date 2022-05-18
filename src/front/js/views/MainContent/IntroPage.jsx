@@ -18,11 +18,7 @@ const IntroPage = () => {
           <ContactUs />
         </div>
         <footer className="footer">
-<<<<<<< HEAD
           <h5 className="footerRightsTxt">All rights go to BuddyApp</h5>
-=======
-          <h5>All rights and shit goes to us assholes here</h5>
->>>>>>> e19f89acf1b7e91473a9e760864bee6116dac16e
         </footer>
       </div>
     </div>
