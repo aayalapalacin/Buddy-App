@@ -1,14 +1,25 @@
 /* 
     General Styles used on every website (Don't Repeat Yourself)
 */
+<<<<<<< HEAD
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+=======
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+>>>>>>> e19f89acf1b7e91473a9e760864bee6116dac16e
 body {
   margin: 0;
   padding: 0;
   /* background: linear-gradient(3150deg, #f9ea8f 0%, #aff1da 74%) repeat-y; */
+<<<<<<< HEAD
   font-family: "Ubuntu", sans-serif;
 
   background-color: rgb(255, 255, 255);
+=======
+  font-family: 'Ubuntu', sans-serif;
+  
+  background-color: rgb(255, 255, 255);
+  
+>>>>>>> e19f89acf1b7e91473a9e760864bee6116dac16e
 
   @media (max-width: 1400px) {
     html {

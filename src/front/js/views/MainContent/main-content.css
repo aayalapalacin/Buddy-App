@@ -6,10 +6,16 @@
   margin: auto;
 }
 .footer {
+<<<<<<< HEAD
   margin-top: -20px;
   text-align: center;
 }
 
 .footerRightsTxt {
   padding-bottom: 1rem;
+=======
+  margin-top: 50px;
+  text-align: center;
+  
+>>>>>>> e19f89acf1b7e91473a9e760864bee6116dac16e
 }

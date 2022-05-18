@@ -8,9 +8,13 @@ const Heading = () => {
       <div className="head-container">
         <div className="site-opener">
           <div className="title-card">
+<<<<<<< HEAD
             <h2 className="title">
               <strong>Connect, Grow, and Accomplish</strong>
             </h2>
+=======
+            <h2 className="title"><strong>Connect, Grow, and Accomplish</strong></h2>
+>>>>>>> e19f89acf1b7e91473a9e760864bee6116dac16e
             <h1 className="title">We're here to help</h1>
           </div>
           <IntroImg />
@@ -34,15 +38,26 @@ const Heading = () => {
               <h4>So, if you feel like you're ready,</h4>
               <Link to="/AccountApp">
                 <button className="intro-button" type="button">
+<<<<<<< HEAD
                   Let's get started
                 </button>
               </Link>
               {/* <h4>Have an account?</h4>
+=======
+                  Sign up
+                </button>
+              </Link>
+              <h4>Have an account?</h4>
+>>>>>>> e19f89acf1b7e91473a9e760864bee6116dac16e
               <Link to="/LoginPage">
                 <button className="intro-button2" type="button">
                   Sign in
                 </button>
+<<<<<<< HEAD
               </Link> */}
+=======
+              </Link>
+>>>>>>> e19f89acf1b7e91473a9e760864bee6116dac16e
             </div>
           </div>
         </div>
