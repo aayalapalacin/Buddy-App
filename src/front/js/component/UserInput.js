@@ -46,7 +46,6 @@ export const UserInput = () => {
   // };
 
   const todo = variable.map((item, index) => {
-    console.log("lenght", variable.length);
     // Return classes based on whether item is checked
     const isChecked = (label) =>
       checked.includes(label) ? "checked-item" : "not-checked-item";
@@ -88,7 +87,14 @@ export const UserInput = () => {
         ></input>
         <p className={isChecked(item.label)}> {item.label}</p>
 
-        <div className="mouseOver" onClick={() => remove(index)}>
+        <div
+          className="mouseOver"
+          onClick={() => {
+            remove(index);
+            actions.deleteTodos(item.id);
+            actions.getTodos();
+          }}
+        >
           x
         </div>
       </li>

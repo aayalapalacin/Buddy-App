@@ -100,6 +100,14 @@ def get_todos(user_id):
 
     return jsonify(todos_serialized), 200
 
+@api.route('/todos/<int:id>', methods=['DELETE'])
+@cross_origin()
+def delete_todos(id):
+    todo = TodoItem.query.filter_by(id=id).first()
+    db.session.delete(todo)
+    db.session.commit()
+    return jsonify("item deleted"), 200
+
 
 
 # @api.route('/update_goal', methods=['PUT'])

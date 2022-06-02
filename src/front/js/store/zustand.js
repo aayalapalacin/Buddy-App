@@ -182,6 +182,17 @@ const useStore = create((set, get) => ({
           });
         });
     },
+
+    deleteTodos: (todoId) => {
+      var requestOptions = {
+        method: "DELETE",
+        // redirect: "follow",
+        // mode: "cors",
+        headers: { "Content-type": "application/json" },
+      };
+
+      fetch(process.env.BACKEND_URL + `/api/todos/${todoId}`, requestOptions);
+    },
   },
 }));
 
