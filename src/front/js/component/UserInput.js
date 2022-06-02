@@ -1,22 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquareCheck } from "@fortawesome/free-solid-svg-icons";
 import { faStrikethrough } from "@fortawesome/free-solid-svg-icons";
 import "../views/DragDrop/dragDrop.css";
 import { CircleProgress } from "react-gradient-progress";
+import useStore from "../store/zustand.js";
 
 export const UserInput = () => {
+  const todos = useStore((state) => state.todos);
+  const user = useStore((state) => state.user);
+  const actions = useStore((state) => state.actions);
   const [listItem, setListItem] = useState("");
-  const [variable, setVariable] = useState([]);
+  const [variable, setVariable] = useState(todos);
   const [checked, setChecked] = useState([]);
+  useEffect(() => {
+    setVariable(todos);
+  }, [todos]);
 
   const todoItem = (event) => {
     if (event.keyCode === 13) {
-      const newTodoItem = [...variable, listItem];
-      setVariable(newTodoItem);
+      actions.addTodos(listItem, user.id);
+      // .then((data) => {
+      //   let newTodoItem = [...variable, data];
+      //   setVariable(newTodoItem);
+      // });
+      console.log("variable!!!!", variable);
       setListItem("");
     }
   };
+
+  // const todoItem = (event) => {
+  //   if (event.keyCode === 13) {
+  //     const newTodoItem = [...variable, listItem];
+  //     setVariable(newTodoItem);
+  //     setListItem("");
+  //   }
+  // };
 
   // const strikeThroughItem = () => {
   //   if (strikeStatus === false) {
@@ -29,8 +48,8 @@ export const UserInput = () => {
   const todo = variable.map((item, index) => {
     console.log("lenght", variable.length);
     // Return classes based on whether item is checked
-    const isChecked = (item) =>
-      checked.includes(item) ? "checked-item" : "not-checked-item";
+    const isChecked = (label) =>
+      checked.includes(label) ? "checked-item" : "not-checked-item";
 
     // const checkedItems = checked.length
     //   ? checked.reduce((total, item) => {
@@ -62,12 +81,12 @@ export const UserInput = () => {
         </button> */}
         <input
           name="cb"
-          value={item}
+          value={item.label}
           type="checkbox"
           id="cb"
           onChange={handleCheck}
         ></input>
-        <p className={isChecked(item)}> {item}</p>
+        <p className={isChecked(item.label)}> {item.label}</p>
 
         <div className="mouseOver" onClick={() => remove(index)}>
           x
@@ -128,7 +147,7 @@ export const UserInput = () => {
             width={350}
             fontFamily={"Patrick Hand"}
             fontColor={"#618eff"}
-            fontSize={"84px"}
+            fontSize={"49px"}
           />
         ) : (
           <CircleProgress
@@ -139,7 +158,7 @@ export const UserInput = () => {
             width={350}
             fontFamily={"Patrick Hand"}
             fontColor={"#618eff"}
-            fontSize={"84px"}
+            fontSize={"49px"}
           />
         )}
       </div>

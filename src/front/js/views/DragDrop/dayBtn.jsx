@@ -25,6 +25,8 @@ const DayBtn = () => {
   // const { store, actions } = useContext(Context);
   const actions = useStore((state) => state.actions);
   const categoriesInfo = useStore((state) => state.categories);
+  const todos = useStore((state) => state.todos);
+  console.log("todos", todos);
   const [categories, setCategories] = useState([]);
   const [dayButton, setDayButton] = useState([]);
   const [item, setItem] = useState("");
@@ -76,7 +78,7 @@ const DayBtn = () => {
         <div className="col-4 dropdownDiv">
           <div className="dayBtnDiv dropdown font">
             <Task
-              className="btn btn-secondary dropdown-toggle font categoryBtn .categoriesHover"
+              className="btn btn-secondary dropdown-toggle font categoryBtn categoriesHover"
               element="button"
               id="dropdownMenuButton1"
               data-bs-toggle="dropdown"

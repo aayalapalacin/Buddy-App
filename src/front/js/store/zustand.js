@@ -2,7 +2,7 @@ import create from "zustand";
 
 const useStore = create((set, get) => ({
   categories: [],
-  selectedCategories: [],
+  todos: [],
   goals: [],
   user: [],
 
@@ -69,7 +69,6 @@ const useStore = create((set, get) => ({
         .then((result) => {
           set({
             user: result,
-            selectedCategories: result.categories,
           });
         });
     },
@@ -135,6 +134,51 @@ const useStore = create((set, get) => ({
         .then((result) => {
           set({
             selectedCategories: result.categories,
+          });
+        });
+    },
+    getTodos: (id) => {
+      var requestOptions = {
+        method: "GET",
+        redirect: "follow",
+        mode: "cors",
+      };
+
+      fetch(process.env.BACKEND_URL + `/api/todos/${id}`, requestOptions)
+        // fetch(
+        //   "https://3001-avokeys-buddyapp-4rimlyd8qp6.ws-us41.gitpod.io/api/categories",
+        //   requestOptions
+        // )
+        .then((response) => response.json())
+        .then((result) => {
+          set({
+            todos: result,
+          });
+        });
+    },
+
+    addTodos: (label, user_id) => {
+      var requestOptions = {
+        method: "POST",
+        // redirect: "follow",
+        // mode: "cors",
+        headers: { "Content-type": "application/json" },
+
+        body: JSON.stringify({
+          label: label,
+          user_id: user_id,
+          task_done: false,
+        }),
+      };
+
+      fetch(process.env.BACKEND_URL + "/api/todos", requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+          console.log("then!!!!", result);
+          let todos = get().todos;
+          let enterTodo = [...todos, result];
+          set({
+            todos: enterTodo,
           });
         });
     },

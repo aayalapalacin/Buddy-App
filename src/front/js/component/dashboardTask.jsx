@@ -47,7 +47,7 @@ function DashboardTask() {
   const actions = useStore((state) => state.actions);
 
   const [selectedCategories, setSelectedCategories] = useState(info);
-  console.log("selectedCat", selectedCategories);
+  console.log("selectedCat!!!!!!!!!!!", selectedCategories);
   // let selectedCategories = [{ task: "task1" }, { task: "task2" }];
   const [checkedTodo, setCheckedTodo] = useState([]);
 

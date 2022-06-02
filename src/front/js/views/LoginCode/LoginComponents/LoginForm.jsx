@@ -17,6 +17,8 @@ const LoginForm = () => {
   const [user, setUser] = useState("");
   const [pwd, setPwd] = useState("");
   const [errMsg, setErrMsg] = useState("");
+  console.log("user", user);
+  console.log("pwd", pwd);
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -101,7 +103,9 @@ const LoginForm = () => {
           <div>
             <Link to="/WelcomeApp">
               <button
-                onClick={() => actions.login(user, pwd)}
+                onClick={() => {
+                  actions.login(user, pwd);
+                }}
                 type="submit"
                 value="Login"
                 className="login-button"

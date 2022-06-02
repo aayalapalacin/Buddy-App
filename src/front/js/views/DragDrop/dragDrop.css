@@ -39,19 +39,13 @@
 }
 
 .box2 {
-  width: 25rem;
-  height: 14.5rem;
+  width: 20.2rem;
+  height: 8rem;
   border-width: 3px 3px 5px 5px;
   border-radius: 4% 95% 6% 95%/95% 4% 92% 5%;
   transform: rotate(-2deg);
 }
 
-<<<<<<< HEAD body {
-  background-color: white;
-}
-=======
-
->>>>>>> e19f89acf1b7e91473a9e760864bee6116dac16e
 /* background-color: #f9ea8f;
   background-image: linear-gradient(315deg, #f9ea8f 0%, #aff1da 74%); */
 
@@ -59,9 +53,9 @@
   background-color: #cbffdc;
   color: black;
   border: none;
-  width: 18rem;
-  font-size: 2.3rem;
-  height: 4.8rem;
+  width: 11rem;
+  font-size: 1.5rem;
+  height: 3.5rem;
   filter: drop-shadow(black 3px 4px 4px);
   position: relative;
   bottom: 2rem;
@@ -72,16 +66,16 @@
 }
 .evenboxinner h5 {
   font-family: "Patrick Hand", cursive;
-  padding-left: 1.9rem;
-  font-size: 2.1rem;
+  padding-left: 1rem;
+  font-size: 1.3rem;
 }
 
 .dashBuddyIcon {
-  font-size: 3rem;
+  font-size: 2.27rem;
 }
 
 #findBuddy {
-  font-size: 2rem;
+  font-size: 1.6rem;
 }
 .arrowRight {
   display: flex;
@@ -92,7 +86,7 @@
   bottom: 1rem;
 }
 .arrowSize {
-  font-size: 4.5rem;
+  font-size: 4.2rem;
 }
 #gripIcon {
   padding-left: 0.5rem;
@@ -104,11 +98,11 @@
   width: 100vw;
 }
 .container-fluid {
-  margin: 2.5rem 3rem 3rem 3rem;
+  margin: 2rem 3rem 3rem 3rem;
 }
 
 #photoSampleDiv {
-  width: 16rem;
+  width: 13rem;
   height: 14rem;
   margin-left: 4.5rem;
 }
@@ -153,13 +147,14 @@
 
 .boxDrag {
   position: relative;
+  right: 3rem;
 }
 
 #pieChart {
   width: 100%;
   height: auto;
   position: relative;
-  left: 2rem;
+  left: 0rem;
 }
 .dayBtnDiv {
   display: inline;
@@ -209,10 +204,12 @@ button:focus {
 }
 
 .readyButton button {
-  width: 15rem;
-  height: 6.2rem;
+  width: 12rem;
+  height: 5rem;
   border-radius: 3rem;
-  font-size: 3rem;
+  font-size: 2.3rem;
+  position: relative;
+  bottom: 0.7rem;
 }
 
 .readyBtnCol {
@@ -286,11 +283,11 @@ button:focus {
   height: var(--height);
   border-radius: var(--border-radius);
   position: relative;
-  padding: 1.5rem 1rem;
+  padding: 0rem 0rem 2.25rem 1rem;
   display: grid;
   grid-template-columns: 2.5rem auto;
   align-items: center;
-  font-size: 1.6rem;
+  font-size: 1.25rem;
 }
 
 .progressChartCircle {
@@ -646,15 +643,13 @@ button:focus {
   font: inherit;
   line-height: 1;
   padding: 0.6rem;
-  width: 11.5rem;
-  height: 11.5rem;
+  width: 9rem;
+  height: 9rem;
   color: #078dff;
   border-radius: 25%;
   filter: drop-shadow(black 0px -1px 0px);
-  top: 1.3rem;
-  right: 44rem;
-  /* left: 10rem; */
-  font-size: 2.4rem;
+  top: 0.3rem;
+  right: 35rem;
   position: relative;
 }
 
@@ -683,12 +678,12 @@ button:focus {
 .nav-tabs .nav-link.active {
   background-color: transparent;
   font-family: "Patrick Hand";
-  font-size: 2.5rem;
+  font-size: 1.7rem;
   color: black;
   border: solid black;
   border-color: black;
   /* float: left; */
-  width: 14.2rem;
+  width: 12.2rem;
   height: 4.5rem;
   border-width: 3px 3px 5px 5px;
   border-radius: 4% 94% 7% 143%/69% 26% 107% 18%;
@@ -711,7 +706,7 @@ button:focus {
 
 .nav-link {
   display: block;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   padding: 0.5rem 1rem;
   text-decoration: none;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
@@ -720,12 +715,12 @@ button:focus {
 }
 
 .dayBtnRow1 {
-  height: 10rem;
+  height: 9rem;
 }
 
 #userGoalPic {
   width: auto;
-  height: 6rem;
+  height: 5rem;
   position: relative;
   top: 0.5rem;
 }
@@ -817,7 +812,7 @@ input[id="cb"]:checked ~ p.strikethrough {
 }
 
 #mainMenu li > a {
-  font-size: 1.1rem;
+  font-size: 1rem;
   letter-spacing: 0.1rem;
   color: #5d5757;
   font-weight: 600;
@@ -1005,14 +1000,14 @@ input[id="cb"]:checked ~ p.strikethrough {
 .dashBoxText {
   font-family: "Patrick Hand", cursive;
   padding-left: 2rem;
-  font-size: 1.75rem;
+  font-size: 1.2rem;
   padding-bottom: 0.5rem;
   margin-bottom: 0;
 }
 
 .instructionsDashboard {
-  width: 25rem;
-  height: 14.5rem;
+  width: 21.2rem;
+  height: 9.5rem;
   border-width: 3px 3px 5px 5px;
   border-radius: 4% 95% 6% 95%/95% 4% 92% 5%;
   transform: rotate(-2deg);

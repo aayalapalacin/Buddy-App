@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Category, Goal
+from api.models import db, User, Category, Goal, TodoItem
 from api.utils import generate_sitemap, APIException
 from flask_cors import cross_origin
 
@@ -82,6 +82,23 @@ def user_category():
     # db.session.add(user)
     db.session.commit()
     return jsonify(user.serialize())
+
+@api.route("/todos", methods=['POST'])
+@cross_origin()
+def user_todos():
+    data = request.get_json()
+    todo_item = TodoItem(label = data["label"],task_done = data["task_done"],user_id = data["user_id"])
+    db.session.add(todo_item)
+    db.session.commit()
+    return jsonify(todo_item.serialize())
+
+@api.route('/todos/<int:user_id>', methods=['GET'])
+@cross_origin()
+def get_todos(user_id):
+    todos = TodoItem.query.filter_by(user_id=user_id)
+    todos_serialized = [todo.serialize() for todo in todos] 
+
+    return jsonify(todos_serialized), 200
 
 
 
