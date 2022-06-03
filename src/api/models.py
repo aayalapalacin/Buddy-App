@@ -7,7 +7,10 @@ user_goal = db.Table('user_goal',
     db.Column('user_id',db.Integer, db.ForeignKey('user.id'),primary_key=True),
     db.Column('goal_id',db.Integer, db.ForeignKey('goal.id'),primary_key=True),
     db.Column('is_done',db.Boolean, default= False)
-
+)
+user_category = db.Table('user_category',
+    db.Column('user_id',db.Integer, db.ForeignKey('user.id'),primary_key=True),
+    db.Column('category_id',db.Integer, db.ForeignKey('category.id'),primary_key=True),
 )
 
 
@@ -20,7 +23,9 @@ class User(db.Model):
     inspiration = db.Column(db.String(250), unique=False, nullable=False)
     fun_fact = db.Column(db.String(250), unique=False, nullable=False)
     todo_item = db.relationship("TodoItem")
-    
+    categories = db.relationship(
+        "Category", secondary=user_category, backref="users"
+    )
 
 
 
@@ -65,6 +70,7 @@ class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     task = db.Column(db.String(120), unique=True, nullable=False)
     goals = db.relationship('Goal', backref='category')
+
 
 
     # is_active = db.Column(db.Boolean(), unique=False, nullable=False)ool
