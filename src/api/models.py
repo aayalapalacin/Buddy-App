@@ -24,7 +24,7 @@ class User(db.Model):
     fun_fact = db.Column(db.String(250), unique=False, nullable=False)
     todo_item = db.relationship("TodoItem")
     categories = db.relationship(
-        "Category", secondary=user_category, backref="users"
+        "Category", secondary=user_category, back_populates="users"
     )
 
 
@@ -70,6 +70,9 @@ class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     task = db.Column(db.String(120), unique=True, nullable=False)
     goals = db.relationship('Goal', backref='category')
+    users = db.relationship(
+        "User", secondary=user_category, back_populates="categories"
+    )
 
 
 

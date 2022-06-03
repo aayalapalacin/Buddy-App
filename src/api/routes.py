@@ -83,6 +83,14 @@ def user_category():
     db.session.commit()
     return jsonify(user.serialize())
 
+@api.route('/buddy/<int:category_id>', methods=['GET'])
+@cross_origin()
+def find_buddy(category_id):
+    category = Category.query.filter_by(id=category_id).first()
+    users = [item.serialize() for item in category.users]
+    return jsonify(users), 200
+
+
 @api.route("/todos", methods=['POST'])
 @cross_origin()
 def user_todos():
