@@ -41,6 +41,8 @@ function DashboardTask() {
   // const [goals, setGoals] = useState([]);
 
   // const [categories,setCategories]=useState();
+  const user = useStore((state) => state.user);
+
   let info = useStore((state) => state.selectedCategories);
   console.log("info", info);
 
@@ -172,7 +174,7 @@ function DashboardTask() {
       </div>
       <div className="row todoListRow">
         <div className="col-12">
-          <h1 className="font todoListTitle">Todo List</h1>
+          <h1 className="font todoListTitle">{user.username}'s Todo List</h1>
           <UserInput />
         </div>
       </div>

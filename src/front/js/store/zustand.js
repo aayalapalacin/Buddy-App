@@ -5,7 +5,7 @@ const useStore = create((set, get) => ({
   todos: [],
   goals: [],
   user: [],
-
+  selectedCategories: [],
   actions: {
     goals: (array) => {
       set({
@@ -126,10 +126,6 @@ const useStore = create((set, get) => ({
       };
 
       fetch(process.env.BACKEND_URL + `/api/user/${id}`, requestOptions)
-        // fetch(
-        //   "https://3001-avokeys-buddyapp-4rimlyd8qp6.ws-us41.gitpod.io/api/categories",
-        //   requestOptions
-        // )
         .then((response) => response.json())
         .then((result) => {
           set({
