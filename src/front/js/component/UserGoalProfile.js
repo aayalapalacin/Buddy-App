@@ -1,7 +1,7 @@
 import React from "react";
 import buddyImg from "../../img/buddyapp2.png";
 
-export const UserGoalProfile = () => {
+export const UserGoalProfile = (props) => {
   return (
     <div className="fullCard">
       <img
@@ -11,11 +11,9 @@ export const UserGoalProfile = () => {
         alt="..."
       />
       <div className="CharacterCard-body">
-        <h5 className="Card-title font">Username</h5>
-        <p className="Card-text font">Inspiration: My grandather</p>
-        <p className="Card-text font">
-          Fun Fact: I like to play music in the dark{" "}
-        </p>
+        <h5 className="Card-title font">{props.username}</h5>
+        <p className="Card-text font">{props.inspiration}</p>
+        <p className="Card-text font">{props.fun_fact} </p>
         <p className="Card-text font">User Progress: 25% </p>
       </div>
     </div>

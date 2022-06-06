@@ -46,6 +46,7 @@ function DashboardTask() {
 
   // const [categories,setCategories]=useState();
   const user = useStore((state) => state.user);
+  const buddy = useStore((state) => state.buddy);
 
   let info = useStore((state) => state.selectedCategories);
   console.log("info", info);
@@ -56,10 +57,24 @@ function DashboardTask() {
   console.log("selectedCat!!!!!!!!!!!", selectedCategories);
   // let selectedCategories = [{ task: "task1" }, { task: "task2" }];
   const [checkedTodo, setCheckedTodo] = useState([]);
-
+  const [userCategory, setUserCategory] = useState("");
+  useEffect(() => {
+    if (userCategory == "") {
+      actions.getBuddy(info[0].id);
+    } else if (userCategory === "School") {
+      actions.getBuddy(1);
+    } else if (userCategory === "Professional") {
+      actions.getBuddy(2);
+    } else if (userCategory === "Creative") {
+      actions.getBuddy(3);
+    } else if (userCategory === "Health") {
+      actions.getBuddy(4);
+    }
+  }, [userCategory]);
   // (() => {
   //   actions.getSelectedCategories(user.id).then();
   // }, []);
+  console.log("buddy", buddy);
 
   return (
     <div className="container-fluid ">
@@ -83,6 +98,7 @@ function DashboardTask() {
                     role="tab"
                     aria-controls={`nav-${item.task}`}
                     aria-selected={index == 0 ? "true" : "false"}
+                    onClick={() => setUserCategory(item.task)}
                   >
                     {item.task}
                   </button>
@@ -155,11 +171,16 @@ function DashboardTask() {
                   ></button>
                 </div>
                 <div className="modal-body">
-                  <UserGoalProfile />
-                  <UserGoalProfile />
-                  <UserGoalProfile />
-                  <UserGoalProfile />
-                  <UserGoalProfile />
+                  {buddy.map((item, index) => {
+                    return (
+                      <UserGoalProfile
+                        key={index}
+                        username={item.username}
+                        inspiration={item.inspiration}
+                        fun_fact={item.fun_fact}
+                      />
+                    );
+                  })}
                 </div>
                 <div className="modal-footer"></div>
               </div>

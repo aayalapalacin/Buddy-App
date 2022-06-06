@@ -6,6 +6,7 @@ const useStore = create((set, get) => ({
   goals: [],
   user: [],
   selectedCategories: [],
+  buddy: [],
   actions: {
     goals: (array) => {
       set({
@@ -179,6 +180,31 @@ const useStore = create((set, get) => ({
         });
     },
 
+    getBuddy: (category_id) => {
+      var requestOptions = {
+        method: "GET",
+        redirect: "follow",
+        mode: "cors",
+      };
+
+      fetch(
+        process.env.BACKEND_URL + `/api/buddy/${category_id}`,
+        requestOptions
+      )
+        // fetch(
+        //   "https://3001-avokeys-buddyapp-4rimlyd8qp6.ws-us41.gitpod.io/api/categories",
+        //   requestOptions
+        // )
+        .then((response) => response.json())
+        .then((result) => {
+          let info = get().user;
+
+          let final = result.filter((item) => info.id !== item.id);
+          set({
+            buddy: final,
+          });
+        });
+    },
     deleteTodos: (todoId) => {
       var requestOptions = {
         method: "DELETE",
