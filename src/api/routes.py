@@ -117,15 +117,12 @@ def delete_todos(id):
     return jsonify("item deleted"), 200
 
 
-
-
-
 # @api.route('/update_goal', methods=['PUT'])
 # @cross_origin()
 # def change_goal():
-#     json = request.json
+#     json = request.get_json()
 #     current_goal = Goal.query.filter_by(id=json["id"]).first() 
-#     print(current_goal)
+#     print("current goal!!!!!!",current_goal)
 #     checked_goal.is_done = json["is_done"]
 #     db.session.add(checked_goal)
 #     db.session.commit()

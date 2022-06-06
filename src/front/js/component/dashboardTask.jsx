@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import useStore from "../store/zustand";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserGroup } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPersonArrowUpFromLine,
+  faUserGroup,
+} from "@fortawesome/free-solid-svg-icons";
 import { UserInput } from "./UserInput";
 import { UserGoalProfile } from "./UserGoalProfile";
 
@@ -10,6 +13,7 @@ function Goal(props) {
   const [boolean, setBoolean] = useState(props.isChecked);
 
   const todoItemChecked = (event) => {
+    setBoolean(!boolean);
     console.log("props goal id", props.goalId);
     event.preventDefault();
     event.persist();
@@ -28,7 +32,7 @@ function Goal(props) {
         name="r"
         value="1"
         className="border border-primary rounded-circle"
-        // checked={goal.is_done}
+        checked={boolean}
         onChange={todoItemChecked}
       />
       <label htmlFor="01">{props.goal_name}</label>
