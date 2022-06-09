@@ -71,13 +71,20 @@ def user_login():
 def user_category():
     data = request.get_json()
     user = User.query.filter_by(id=data["id"]).one_or_none()
-    print(user)
-    categories = []
 
     for category in data["categories"]:
-        catItem = Category.query.filter_by(id=category["id"]).one_or_none()
-        categories.append(catItem)
-    user["categories"] = categories
+        catItem = Category.query.filter_by(id=category["unicorn"]).one_or_none()
+        user.categories.append(catItem)
+    db.session.commit()
+    return "success" , 200
+
+@api.route('/userCategory/<int:user_id>', methods=['GET'])
+@cross_origin()
+def get_userCategory(user_id):
+    categories = User.query.filter_by(user_id=id)
+    categories_serialized = [category.serialize() for category in categories] 
+
+    return jsonify(categories_serialized), 200
 
     # db.session.add(user)
     db.session.commit()
@@ -116,6 +123,23 @@ def delete_todos(id):
     db.session.commit()
     return jsonify("item deleted"), 200
 
+
+# @api.route("/user_Sel_Cat", methods=['POST'])
+# @cross_origin()
+# def user_Sel_Cat():
+#     data = request.get_json()
+#     sel_Cat = TodoItem(label = data["label"],task_done = data["task_done"],user_id = data["user_id"])
+#     db.session.add(todo_item)
+#     db.session.commit()
+#     return jsonify(todo_item.serialize())
+
+# @api.route('/todos/<int:user_id>', methods=['GET'])
+# @cross_origin()
+# def get_todos(user_id):
+#     todos = TodoItem.query.filter_by(user_id=user_id)
+#     todos_serialized = [todo.serialize() for todo in todos] 
+
+#     return jsonify(todos_serialized), 200
 
 # @api.route('/update_goal', methods=['PUT'])
 # @cross_origin()

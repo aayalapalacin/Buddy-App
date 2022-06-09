@@ -20,15 +20,21 @@ import dragAndDropIcon from "../../../img/icons8-drag-and-drop-50.png";
 //   { id: 2, task: "School", img: dragAndDropIcon },
 //   { id: 3, task: "Creative", img: dragAndDropIcon },
 //   { id: 4, task: "Professional", img: dragAndDropIcon },
+
 // ];
 const DayBtn = () => {
   // const { store, actions } = useContext(Context);
   const actions = useStore((state) => state.actions);
   const categoriesInfo = useStore((state) => state.categories);
+  const user = useStore((state) => state.user);
+
   const todos = useStore((state) => state.todos);
+  // const selectedCategories = useStore((state) => state.selectedCategories);
   console.log("todos", todos);
   const [categories, setCategories] = useState([]);
   const [dayButton, setDayButton] = useState([]);
+  const [userSelectedCategories, setUserSelectedCategories] = useState("");
+
   const [item, setItem] = useState("");
   // const [taskArray, setTaskArray] = useState(TASKS);
   console.log("day btn", dayButton);
@@ -69,8 +75,16 @@ const DayBtn = () => {
       isOver: monitor.isOver(),
     }),
   });
+  const addSelectedCategories = () => {
+    dayButton.map((item) => {
+      return item.task;
+    });
+  };
+  // actions.addSelectedCategories(dayButton,user.id)
 
-  console.log("categories", categories);
+  // setUserSelectedCategories(item.task);
+
+  console.log("fingers crossed", addSelectedCategories);
 
   return (
     <React.Fragment>
@@ -117,7 +131,11 @@ const DayBtn = () => {
           <div className="dayButton" ref={dropRef}>
             <ul className="list-group list-group-flush font dropBtn">
               {dayButton.map((task, index) => (
-                <SelectedTask key={index} task={task} />
+                <SelectedTask
+                  key={index}
+                  task={task}
+                  onChange={addSelectedCategories}
+                />
               ))}
             </ul>
             {isOver && <div> Drop Here!</div>}

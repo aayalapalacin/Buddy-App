@@ -119,6 +119,31 @@ const useStore = create((set, get) => ({
           });
         });
     },
+    addSelectedCategories: (task, user_id) => {
+      var requestOptions = {
+        method: "POST",
+        // redirect: "follow",
+        // mode: "cors",
+        headers: { "Content-type": "application/json" },
+
+        body: JSON.stringify({
+          task: task,
+          user_id: user_id,
+        }),
+      };
+
+      fetch(process.env.BACKEND_URL + "/api/selectedCategories", requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+          console.log("then!!!!", result);
+          let selectedCategories = get().selectedCategories;
+          let enterSelectedCategories = [...selectedCategories, result];
+          set({
+            selectedCategories: enterSelectedCategories,
+          });
+        });
+    },
+
     getSelectedCategories: (id) => {
       var requestOptions = {
         method: "GET",
@@ -134,6 +159,7 @@ const useStore = create((set, get) => ({
           });
         });
     },
+
     getTodos: (id) => {
       var requestOptions = {
         method: "GET",

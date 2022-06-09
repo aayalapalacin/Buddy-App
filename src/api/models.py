@@ -23,6 +23,7 @@ class User(db.Model):
     inspiration = db.Column(db.String(250), unique=False, nullable=False)
     fun_fact = db.Column(db.String(250), unique=False, nullable=False)
     todo_item = db.relationship("TodoItem")
+    category = db.relationship("Category")
     categories = db.relationship(
         "Category", secondary=user_category, back_populates="users"
     )
@@ -65,12 +66,14 @@ class TodoItem(db.Model):
             "task_done": self.task_done
         }
 
+
     
 
 class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     task = db.Column(db.String(120), unique=True, nullable=False)
     goals = db.relationship('Goal', backref='category')
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
     users = db.relationship(
         "User", secondary=user_category, back_populates="categories"
     )

@@ -16,7 +16,7 @@ export const UserInput = () => {
   useEffect(() => {
     setVariable(todos);
   }, [todos]);
-
+  console.log(listItem);
   const todoItem = (event) => {
     if (event.keyCode === 13) {
       actions.addTodos(listItem, user.id);
