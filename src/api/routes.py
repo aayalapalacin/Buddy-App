@@ -70,25 +70,25 @@ def user_login():
 @cross_origin()
 def user_category():
     data = request.get_json()
-    user = User.query.filter_by(id=data["id"]).one_or_none()
+    user = User.query.filter_by(id=data["user_id"]).one_or_none()
 
     for category in data["categories"]:
-        catItem = Category.query.filter_by(id=category["unicorn"]).one_or_none()
+        catItem = Category.query.filter_by(id=category["id"]).one_or_none()
         user.categories.append(catItem)
     db.session.commit()
-    return "success" , 200
+    user_categories_serialized = [item.serialize() for item in user.categories]
+    # category_names = [item.task for item in user_categories_serialized]
+    return  jsonify(user_categories_serialized), 200
 
 @api.route('/userCategory/<int:user_id>', methods=['GET'])
 @cross_origin()
 def get_userCategory(user_id):
-    categories = User.query.filter_by(user_id=id)
-    categories_serialized = [category.serialize() for category in categories] 
+    user = User.query.filter_by(id=user_id).one_or_none()
+    categories_serialized = [category.serialize() for category in user.categories] 
 
     return jsonify(categories_serialized), 200
 
-    # db.session.add(user)
-    db.session.commit()
-    return jsonify(user.serialize())
+    
 
 @api.route('/buddy/<int:category_id>', methods=['GET'])
 @cross_origin()

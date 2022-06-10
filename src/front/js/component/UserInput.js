@@ -50,16 +50,6 @@ export const UserInput = () => {
     const isChecked = (label) =>
       checked.includes(label) ? "checked-item" : "not-checked-item";
 
-    // const checkedItems = checked.length
-    //   ? checked.reduce((total, item) => {
-    //       console.log("total", total);
-    //       console.log("item", item);
-    //       console.log("checked", checked);
-    //       console.log("checked.length", checked.length);
-    //       return total + ", " + item;
-    //     })
-    //   : "";
-
     const handleCheck = (event) => {
       var updatedList = [...checked];
       if (event.target.checked) {

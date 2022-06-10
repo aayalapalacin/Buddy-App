@@ -33,13 +33,14 @@ const DayBtn = () => {
   console.log("todos", todos);
   const [categories, setCategories] = useState([]);
   const [dayButton, setDayButton] = useState([]);
-  const [userSelectedCategories, setUserSelectedCategories] = useState("");
 
   const [item, setItem] = useState("");
   // const [taskArray, setTaskArray] = useState(TASKS);
   console.log("day btn", dayButton);
+  console.log(user);
   useEffect(() => {
     actions.selectedCategories(dayButton);
+    actions.addSelectedCategories(dayButton, user.id);
   }, [dayButton]);
   useEffect(() => {
     actions.getCategories();
@@ -47,6 +48,8 @@ const DayBtn = () => {
   useEffect(() => {
     setCategories(categoriesInfo);
   }, [categoriesInfo]);
+
+  console.log("categoriesInfo", categories);
   // useEffect(() => {
   //   let filteredArray = TASKS.filter((task) => {
   //     if (task.task == item) {
@@ -134,7 +137,7 @@ const DayBtn = () => {
                 <SelectedTask
                   key={index}
                   task={task}
-                  onChange={addSelectedCategories}
+                  // onChange={addSelectedCategories}
                 />
               ))}
             </ul>

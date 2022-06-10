@@ -119,25 +119,25 @@ const useStore = create((set, get) => ({
           });
         });
     },
-    addSelectedCategories: (task, user_id) => {
+    addSelectedCategories: async (categories, user_id) => {
       var requestOptions = {
-        method: "POST",
+        method: "PUT",
         // redirect: "follow",
         // mode: "cors",
         headers: { "Content-type": "application/json" },
 
         body: JSON.stringify({
-          task: task,
+          categories: categories,
           user_id: user_id,
         }),
       };
 
-      fetch(process.env.BACKEND_URL + "/api/selectedCategories", requestOptions)
+      fetch(process.env.BACKEND_URL + "/api/userCategory", requestOptions)
         .then((response) => response.json())
         .then((result) => {
           console.log("then!!!!", result);
           let selectedCategories = get().selectedCategories;
-          let enterSelectedCategories = [...selectedCategories, result];
+          let enterSelectedCategories = [...selectedCategories, ...result];
           set({
             selectedCategories: enterSelectedCategories,
           });
