@@ -88,7 +88,9 @@ const DayBtn = () => {
   // setUserSelectedCategories(item.task);
 
   // console.log("fingers crossed", addSelectedCategories);
-
+  const dropDownItem = () => {
+    console.log("dropper");
+  };
   return (
     <React.Fragment>
       <div className="row dayBtnRow">
@@ -114,6 +116,7 @@ const DayBtn = () => {
                   id={task.id}
                   task={task.task}
                   goals={task.goals}
+                  // onClick={dropDownItem}
                   func={() => setItem(task)}
                 />
               ))}

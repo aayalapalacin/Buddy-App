@@ -5,7 +5,7 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Category, Goal, TodoItem
 from api.utils import generate_sitemap, APIException
 from flask_cors import cross_origin
-
+from flask_jwt_extended import create_access_token, jwt_required,get_jwt_identity,JWTManager
 api = Blueprint('api', __name__)
 
 
@@ -50,14 +50,51 @@ def change_goal():
     db.session.commit()
     return jsonify(checked_goal.serialize()), 200
 
-@api.route("/signup", methods=['POST'])
-@cross_origin()
-def user_signup():
-    data = request.get_json()
-    user = User(username = data["username"],email = data["email"],password = data["password"], inspiration = data["inspiration"], fun_fact = data["fun_fact"])
+# @api.route("/signup", methods=['POST'])
+# @cross_origin()
+# def user_signup():
+#     data = request.get_json()
+#     user = User(username = data["username"],email = data["email"],password = data["password"], inspiration = data["inspiration"], fun_fact = data["fun_fact"])
+#     db.session.add(user)
+#     db.session.commit()
+#     return jsonify(user.serialize())
+
+@api.route('/signup', methods=['POST'])
+def signup_user():
+    body = request
+    email = request.json.get('email')
+    password = request.json.get('password')
+    username = request.json.get('username')
+    fun_fact = request.json.get('fun_fact')
+    inspiration = request.json.get('inspiration')
+    if body is None:
+        return "body is empty", 400
+    if not username:
+        return "username is empty", 400
+    if not email:
+        return "email is empty", 400
+    if not fun_fact:
+        return "fun_fact is empty", 400
+    if not inspiration:
+        return "inspiration is empty", 400
+    if not password:
+        return "password is empty", 400
+    
+    check_user_email = User.query.filter_by(email=email).first()
+    if check_user_email is not None:
+        return "user already exists", 409
+    check_user_username = User.query.filter_by(username=username).first()
+    if check_user_username is not None:
+        return "user already exists", 409
+    user = User(email= email, password=password, username=username, fun_fact=fun_fact, inspiration=inspiration)
     db.session.add(user)
     db.session.commit()
-    return jsonify(user.serialize())
+
+    response_body = {
+        "message": "Your account has been registered successfully", "user": user.serialize()
+    }
+
+    return jsonify(response_body ), 200
 
 @api.route("/login", methods=['POST'])
 @cross_origin()
