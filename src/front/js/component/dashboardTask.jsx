@@ -54,9 +54,9 @@ function DashboardTask() {
   const actions = useStore((state) => state.actions);
 
   const [selectedCategories, setSelectedCategories] = useState(info);
-  console.log("selectedCat!!!!!!!!!!!", selectedCategories);
+  const [catArrayState, setcatArrayState] = useState([]);
   // let selectedCategories = [{ task: "task1" }, { task: "task2" }];
-  const [checkedTodo, setCheckedTodo] = useState([]);
+  // const [checkedTodo, setCheckedTodo] = useState([]);
   const [userCategory, setUserCategory] = useState("");
   useEffect(() => {
     if (userCategory == "") {
@@ -76,6 +76,27 @@ function DashboardTask() {
   // }, []);
   console.log("buddy", buddy);
 
+  const uniqueCategory = [
+    ...selectedCategories
+      .reduce((map, obj) => map.set(obj.id, obj), new Map())
+      .values(),
+  ];
+
+  // const singleTab = () => {
+  //   selectedCategories.map((item, index) => {
+  //     let list = selectedCategories.filter((taskItem) => {
+  //       if (taskItem != item.task) {
+  //         return taskItem;
+  //       }
+  //     });
+  //     console.log("list", list);
+  //   });
+  // };
+
+  // const filtered = selectedCategories.filter((o.task, index) => !tasks.includes(id, index + 1))
+
+  // console.log(filtered)
+
   return (
     <div className="container-fluid ">
       <div className="row categoryRow">
@@ -85,8 +106,8 @@ function DashboardTask() {
             id="nav-tab"
             role="tablist"
           >
-            {selectedCategories.length > 0 &&
-              selectedCategories.map((item, index) => {
+            {uniqueCategory.length > 0 &&
+              uniqueCategory.map((item, index) => {
                 return (
                   <button
                     className={index == 0 ? "nav-link active" : "nav-link"}
@@ -110,8 +131,8 @@ function DashboardTask() {
       <div className="row rowMiddle">
         <div className="col-5 goalTaskCol">
           <div className="tab-content" id="nav-tabContent">
-            {selectedCategories.length > 0 &&
-              selectedCategories.map((item, index) => {
+            {uniqueCategory.length > 0 &&
+              uniqueCategory.map((item, index) => {
                 return (
                   <div
                     className={

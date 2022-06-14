@@ -78,16 +78,16 @@ const DayBtn = () => {
       isOver: monitor.isOver(),
     }),
   });
-  const addSelectedCategories = () => {
-    dayButton.map((item) => {
-      return item.task;
-    });
-  };
+  // const addSelectedCategories = () => {
+  //   dayButton.map((item) => {
+  //     return item.task;
+  //   });
+  // };
   // actions.addSelectedCategories(dayButton,user.id)
 
   // setUserSelectedCategories(item.task);
 
-  console.log("fingers crossed", addSelectedCategories);
+  // console.log("fingers crossed", addSelectedCategories);
 
   return (
     <React.Fragment>
@@ -134,11 +134,7 @@ const DayBtn = () => {
           <div className="dayButton" ref={dropRef}>
             <ul className="list-group list-group-flush font dropBtn">
               {dayButton.map((task, index) => (
-                <SelectedTask
-                  key={index}
-                  task={task}
-                  // onChange={addSelectedCategories}
-                />
+                <SelectedTask key={index} task={task} />
               ))}
             </ul>
             {isOver && <div> Drop Here!</div>}

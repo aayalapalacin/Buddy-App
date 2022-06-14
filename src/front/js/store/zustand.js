@@ -144,21 +144,21 @@ const useStore = create((set, get) => ({
         });
     },
 
-    getSelectedCategories: (id) => {
-      var requestOptions = {
-        method: "GET",
-        redirect: "follow",
-        mode: "cors",
-      };
+    // getSelectedCategories: (id) => {
+    //   var requestOptions = {
+    //     method: "GET",
+    //     redirect: "follow",
+    //     mode: "cors",
+    //   };
 
-      fetch(process.env.BACKEND_URL + `/api/user/${id}`, requestOptions)
-        .then((response) => response.json())
-        .then((result) => {
-          set({
-            selectedCategories: result.categories,
-          });
-        });
-    },
+    //   fetch(process.env.BACKEND_URL + `/api/user/${id}`, requestOptions)
+    //     .then((response) => response.json())
+    //     .then((result) => {
+    //       set({
+    //         selectedCategories: result.categories,
+    //       });
+    //     });
+    // },
 
     getTodos: (id) => {
       var requestOptions = {
