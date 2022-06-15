@@ -9,6 +9,7 @@ from flask_jwt_extended import create_access_token, jwt_required,get_jwt_identit
 api = Blueprint('api', __name__)
 
 
+
 @api.route('/hello', methods=['POST', 'GET'])
 def handle_hello():
 
@@ -96,12 +97,39 @@ def signup_user():
 
     return jsonify(response_body ), 200
 
-@api.route("/login", methods=['POST'])
-@cross_origin()
-def user_login():
-    data = request.get_json()
-    user = User.query.filter_by(username=data["username"],password=data["password"]).one_or_none()
-    return jsonify(user.serialize())
+# @api.route("/login", methods=['POST'])
+# @cross_origin()
+# def user_login():
+#     data = request.get_json()
+#     user = User.query.filter_by(username=data["username"],password=data["password"]).one_or_none()
+#     return jsonify(user.serialize())
+
+@api.route('/login', methods=['POST'])
+def handle_login():
+    username = request.json.get("username", None)
+    password = request.json.get("password", None)
+
+    user = User.query.filter_by(username=username).first()
+
+    if user is None:
+        return jsonify({
+            "msg": "No account was found. Please check the username used or create an account."
+        }), 401
+    
+    if password != user.password:
+        return jsonify({"msg": "Incorrect password. Please try again."}), 401
+
+    access_token = create_access_token(identity=username)
+    payload = {
+        'token': access_token,
+        # .decode("utf-8")
+        'user': user.serialize()
+    }
+    response_body = {
+        "message": "Succesfully logged in", "user": user.serialize()
+    }
+
+    return jsonify(response_body ), 200
 
 @api.route("/userCategory", methods=['PUT'])
 @cross_origin()
