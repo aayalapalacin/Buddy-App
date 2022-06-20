@@ -5,9 +5,9 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Category, Goal, TodoItem
 from api.utils import generate_sitemap, APIException
 from flask_cors import cross_origin
+from hashlib import sha256
 from flask_jwt_extended import create_access_token, jwt_required,get_jwt_identity,JWTManager
 api = Blueprint('api', __name__)
-
 
 
 
@@ -63,9 +63,16 @@ def change_goal():
 
 @api.route('/signup', methods=['POST'])
 def signup_user():
+    
+    h = sha256()
+   
     body = request
     email = request.json.get('email')
     password = request.json.get('password')
+    h.update(password.encode('utf-8'))
+    hash = h.hexdigest()
+    print("hash!!!!!!!!!!!",hash)
+
     username = request.json.get('username')
     fun_fact = request.json.get('fun_fact')
     inspiration = request.json.get('inspiration')
@@ -88,7 +95,7 @@ def signup_user():
     check_user_username = User.query.filter_by(username=username).first()
     if check_user_username is not None:
         return jsonify({"message": "username taken"}), 409
-    user = User(email= email, password=password, username=username, fun_fact=fun_fact, inspiration=inspiration)
+    user = User(email= email, password=hash, username=username, fun_fact=fun_fact, inspiration=inspiration)
     db.session.add(user)
     db.session.commit()
 
@@ -107,8 +114,14 @@ def signup_user():
 
 @api.route('/login', methods=['POST'])
 def handle_login():
+    h = sha256()
     username = request.json.get("username", None)
-    password = request.json.get("password", None)
+   
+    password = request.json.get('password')
+    h.update(password.encode('utf-8'))
+    hash = h.hexdigest()
+
+
 
     user = User.query.filter_by(username=username).first()
 
@@ -117,7 +130,7 @@ def handle_login():
             "message": "No account was found. Please check the username used or create an account."
         }), 401
     
-    if password != user.password:
+    if hash != user.password:
         return jsonify({"message": "Incorrect password. Please try again."}), 401
 
     access_token = create_access_token(identity=username)
