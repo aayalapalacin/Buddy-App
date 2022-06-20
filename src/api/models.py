@@ -23,7 +23,6 @@ class User(db.Model):
     inspiration = db.Column(db.String(250), unique=False, nullable=False)
     fun_fact = db.Column(db.String(250), unique=False, nullable=False)
     todo_item = db.relationship("TodoItem")
-    category = db.relationship("Category")
     categories = db.relationship(
         "Category", secondary=user_category, back_populates="users"
     )

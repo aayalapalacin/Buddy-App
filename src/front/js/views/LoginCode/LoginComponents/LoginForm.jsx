@@ -4,12 +4,14 @@ import axios from "/workspace/Buddy-App/src/api/axios.js";
 import { Link } from "react-router-dom";
 import "../css/login.css";
 import useStore from "../../../store/zustand";
+import { useHistory } from "react-router-dom";
 
 const LOGIN_URL = "./auth";
 const LoginForm = () => {
   // const [details, setDetails] = useState({ username: "", password: "" });
   const { setAuth } = useContext(AuthContext);
   const actions = useStore((state) => state.actions);
+  const history = useHistory();
 
   const userRef = useRef();
   const errRef = useRef();
@@ -49,10 +51,25 @@ const LoginForm = () => {
       }
     }
   };
+  // useEffect(() => {
+  //   if (user.user) {
+  //     history.push("/WelcomeApp");
+  //   }
+  // }, [user]);
 
   useEffect(() => {
     setErrMsg("");
   }, [user, pwd]);
+  const hisPush = () => {
+    if (user.message === "Succesfully logged in") {
+      return "WelcomeApp";
+    } else {
+      return "LoginPage";
+    }
+  };
+
+  let hisUrl = hisPush();
+  console.log("history", hisPush());
   return (
     <>
       <div className="inputs">
@@ -93,26 +110,33 @@ const LoginForm = () => {
           </label>
           <br></br>
           <br></br>
-
+          {/* 
           <Link to="/ForgotPassword">
             <label href="/" className="iforgor">
               Forgot Password?
             </label>
-          </Link>
+          </Link> */}
 
           <div>
-            <Link to="/WelcomeApp">
-              <button
-                onClick={() => {
-                  actions.login(user, pwd);
-                }}
-                type="submit"
-                value="Login"
-                className="login-button"
-              >
-                Login
-              </button>
-            </Link>
+            {/* <Link to="/WelcomeApp"> */}
+
+            <button
+              onClick={() => {
+                actions.login(user, pwd).then((resp) => {
+                  if (resp.message === "Succesfully logged in") {
+                    history.push("/WelcomeApp");
+                  } else {
+                    console.log("failed login");
+                  }
+                });
+              }}
+              type="submit"
+              value="Login"
+              className="login-button"
+            >
+              Login
+            </button>
+            {/* </Link> */}
             <Link to="/AccountApp">
               <button className="account-button">Create a new account</button>
             </Link>

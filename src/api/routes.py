@@ -5,6 +5,7 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Category, Goal, TodoItem
 from api.utils import generate_sitemap, APIException
 from flask_cors import cross_origin
+from hashlib import sha256
 from flask_jwt_extended import create_access_token, jwt_required,get_jwt_identity,JWTManager
 api = Blueprint('api', __name__)
 
@@ -62,32 +63,39 @@ def change_goal():
 
 @api.route('/signup', methods=['POST'])
 def signup_user():
+    
+    h = sha256()
+   
     body = request
     email = request.json.get('email')
     password = request.json.get('password')
+    h.update(password.encode('utf-8'))
+    hash = h.hexdigest()
+    print("hash!!!!!!!!!!!",hash)
+
     username = request.json.get('username')
     fun_fact = request.json.get('fun_fact')
     inspiration = request.json.get('inspiration')
     if body is None:
-        return "body is empty", 400
+        return jsonify({"message": "body is empty"}), 400
     if not username:
-        return "username is empty", 400
+        return jsonify({"message": "username is empty"}), 400
     if not email:
-        return "email is empty", 400
+        return jsonify({"message": "email is empty"}), 400
     if not fun_fact:
-        return "fun_fact is empty", 400
+        return jsonify({"message": "fun_fact is empty"}), 400
     if not inspiration:
-        return "inspiration is empty", 400
+        return jsonify({"message": "inspiration is empty"}), 400
     if not password:
-        return "password is empty", 400
+        return jsonify({"message": "password is empty"}), 400
     
     check_user_email = User.query.filter_by(email=email).first()
     if check_user_email is not None:
-        return "user already exists", 409
+        return jsonify({"message": "email already in use"}), 409
     check_user_username = User.query.filter_by(username=username).first()
     if check_user_username is not None:
-        return "user already exists", 409
-    user = User(email= email, password=password, username=username, fun_fact=fun_fact, inspiration=inspiration)
+        return jsonify({"message": "username taken"}), 409
+    user = User(email= email, password=hash, username=username, fun_fact=fun_fact, inspiration=inspiration)
     db.session.add(user)
     db.session.commit()
 
@@ -106,18 +114,22 @@ def signup_user():
 
 @api.route('/login', methods=['POST'])
 def handle_login():
+    h = sha256()
     username = request.json.get("username", None)
-    password = request.json.get("password", None)
+   
+    password = request.json.get('password')
+    h.update(password.encode('utf-8'))
+    hash = h.hexdigest()
 
     user = User.query.filter_by(username=username).first()
 
     if user is None:
         return jsonify({
-            "msg": "No account was found. Please check the username used or create an account."
+            "message": "No account was found. Please check the username used or create an account."
         }), 401
     
-    if password != user.password:
-        return jsonify({"msg": "Incorrect password. Please try again."}), 401
+    if hash != user.password:
+        return jsonify({"message": "Incorrect password. Please try again."}), 401
 
     access_token = create_access_token(identity=username)
     payload = {

@@ -1,4 +1,5 @@
 import create from "zustand";
+import { useHistory } from "react-router-dom";
 
 const useStore = create((set, get) => ({
   categories: [],
@@ -33,7 +34,7 @@ const useStore = create((set, get) => ({
         });
     },
 
-    register: (user, email, pwd, inspiration, funFact) => {
+    register: async (user, email, pwd, inspiration, funFact) => {
       var requestOptions = {
         method: "POST",
         // redirect: "follow",
@@ -47,14 +48,26 @@ const useStore = create((set, get) => ({
         }),
         headers: { "Content-type": "application/json" },
       };
-      fetch(process.env.BACKEND_URL + "/api/signup", requestOptions)
-        .then((response) => response.json())
-        .then((result) => {
-          console.log(result);
-        });
+      try {
+        const response = await fetch(
+          process.env.BACKEND_URL + "/api/signup",
+          requestOptions
+        );
+        const data = await response.json();
+        if (data.user) {
+          set({
+            user: data,
+          });
+          return data;
+        } else {
+          alert(data.message);
+        }
+      } catch (error) {
+        console.log("Error loading message from backend", error);
+      }
     },
 
-    login: (username, pwd) => {
+    login: async (username, pwd) => {
       var requestOptions = {
         method: "POST",
         // redirect: "follow",
@@ -65,13 +78,24 @@ const useStore = create((set, get) => ({
         }),
         headers: { "Content-type": "application/json" },
       };
-      fetch(process.env.BACKEND_URL + "/api/login", requestOptions)
-        .then((response) => response.json())
-        .then((result) => {
+      try {
+        const response = await fetch(
+          process.env.BACKEND_URL + "/api/login",
+          requestOptions
+        );
+        const data = await response.json();
+        console.log(data);
+        if (data.user) {
           set({
-            user: result,
+            user: data,
           });
-        });
+          return data;
+        } else {
+          alert(data.message);
+        }
+      } catch (error) {
+        console.log("Error loading message from backend", error);
+      }
     },
 
     changeGoal: (boolean, id) => {
@@ -225,7 +249,7 @@ const useStore = create((set, get) => ({
         .then((result) => {
           let info = get().user;
 
-          let final = result.filter((item) => info.id !== item.id);
+          let final = result.filter((item) => info.user.id !== item.id);
           set({
             buddy: final,
           });
