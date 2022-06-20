@@ -121,6 +121,8 @@ def handle_login():
     h.update(password.encode('utf-8'))
     hash = h.hexdigest()
 
+
+
     user = User.query.filter_by(username=username).first()
 
     if user is None:

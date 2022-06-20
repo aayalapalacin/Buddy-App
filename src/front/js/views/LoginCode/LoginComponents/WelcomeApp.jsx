@@ -7,13 +7,6 @@ const WelcomeApp = () => {
   const user = useStore((state) => state.user);
 
   console.log("user object", user?.user?.email);
-  const userNav = () => {
-    if (user.message == "Succesfully logged in") {
-      return console.log("success login");
-    } else {
-      return console.log("login fail password");
-    }
-  };
 
   return (
     <div>
