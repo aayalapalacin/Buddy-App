@@ -70,24 +70,24 @@ def signup_user():
     fun_fact = request.json.get('fun_fact')
     inspiration = request.json.get('inspiration')
     if body is None:
-        return "body is empty", 400
+        return jsonify({"message": "body is empty"}), 400
     if not username:
-        return "username is empty", 400
+        return jsonify({"message": "username is empty"}), 400
     if not email:
-        return "email is empty", 400
+        return jsonify({"message": "email is empty"}), 400
     if not fun_fact:
-        return "fun_fact is empty", 400
+        return jsonify({"message": "fun_fact is empty"}), 400
     if not inspiration:
-        return "inspiration is empty", 400
+        return jsonify({"message": "inspiration is empty"}), 400
     if not password:
-        return "password is empty", 400
+        return jsonify({"message": "password is empty"}), 400
     
     check_user_email = User.query.filter_by(email=email).first()
     if check_user_email is not None:
-        return "user already exists", 409
+        return jsonify({"message": "email already in use"}), 409
     check_user_username = User.query.filter_by(username=username).first()
     if check_user_username is not None:
-        return "user already exists", 409
+        return jsonify({"message": "username taken"}), 409
     user = User(email= email, password=password, username=username, fun_fact=fun_fact, inspiration=inspiration)
     db.session.add(user)
     db.session.commit()

@@ -1,12 +1,13 @@
 import React from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import useStore from "/workspace/Buddy-App/src/front/js/store/zustand.js";
 
 import "../css/register.css";
 
 const Register = () => {
   const actions = useStore((state) => state.actions);
+  const history = useHistory();
 
   const [email, setEmail] = useState("");
   const [user, setUser] = useState("");
@@ -93,15 +94,25 @@ const Register = () => {
             </div>
           </div>
           <div className="footer">
-            <Link to="/RegisterApp">
-              <button
-                onClick={() => actions.register(user, email, pwd, insp, funFt)}
-                type="button"
-                className="reg-btn"
-              >
-                Register
-              </button>
-            </Link>
+            <button
+              onClick={() => {
+                actions.register(user, email, pwd, insp, funFt).then((resp) => {
+                  console.log("Resp", resp);
+                  if (
+                    resp.message ===
+                    "Your account has been registered successfully"
+                  ) {
+                    history.push("/LoginPage");
+                  } else {
+                    console.log("failed to register");
+                  }
+                });
+              }}
+              type="button"
+              className="reg-btn"
+            >
+              Register
+            </button>
           </div>
         </div>
       </div>

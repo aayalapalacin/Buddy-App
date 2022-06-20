@@ -34,7 +34,7 @@ const useStore = create((set, get) => ({
         });
     },
 
-    register: (user, email, pwd, inspiration, funFact) => {
+    register: async (user, email, pwd, inspiration, funFact) => {
       var requestOptions = {
         method: "POST",
         // redirect: "follow",
@@ -48,11 +48,23 @@ const useStore = create((set, get) => ({
         }),
         headers: { "Content-type": "application/json" },
       };
-      fetch(process.env.BACKEND_URL + "/api/signup", requestOptions)
-        .then((response) => response.json())
-        .then((result) => {
-          console.log(result);
-        });
+      try {
+        const response = await fetch(
+          process.env.BACKEND_URL + "/api/signup",
+          requestOptions
+        );
+        const data = await response.json();
+        if (data.user) {
+          set({
+            user: data,
+          });
+          return data;
+        } else {
+          alert(data.message);
+        }
+      } catch (error) {
+        console.log("Error loading message from backend", error);
+      }
     },
 
     login: async (username, pwd) => {
