@@ -10,6 +10,7 @@ api = Blueprint('api', __name__)
 
 
 
+
 @api.route('/hello', methods=['POST', 'GET'])
 def handle_hello():
 
@@ -113,11 +114,11 @@ def handle_login():
 
     if user is None:
         return jsonify({
-            "msg": "No account was found. Please check the username used or create an account."
+            "message": "No account was found. Please check the username used or create an account."
         }), 401
     
     if password != user.password:
-        return jsonify({"msg": "Incorrect password. Please try again."}), 401
+        return jsonify({"message": "Incorrect password. Please try again."}), 401
 
     access_token = create_access_token(identity=username)
     payload = {

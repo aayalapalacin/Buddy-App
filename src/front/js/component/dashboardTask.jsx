@@ -220,7 +220,9 @@ function DashboardTask() {
       </div>
       <div className="row todoListRow">
         <div className="col-12">
-          <h1 className="font todoListTitle">{user.username}'s Todo List</h1>
+          <h1 className="font todoListTitle">
+            {user.user.username}'s Todo List
+          </h1>
           <UserInput />
         </div>
       </div>

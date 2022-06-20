@@ -5,7 +5,8 @@ import useStore from "../../../store/zustand";
 const WelcomeApp = () => {
   const actions = useStore((state) => state.actions);
   const user = useStore((state) => state.user);
-  console.log("user object", user.email);
+
+  console.log("user object", user?.user?.email);
 
   return (
     <div>

@@ -40,7 +40,7 @@ const DayBtn = () => {
   console.log(user);
   useEffect(() => {
     actions.selectedCategories(dayButton);
-    actions.addSelectedCategories(dayButton, user.id);
+    actions.addSelectedCategories(dayButton, user.user.id);
   }, [dayButton]);
   useEffect(() => {
     actions.getCategories();
@@ -117,7 +117,7 @@ const DayBtn = () => {
                   task={task.task}
                   goals={task.goals}
                   // onClick={dropDownItem}
-                  func={() => setItem(task)}
+                  // func={() => setItem(task.task)}
                 />
               ))}
             </ul>
