@@ -140,7 +140,8 @@ def handle_login():
         'user': user.serialize()
     }
     response_body = {
-        "message": "Succesfully logged in", "user": user.serialize()
+        "message": "Succesfully logged in", "user": user.serialize(),
+        "access_token": access_token
     }
 
     return jsonify(response_body ), 200

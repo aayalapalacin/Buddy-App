@@ -19,7 +19,6 @@ const WelcomeApp = () => {
             <div className="buttonsnshit">
               <Link to="/todoList">
                 <button
-                  onChange={userNav()}
                   onClick={() => {
                     actions.getTodos(user.id);
                   }}

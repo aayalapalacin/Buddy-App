@@ -19,7 +19,7 @@ export const UserInput = () => {
   console.log(listItem);
   const todoItem = (event) => {
     if (event.keyCode === 13) {
-      actions.addTodos(listItem, user.id);
+      actions.addTodos(listItem, user.user.id);
       // .then((data) => {
       //   let newTodoItem = [...variable, data];
       //   setVariable(newTodoItem);
@@ -91,10 +91,6 @@ export const UserInput = () => {
     );
   });
 
-  const strikeStatus = (event) => {
-    console.log("strikeStatus", event);
-  };
-
   const remove = (index) => {
     const removeItem = variable.filter((item, i) => i != index);
     setVariable(removeItem);
@@ -105,7 +101,7 @@ export const UserInput = () => {
     if (isNaN(percentage)) {
       return null;
     } else {
-      return percentage;
+      return Math.floor(percentage);
     }
     // return percentage;
     // console.log("percentage", percentage);
