@@ -1,5 +1,4 @@
 import create from "zustand";
-import { useHistory } from "react-router-dom";
 
 const useStore = create((set, get) => ({
   categories: [],
@@ -98,6 +97,20 @@ const useStore = create((set, get) => ({
       }
     },
 
+    setSessionStore: (user_id) => {
+      localStorage.setItem("session", JSON.stringify(payload));
+      setStore({ session: { user_id } });
+    },
+
+    getCurrentSession: () => {
+      const session = JSON.parse(localStorage.getItem("session"));
+      return session;
+    },
+
+    clearSession: () => {
+      localStorage.removeItem("session");
+    },
+
     changeGoal: (boolean, id) => {
       var requestOptions = {
         method: "PUT",
@@ -192,12 +205,9 @@ const useStore = create((set, get) => ({
       };
 
       fetch(process.env.BACKEND_URL + `/api/todos/${id}`, requestOptions)
-        // fetch(
-        //   "https://3001-avokeys-buddyapp-4rimlyd8qp6.ws-us41.gitpod.io/api/categories",
-        //   requestOptions
-        // )
         .then((response) => response.json())
         .then((result) => {
+          print("result!!!!!!!!!!!!1", result);
           set({
             todos: result,
           });

@@ -20,7 +20,7 @@ const WelcomeApp = () => {
               <Link to="/todoList">
                 <button
                   onClick={() => {
-                    actions.getTodos(user.id);
+                    actions.getTodos(user.user.id);
                   }}
                   type="submit"
                   className="started-page"

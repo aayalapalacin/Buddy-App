@@ -28,7 +28,9 @@ export const UserInput = () => {
       setListItem("");
     }
   };
-
+  console.log("todos", todos);
+  console.log("variaable", variable);
+  console.log("list item", listItem);
   // const todoItem = (event) => {
   //   if (event.keyCode === 13) {
   //     const newTodoItem = [...variable, listItem];
@@ -59,15 +61,11 @@ export const UserInput = () => {
       }
       setChecked(updatedList);
     };
+    console.log("todo", todo);
+    console.log("list item", listItem);
+    console.log("item label", item.label);
     return (
       <li className="list-group-item item " key={index}>
-        {/* <button id="strikeBtn">
-          <FontAwesomeIcon
-            id="checkboxIcon"
-            icon={faSquareCheck}
-            // onClick={strikeThroughItem}
-          ></FontAwesomeIcon>
-        </button> */}
         <input
           name="cb"
           value={item.label}
@@ -82,10 +80,11 @@ export const UserInput = () => {
           onClick={() => {
             remove(index);
             actions.deleteTodos(item.id);
-            actions.getTodos();
+            actions.getTodos(user.user.id);
           }}
         >
-          x
+          {" "}
+          X{" "}
         </div>
       </li>
     );
@@ -125,6 +124,7 @@ export const UserInput = () => {
         <div>
           <ul className="font" id="todoUL">
             {" "}
+            {/* {todo} */}
             {todo}
           </ul>
         </div>
