@@ -7,6 +7,7 @@ const useStore = create((set, get) => ({
   user: [],
   selectedCategories: [],
   buddy: [],
+  currentSession: {},
   actions: {
     goals: (array) => {
       set({
@@ -83,11 +84,12 @@ const useStore = create((set, get) => ({
           requestOptions
         );
         const data = await response.json();
-        console.log(data);
+        console.log("token data", data.access_token);
         if (data.user) {
           set({
             user: data,
           });
+          actions.setLocalStore(data.user.email, data.access_token);
           return data;
         } else {
           alert(data.message);
@@ -97,9 +99,10 @@ const useStore = create((set, get) => ({
       }
     },
 
-    setSessionStore: (user_id) => {
+    setLocalStore: (user_id, token) => {
+      const payload = { user_id: user_id, token: token };
       localStorage.setItem("session", JSON.stringify(payload));
-      setStore({ session: { user_id } });
+      setStore({ currentSession: payload });
     },
 
     getCurrentSession: () => {

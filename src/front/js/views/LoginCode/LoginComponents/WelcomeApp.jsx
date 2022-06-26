@@ -1,12 +1,11 @@
 import React from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import useStore from "../../../store/zustand";
 
 const WelcomeApp = () => {
   const actions = useStore((state) => state.actions);
   const user = useStore((state) => state.user);
-
-  console.log("user object", user?.user?.email);
 
   return (
     <div>

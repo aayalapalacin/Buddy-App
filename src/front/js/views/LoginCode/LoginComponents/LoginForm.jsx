@@ -68,8 +68,6 @@ const LoginForm = () => {
     }
   };
 
-  let hisUrl = hisPush();
-  console.log("history", hisPush());
   return (
     <>
       <div className="inputs">

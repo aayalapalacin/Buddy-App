@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import useStore from "/workspace/Buddy-App/src/front/js/store/zustand.js";
@@ -7,14 +7,40 @@ import "../css/register.css";
 
 const Register = () => {
   const actions = useStore((state) => state.actions);
+  const userback = useStore((state) => state.user);
+
   const history = useHistory();
 
-  const [email, setEmail] = useState("");
-  const [user, setUser] = useState("");
+  const [email, setEmail] = useState(() => {
+    const localDataString = localStorage.getItem("register");
+    const localDataObj = JSON.parse(localDataString);
+    const localUserEmail = localDataObj.email;
+    return localDataString ? localUserEmail : "";
+  });
+  const [user, setUser] = useState(() => {
+    const localDataString = localStorage.getItem("register");
+    const localDataObj = JSON.parse(localDataString);
+    const localUserName = localDataObj.username;
+    return localDataString ? localUserName : "";
+  });
   const [pwd, setPwd] = useState("");
-  const [insp, setInsp] = useState("");
-  const [funFt, setFunFt] = useState("");
+  const [insp, setInsp] = useState(() => {
+    const localDataString = localStorage.getItem("register");
+    const localDataObj = JSON.parse(localDataString);
+    const localUserInspiration = localDataObj.inspiration;
+    return localDataString ? localUserInspiration : "";
+  });
+  const [funFt, setFunFt] = useState(() => {
+    const localDataString = localStorage.getItem("register");
+    const localDataObj = JSON.parse(localDataString);
+    const localUserFunFact = localDataObj.fun_fact;
+    return localDataString ? localUserFunFact : "";
+  });
 
+  useEffect(() => {
+    localStorage.setItem("register", JSON.stringify(userback.user));
+  }, [userback.user]);
+  // console.log("userback", userback.user.email);
   return (
     <>
       <div className="register-container">
@@ -97,7 +123,7 @@ const Register = () => {
             <button
               onClick={() => {
                 actions.register(user, email, pwd, insp, funFt).then((resp) => {
-                  console.log("Resp", resp);
+                  console.log("register", actions);
                   if (
                     resp.message ===
                     "Your account has been registered successfully"
