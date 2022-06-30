@@ -4,6 +4,7 @@ const useStore = create((set, get) => ({
   categories: [],
   todos: [],
   goals: [],
+  userGoals: [],
   user: [],
   selectedCategories: [],
   buddy: [],
@@ -54,6 +55,7 @@ const useStore = create((set, get) => ({
           requestOptions
         );
         const data = await response.json();
+        console.log("data", data);
         if (data.user) {
           set({
             user: data,
@@ -85,17 +87,51 @@ const useStore = create((set, get) => ({
         );
         const data = await response.json();
         console.log("token data", data.access_token);
+        localStorage.setItem("token", data.access_token);
         if (data.user) {
           set({
             user: data,
           });
-          actions.setLocalStore(data.user.email, data.access_token);
           return data;
         } else {
           alert(data.message);
         }
       } catch (error) {
         console.log("Error loading message from backend", error);
+      }
+    },
+
+    refresh: async () => {
+      const token = localStorage.getItem("token");
+      console.log("token refresh", token);
+      var requestOptions = {
+        method: "GET",
+        redirect: "follow",
+        mode: "cors",
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      };
+
+      if (localStorage.getItem("token")) {
+        try {
+          const response = await fetch(
+            process.env.BACKEND_URL + "/api/refresh",
+            requestOptions
+          );
+          const data = await response.json();
+          console.log("data refresh", data);
+          if (data.user.user) {
+            set({
+              user: data.user.user,
+              todos: data.todos,
+              categories: data.categories,
+            });
+          }
+        } catch (error) {
+          console.log("Error loading message from backend", error);
+        }
       }
     },
 
@@ -114,12 +150,12 @@ const useStore = create((set, get) => ({
       localStorage.removeItem("session");
     },
 
-    changeGoal: (boolean, id) => {
+    changeGoal: (boolean, id, user_id) => {
       var requestOptions = {
         method: "PUT",
         // redirect: "follow",
         // mode: "cors",
-        body: JSON.stringify({ is_done: boolean, id: id }),
+        body: JSON.stringify({ is_done: boolean, id: id, user_id: user_id }),
         headers: { "Content-type": "application/json" },
       };
       fetch(process.env.BACKEND_URL + "/api/goal", requestOptions)
@@ -129,7 +165,7 @@ const useStore = create((set, get) => ({
           let filter = info.filter((item, index) => item.id != id);
           let updated = [...filter, result];
           set({
-            goals: updated,
+            userGoals: updated,
           });
         });
     },
@@ -210,7 +246,6 @@ const useStore = create((set, get) => ({
       fetch(process.env.BACKEND_URL + `/api/todos/${id}`, requestOptions)
         .then((response) => response.json())
         .then((result) => {
-          print("result!!!!!!!!!!!!1", result);
           set({
             todos: result,
           });
@@ -261,7 +296,7 @@ const useStore = create((set, get) => ({
         .then((response) => response.json())
         .then((result) => {
           let info = get().user;
-
+          console.log("getbudyy", info);
           let final = result.filter((item) => info.user.id !== item.id);
           set({
             buddy: final,

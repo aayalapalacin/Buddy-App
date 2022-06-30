@@ -7,7 +7,10 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import "./dragDrop.css";
 import sucess from "../../../img/sucess.png";
 import { Link } from "react-router-dom";
+import useStore from "../../store/zustand.js";
+
 // import useStore from "../store/zustand.js";
+// const actions = useStore((state) => state.actions);
 // const actions = useStore((state) => state.actions);
 
 const TodoList = () => {

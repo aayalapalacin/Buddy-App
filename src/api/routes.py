@@ -52,6 +52,30 @@ def change_goal():
     db.session.commit()
     return jsonify(checked_goal.serialize()), 200
 
+@api.route("/userCategory", methods=['PUT'])
+@cross_origin()
+def user_category():
+    data = request.get_json()
+    user = User.query.filter_by(id=data["user_id"]).one_or_none()
+
+    for category in data["categories"]:
+        catItem = Category.query.filter_by(id=category["id"]).one_or_none()
+        user.categories.append(catItem)
+    db.session.commit()
+    user_categories_serialized = [item.serialize() for item in user.categories]
+    # category_names = [item.task for item in user_categories_serialized]
+    return  jsonify(user_categories_serialized), 200
+
+
+@api.route('/userCategory/<int:user_id>', methods=['GET'])
+@cross_origin()
+def get_userCategory(user_id):
+    user = User.query.filter_by(id=user_id).one_or_none()
+    categories_serialized = [category.serialize() for category in user.categories] 
+
+    return jsonify(categories_serialized), 200
+
+
 # @api.route("/signup", methods=['POST'])
 # @cross_origin()
 # def user_signup():
@@ -144,27 +168,20 @@ def handle_login():
 
     return jsonify(response_body ), 200
 
-@api.route("/userCategory", methods=['PUT'])
+@api.route('/refresh', methods=['GET'])
+@jwt_required()
 @cross_origin()
-def user_category():
-    data = request.get_json()
-    user = User.query.filter_by(id=data["user_id"]).one_or_none()
+def get_userData():
+    username = get_jwt_identity()
+    user = User.query.filter_by(username=username).one_or_none()
+    categories = Category.query.filter_by(user_id=user.id)
+    categories_serialized = [category.serialize() for category in categories] 
 
-    for category in data["categories"]:
-        catItem = Category.query.filter_by(id=category["id"]).one_or_none()
-        user.categories.append(catItem)
-    db.session.commit()
-    user_categories_serialized = [item.serialize() for item in user.categories]
-    # category_names = [item.task for item in user_categories_serialized]
-    return  jsonify(user_categories_serialized), 200
+    todos = TodoItem.query.filter_by(user_id=user.id)
+    todos_serialized = [todo.serialize() for todo in todos] 
 
-@api.route('/userCategory/<int:user_id>', methods=['GET'])
-@cross_origin()
-def get_userCategory(user_id):
-    user = User.query.filter_by(id=user_id).one_or_none()
-    categories_serialized = [category.serialize() for category in user.categories] 
+    return jsonify({"user":{"user":user.serialize()},"todos":todos_serialized, "categories":categories_serialized}), 200
 
-    return jsonify(categories_serialized), 200
 
     
 

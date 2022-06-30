@@ -11,22 +11,7 @@ const injectContext = (PassedComponent) => {
   const StoreWrapper = (props) => {
     //this will be passed as the contenxt value
     const state = useStore((state) => state);
-
-    const loadPeopleData = (store, url = "https://swapi.dev/api/people/") => {
-      var requestOptions = {
-        method: "GET",
-        redirect: "follow",
-      };
-
-      fetch(url, requestOptions)
-        .then((response) => response.json())
-        .then((result) => {
-          store.addPeople(result.results);
-          if (result.next !== null) {
-            loadPeopleData(store, result.next);
-          }
-        });
-    };
+    const actions = useStore((state) => state.actions);
 
     const loadCategories = (
       store,
@@ -61,41 +46,9 @@ const injectContext = (PassedComponent) => {
         });
     };
 
-    const loadVehicleData = (
-      store,
-      url = "https://swapi.dev/api/vehicles/"
-    ) => {
-      var requestOptions = {
-        method: "GET",
-        redirect: "follow",
-      };
-
-      fetch(url, requestOptions)
-        .then((response) => response.json())
-        .then((result) => {
-          store.addVehicles(result.results);
-          if (result.next !== null) {
-            loadVehicleData(store, result.next);
-          }
-        });
-    };
-    const loadPlanets = (store, url = "https://swapi.dev/api/planets/") => {
-      var requestOptions = {
-        method: "GET",
-        redirect: "follow",
-      };
-
-      fetch(url, requestOptions)
-        .then((response) => response.json())
-        .then((result) => {
-          store.addPlanets(result.results);
-          if (result.next !== null) {
-            loadPlanets(store, result.next);
-          }
-        });
-    };
-
     useEffect(() => {
+      actions.refresh();
+
       /**
        * EDIT THIS!
        * This function is the equivalent to "window.onLoad", it only runs once on the entire application lifetime
@@ -105,7 +58,7 @@ const injectContext = (PassedComponent) => {
        * state.actions.loadSomeData(); <---- calling this function from the flux.js actions
        *
        **/
-      // loadCategories(state);
+      // state.actions.refresh();
     }, []);
 
     // The initial value for the context is not null anymore, but the current state of this component,

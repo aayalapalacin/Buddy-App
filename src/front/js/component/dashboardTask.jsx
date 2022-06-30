@@ -76,6 +76,12 @@ function DashboardTask() {
   // }, []);
   console.log("buddy", buddy);
 
+  useEffect(() => {
+    if (user.user.id == null) {
+      actions.refresh();
+    }
+  }, []);
+
   const uniqueCategory = [
     ...selectedCategories
       .reduce((map, obj) => map.set(obj.id, obj), new Map())

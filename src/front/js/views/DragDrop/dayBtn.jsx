@@ -37,10 +37,20 @@ const DayBtn = () => {
   const [item, setItem] = useState("");
   // const [taskArray, setTaskArray] = useState(TASKS);
   console.log("day btn", dayButton);
-  console.log(user);
+  console.log("user logged", user);
   useEffect(() => {
-    actions.selectedCategories(dayButton);
-    actions.addSelectedCategories(dayButton, user.user.id);
+    actions.refresh();
+  }, []);
+
+  // console.log("user id", user.user.id);
+  useEffect(() => {
+    // actions.refresh();
+    async function initCategories() {
+      const user_id = await user.user.id;
+      actions.selectedCategories(dayButton);
+      actions.addSelectedCategories(dayButton, user_id);
+    }
+    initCategories();
   }, [dayButton]);
   useEffect(() => {
     actions.getCategories();
