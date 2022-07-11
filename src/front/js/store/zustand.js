@@ -126,7 +126,7 @@ const useStore = create((set, get) => ({
             set({
               user: data.user.user,
               todos: data.todos,
-              categories: data.categories,
+              selectedCategories: data.categories,
             });
           }
         } catch (error) {
@@ -212,8 +212,8 @@ const useStore = create((set, get) => ({
         .then((response) => response.json())
         .then((result) => {
           console.log("then!!!!", result);
-          let selectedCategories = get().selectedCategories;
-          let enterSelectedCategories = [...selectedCategories, ...result];
+          // let selectedCategories = get().selectedCategories;
+          let enterSelectedCategories = [...result];
           set({
             selectedCategories: enterSelectedCategories,
           });
@@ -297,7 +297,7 @@ const useStore = create((set, get) => ({
         .then((result) => {
           let info = get().user;
           console.log("getbudyy", info);
-          let final = result.filter((item) => info.user.id !== item.id);
+          let final = result.filter((item) => info.id !== item.id);
           set({
             buddy: final,
           });

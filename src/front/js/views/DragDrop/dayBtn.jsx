@@ -27,10 +27,9 @@ const DayBtn = () => {
   const actions = useStore((state) => state.actions);
   const categoriesInfo = useStore((state) => state.categories);
   const user = useStore((state) => state.user);
-
-  const todos = useStore((state) => state.todos);
+  const selCat = useStore((state) => state.selectedCategories);
   // const selectedCategories = useStore((state) => state.selectedCategories);
-  console.log("todos", todos);
+  console.log("selCat", selCat);
   const [categories, setCategories] = useState([]);
   const [dayButton, setDayButton] = useState([]);
 
@@ -46,8 +45,8 @@ const DayBtn = () => {
   useEffect(() => {
     // actions.refresh();
     async function initCategories() {
-      const user_id = await user.user.id;
-      actions.selectedCategories(dayButton);
+      const user_id = await user.id;
+      // actions.selectedCategories(dayButton);
       actions.addSelectedCategories(dayButton, user_id);
     }
     initCategories();

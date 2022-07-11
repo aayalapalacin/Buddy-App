@@ -45,22 +45,39 @@ function DashboardTask() {
   // const [goals, setGoals] = useState([]);
 
   // const [categories,setCategories]=useState();
+  useEffect(() => {
+    if (user.id == null) {
+      actions.refresh();
+    }
+  }, []);
+
+  useEffect(() => {
+    // setSelectedCategories([...info]);
+    // setUniqueCategory(info);
+    // setUniqueCategory([
+    //   ...info.reduce((map, obj) => map.set(obj.id, obj), new Map()).values(),
+    // ]);
+  }, [info]);
+  console.log("uniqueCat", uniqueCategory);
+  console.log("selectCat", selectedCategories);
   const user = useStore((state) => state.user);
   const buddy = useStore((state) => state.buddy);
 
   let info = useStore((state) => state.selectedCategories);
   console.log("info", info);
 
+  console.log("user dash", user);
   const actions = useStore((state) => state.actions);
 
+  const [uniqueCategory, setUniqueCategory] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState(info);
-  const [catArrayState, setcatArrayState] = useState([]);
+  // const [catArrayState, setcatArrayState] = useState([]);
   // let selectedCategories = [{ task: "task1" }, { task: "task2" }];
   // const [checkedTodo, setCheckedTodo] = useState([]);
   const [userCategory, setUserCategory] = useState("");
   useEffect(() => {
     if (userCategory == "") {
-      actions.getBuddy(info[0].id);
+      actions.getBuddy(info.id);
     } else if (userCategory === "School") {
       actions.getBuddy(1);
     } else if (userCategory === "Professional") {
@@ -75,18 +92,6 @@ function DashboardTask() {
   //   actions.getSelectedCategories(user.id).then();
   // }, []);
   console.log("buddy", buddy);
-
-  useEffect(() => {
-    if (user.user.id == null) {
-      actions.refresh();
-    }
-  }, []);
-
-  const uniqueCategory = [
-    ...selectedCategories
-      .reduce((map, obj) => map.set(obj.id, obj), new Map())
-      .values(),
-  ];
 
   // const singleTab = () => {
   //   selectedCategories.map((item, index) => {
@@ -103,6 +108,13 @@ function DashboardTask() {
 
   // console.log(filtered)
 
+  function username_todo() {
+    const username = user.username;
+    return username;
+  }
+
+  console.log("username todo", username_todo());
+
   return (
     <div className="container-fluid ">
       <div className="row categoryRow">
@@ -112,8 +124,8 @@ function DashboardTask() {
             id="nav-tab"
             role="tablist"
           >
-            {uniqueCategory.length > 0 &&
-              uniqueCategory.map((item, index) => {
+            {info.length > 0 &&
+              info.map((item, index) => {
                 return (
                   <button
                     className={index == 0 ? "nav-link active" : "nav-link"}
@@ -226,9 +238,7 @@ function DashboardTask() {
       </div>
       <div className="row todoListRow">
         <div className="col-12">
-          <h1 className="font todoListTitle">
-            {user.user.username}'s Todo List
-          </h1>
+          <h1 className="font todoListTitle">{username_todo()} 's Todo List</h1>
           <UserInput />
         </div>
       </div>

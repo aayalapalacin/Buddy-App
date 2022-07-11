@@ -174,9 +174,11 @@ def handle_login():
 def get_userData():
     username = get_jwt_identity()
     user = User.query.filter_by(username=username).one_or_none()
-    categories = Category.query.filter_by(user_id=user.id)
+    print("user refresh", user)
+    print("user refresh id", user.id)
+    categories = user.categories
     categories_serialized = [category.serialize() for category in categories] 
-
+    print("cat",categories_serialized)
     todos = TodoItem.query.filter_by(user_id=user.id)
     todos_serialized = [todo.serialize() for todo in todos] 
 
