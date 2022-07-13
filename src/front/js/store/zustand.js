@@ -211,7 +211,7 @@ const useStore = create((set, get) => ({
       fetch(process.env.BACKEND_URL + "/api/userCategory", requestOptions)
         .then((response) => response.json())
         .then((result) => {
-          console.log("then!!!!", result);
+          console.log("userCatResult", result);
           // let selectedCategories = get().selectedCategories;
           let enterSelectedCategories = [...result];
           set({

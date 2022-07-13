@@ -11,31 +11,42 @@ const Register = () => {
 
   const history = useHistory();
 
-  const [email, setEmail] = useState(() => {
-    const localDataString = localStorage.getItem("register");
-    const localDataObj = JSON.parse(localDataString);
-    const localUserEmail = localDataObj.email;
-    return localDataString ? localUserEmail : "";
-  });
-  const [user, setUser] = useState(() => {
-    const localDataString = localStorage.getItem("register");
-    const localDataObj = JSON.parse(localDataString);
-    const localUserName = localDataObj.username;
-    return localDataString ? localUserName : "";
-  });
+  const [email, setEmail] = useState("");
+
+  //   () => {
+  //   const localDataString = localStorage.getItem("register");
+  //   const localDataObj = JSON.parse(localDataString);
+  //   console.log("localDataOvj", localDataObj);
+  //   const localUserEmail = localDataObj.email;
+  //   return localDataString ? localUserEmail : "";
+  // }
+
+  const [user, setUser] = useState();
+
+  //   () => {
+  //   const localDataString = localStorage.getItem("register");
+  //   const localDataObj = JSON.parse(localDataString);
+  //   const localUserName = localDataObj.username;
+  //   return localDataString ? localUserName : "";
+  // }
+
   const [pwd, setPwd] = useState("");
-  const [insp, setInsp] = useState(() => {
-    const localDataString = localStorage.getItem("register");
-    const localDataObj = JSON.parse(localDataString);
-    const localUserInspiration = localDataObj.inspiration;
-    return localDataString ? localUserInspiration : "";
-  });
-  const [funFt, setFunFt] = useState(() => {
-    const localDataString = localStorage.getItem("register");
-    const localDataObj = JSON.parse(localDataString);
-    const localUserFunFact = localDataObj.fun_fact;
-    return localDataString ? localUserFunFact : "";
-  });
+  const [insp, setInsp] = useState();
+  //   () => {
+  //   const localDataString = localStorage.getItem("register");
+  //   const localDataObj = JSON.parse(localDataString);
+  //   const localUserInspiration = localDataObj.inspiration;
+  //   return localDataString ? localUserInspiration : "";
+  // }
+
+  const [funFt, setFunFt] = useState();
+
+  //   () => {
+  //   const localDataString = localStorage.getItem("register");
+  //   const localDataObj = JSON.parse(localDataString);
+  //   const localUserFunFact = localDataObj.fun_fact;
+  //   return localDataString ? localUserFunFact : "";
+  // }
 
   useEffect(() => {
     localStorage.setItem("register", JSON.stringify(userback.user));

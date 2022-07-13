@@ -9,6 +9,7 @@ import { UserInput } from "./UserInput";
 import { UserGoalProfile } from "./UserGoalProfile";
 
 function Goal(props) {
+  console.log("goal props", props);
   const actions = useStore((state) => state.actions);
   const [boolean, setBoolean] = useState(props.isChecked);
 
@@ -22,6 +23,7 @@ function Goal(props) {
     console.log("event target checked", event.target.checked);
     actions.changeGoal(!boolean, props.goalId);
   };
+  console.log("props", props.goal_name);
 
   return (
     <div id="checklist" className="checklistPadding">
