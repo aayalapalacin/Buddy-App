@@ -161,6 +161,7 @@ const useStore = create((set, get) => ({
       fetch(process.env.BACKEND_URL + "/api/goal", requestOptions)
         .then((response) => response.json())
         .then((result) => {
+          console.log("goalFuncResult", result);
           let info = get().goals;
           let filter = info.filter((item, index) => item.id != id);
           let updated = [...filter, result];

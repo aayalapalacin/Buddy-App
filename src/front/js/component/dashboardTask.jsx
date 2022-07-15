@@ -8,8 +8,7 @@ import {
 import { UserInput } from "./UserInput";
 import { UserGoalProfile } from "./UserGoalProfile";
 
-function Goal(props) {
-  console.log("goal props", props);
+export function Goal(props) {
   const actions = useStore((state) => state.actions);
   const [boolean, setBoolean] = useState(props.isChecked);
 
@@ -23,7 +22,6 @@ function Goal(props) {
     console.log("event target checked", event.target.checked);
     actions.changeGoal(!boolean, props.goalId);
   };
-  console.log("props", props.goal_name);
 
   return (
     <div id="checklist" className="checklistPadding">
@@ -54,7 +52,7 @@ function DashboardTask() {
   }, []);
 
   useEffect(() => {
-    // setSelectedCategories([...info]);
+    setSelectedCategories(info);
     // setUniqueCategory(info);
     // setUniqueCategory([
     //   ...info.reduce((map, obj) => map.set(obj.id, obj), new Map()).values(),
@@ -151,8 +149,8 @@ function DashboardTask() {
       <div className="row rowMiddle">
         <div className="col-5 goalTaskCol">
           <div className="tab-content" id="nav-tabContent">
-            {uniqueCategory.length > 0 &&
-              uniqueCategory.map((item, index) => {
+            {info.length > 0 &&
+              info.map((item, index) => {
                 return (
                   <div
                     className={
