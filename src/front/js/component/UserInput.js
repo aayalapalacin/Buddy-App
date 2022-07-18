@@ -16,7 +16,7 @@ export const UserInput = () => {
   console.log(listItem);
   const todoItem = (event) => {
     if (event.keyCode === 13) {
-      actions.addTodos(listItem, user.user.id);
+      actions.addTodos(listItem, user.id);
       // .then((data) => {
       //   let newTodoItem = [...variable, data];
       //   setVariable(newTodoItem);
@@ -26,6 +26,7 @@ export const UserInput = () => {
     }
   };
   console.log("todos", todos);
+  console.log("userState", user);
   console.log("variaable", variable);
   console.log("list item", listItem);
   // const todoItem = (event) => {
