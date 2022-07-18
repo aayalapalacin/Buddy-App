@@ -26,46 +26,38 @@ const Layout = () => {
     <div>
       <BrowserRouter basename={basename}>
         <ScrollToTop>
+          <Navbar />
+
           <Switch>
             <Route exact path="/">
-              <Navbar />
               <IntroPage />
             </Route>
             <Route exact path="/LoginPage">
-              <Navbar />
               <LoginPage />
               {/* Made login page the starting page */}
             </Route>
             <Route exact path="/WelcomeApp">
-              <Navbar />
               <WelcomeApp />
             </Route>
             <Route exact path="/ForgotPassword">
-              <Navbar />
               <ForgotPassword />
             </Route>
             <Route exact path="/AccountApp">
-              <Navbar />
               <Register />
             </Route>
             <Route exact path="/RegisterApp">
-              <Navbar />
               <RegisterApp />
             </Route>
             <Route exact path="/LoginApp">
-              <Navbar />
               <LoginPage />
             </Route>
             <Route exact path="/todoList">
-              <Navbar />
               <TodoList />
             </Route>
             <Route exact path="/">
-              <Navbar />
               <LoginPage />
             </Route>
             <Route exact path="/dashboard">
-              <Navbar />
               <Dashboard />
             </Route>
             {/* add more routes when files merge */}
