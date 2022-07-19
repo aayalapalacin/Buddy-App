@@ -1,5 +1,5 @@
 import React from "react";
-import StockPhoto3 from "/workspace/Buddy-App/src/front/img/headingimg.jpg";
+import StockPhoto3 from "../../../../../img/headingimg.jpg";
 import "./heading.css";
 const IntroImg = () => {
   return (

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
 import AuthContext from "./AuthProvider.js";
-import axios from "/workspace/Buddy-App/src/api/axios.js";
+import axios from "../../../../../api/axios.js";
 import { Link } from "react-router-dom";
 import "../css/login.css";
 import useStore from "../../../store/zustand";

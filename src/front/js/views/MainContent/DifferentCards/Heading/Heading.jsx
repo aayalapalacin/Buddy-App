@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import IntroImg from "/workspace/Buddy-App/src/front/js/views/MainContent/DifferentCards/Heading/IntroImg.jsx";
+import IntroImg from "./IntroImg.jsx";
 import "./heading.css";
 const Heading = () => {
   return (

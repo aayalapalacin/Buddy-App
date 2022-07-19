@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import useStore from "/workspace/Buddy-App/src/front/js/store/zustand.js";
+import useStore from "../../../store/zustand.js";
 
 import "../css/register.css";
 
