@@ -285,7 +285,7 @@ const useStore = create((set, get) => ({
         redirect: "follow",
         mode: "cors",
       };
-
+      console.log("buddy cat ID", category_id);
       fetch(
         process.env.BACKEND_URL + `/api/buddy/${category_id}`,
         requestOptions

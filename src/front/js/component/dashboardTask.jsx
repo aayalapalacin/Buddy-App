@@ -77,7 +77,7 @@ function DashboardTask() {
   const [userCategory, setUserCategory] = useState("");
   useEffect(() => {
     if (userCategory == "") {
-      actions.getBuddy(info.id);
+      actions.getBuddy(info[0]?.id);
     } else if (userCategory === "School") {
       actions.getBuddy(1);
     } else if (userCategory === "Professional") {
@@ -87,11 +87,11 @@ function DashboardTask() {
     } else if (userCategory === "Health") {
       actions.getBuddy(4);
     }
-  }, [userCategory]);
+  }, [userCategory, info]);
   // (() => {
   //   actions.getSelectedCategories(user.id).then();
   // }, []);
-  console.log("buddy", buddy);
+  console.log("userCat buddy", userCategory);
 
   // const singleTab = () => {
   //   selectedCategories.map((item, index) => {
